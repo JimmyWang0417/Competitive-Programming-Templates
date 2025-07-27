@@ -1,0 +1,251 @@
+{
+    "files.associations": {
+        "array": "cpp",
+        "atomic": "cpp",
+        "*.tcc": "cpp",
+        "bitset": "cpp",
+        "cctype": "cpp",
+        "cfenv": "cpp",
+        "charconv": "cpp",
+        "chrono": "cpp",
+        "cinttypes": "cpp",
+        "clocale": "cpp",
+        "cmath": "cpp",
+        "codecvt": "cpp",
+        "complex": "cpp",
+        "condition_variable": "cpp",
+        "csetjmp": "cpp",
+        "csignal": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "ctime": "cpp",
+        "cuchar": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp",
+        "exception": "cpp",
+        "algorithm": "cpp",
+        "functional": "cpp",
+        "iterator": "cpp",
+        "map": "cpp",
+        "memory": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "optional": "cpp",
+        "random": "cpp",
+        "ratio": "cpp",
+        "regex": "cpp",
+        "set": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "system_error": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "fstream": "cpp",
+        "future": "cpp",
+        "initializer_list": "cpp",
+        "iomanip": "cpp",
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "mutex": "cpp",
+        "new": "cpp",
+        "ostream": "cpp",
+        "scoped_allocator": "cpp",
+        "shared_mutex": "cpp",
+        "sstream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "thread": "cpp",
+        "typeindex": "cpp",
+        "typeinfo": "cpp",
+        "valarray": "cpp",
+        "rope": "cpp",
+        "slist": "cpp",
+        "climits": "cpp",
+        "any": "cpp",
+        "source_location": "cpp",
+        "variant": "cpp",
+        "barrier": "cpp",
+        "bit": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "coroutine": "cpp",
+        "latch": "cpp",
+        "numbers": "cpp",
+        "ranges": "cpp",
+        "semaphore": "cpp",
+        "span": "cpp",
+        "stop_token": "cpp",
+        "syncstream": "cpp",
+        "expected": "cpp",
+        "spanstream": "cpp",
+        "stacktrace": "cpp",
+        "hash_map": "cpp",
+        "ios": "cpp",
+        "stack": "cpp",
+        "queue": "cpp",
+        "graderlib.c": "cpp",
+        "format": "cpp"
+    },
+    "python.testing.pytestArgs": [
+        "UVA"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "yapf",
+    "python.linting.flake8Args": [
+        "--max-line-length=248"
+    ],
+    "python.linting.pylintEnabled": false,
+    "workbench.colorCustomizations": {
+        // "terminal.background": "#FFFFFF",
+        // "terminal.foreground": "#6C696E",
+        "terminalCursor.background": "#6C696E",
+        "terminalCursor.foreground": "#6C696E",
+        "terminal.ansiBlack": "#FFFFFF",
+        "terminal.ansiBlue": "#775DFF",
+        "terminal.ansiBrightBlack": "#A7A5A8",
+        "terminal.ansiBrightBlue": "#775DFF",
+        "terminal.ansiBrightCyan": "#149BDA",
+        "terminal.ansiBrightGreen": "#17AD98",
+        "terminal.ansiBrightMagenta": "#AA17E6",
+        "terminal.ansiBrightRed": "#D8137F",
+        "terminal.ansiBrightWhite": "#322D34",
+        "terminal.ansiBrightYellow": "#DC8A0E",
+        "terminal.ansiCyan": "#149BDA",
+        "terminal.ansiGreen": "#17AD98",
+        "terminal.ansiMagenta": "#AA17E6",
+        "terminal.ansiRed": "#D8137F",
+        "terminal.ansiWhite": "#6C696E",
+        "terminal.ansiYellow": "#DC8A0E"
+    },
+    "latex-workshop.view.pdf.viewer": "tab", //tab:使用VSCode自带的pdf阅读器
+    "latex-workshop.latex.autoClean.run": "onBuilt", //何时应删除LaTeX辅助文件,要清理的文件夹在latex-workshop.latex.outDir中定义,onFailed:在编译失败时清除项目,onBuild:不论编译成功与否都在编译终止时清除项目
+    "latex-workshop.latex.autoBuild.run": "never", //onFileChange:在检测到任何文件中的更改（甚至被其他应用程序修改）时编译（默认）,never:当你命令编译时才编译
+    "[latex]": {
+        "editor.formatOnSave": false, //true:在保存时格式化文件。格式化程序必须可用,延迟后文件不能保存,并且编辑器不能关闭
+    },
+    "latex-workshop.latex.tools": [
+        {
+            // 编译工具和命令
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex",
+            "tools": [
+                "xelatex"
+            ],
+        },
+        {
+            "name": "pdflatex",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "xe->bib->xe->xe",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "pdf->bib->pdf->pdf",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "xelatex * 2",
+            "tools": [
+                "xelatex",
+                "xelatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.clean.fileTypes": [ //要清理的文件,此属性必须是字符串数组 例如 *.removemable
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.nav",
+        "*.snm",
+        "*.synctex.gz",
+        "*.fdb_latexmk",
+    ],
+    "latex-workshop.latex.recipe.default": "xelatex * 2",
+    
+    "carbon.backgroundColor": "rgba(0,0,0,0)",
+    "carbon.theme": "one-light",
+    "carbon.dropShadow": true,
+    "carbon.windowControls": true,
+    "carbon.autoAdjustWidth": true,
+    "carbon.paddingVertical": 24,
+    "carbon.paddingHorizontal": 16,
+    "carbon.lineNumbers": false,
+    "carbon.fontFamily": "Hack",
+    "carbon.fontSize": 13,
+
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4
+}
