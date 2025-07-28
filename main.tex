@@ -1,0 +1,39 @@
+%! TEX program=xelatex
+
+\documentclass[UTF8,11pt,a4paper]{ctexart}%UTF-8编码，文字大小11，纸张类型A4
+\usepackage[T1]{fontenc}% 加载宏包 fontenc 防止某些符号显示不正常
+
+\usepackage[textwidth=18cm]{geometry} % 设置页宽=18
+%加载数学宏包
+\usepackage{amsmath}
+\usepackage{amssymb}
+%加载插图宏包 graphicx 以在 pdf 中插入图片
+\usepackage{graphicx}
+
+\usepackage{blindtext}
+\usepackage{bm}
+\usepackage{multirow}
+% 合并上下几列未预先加载
+\usepackage{float}
+% 扩展解决图片和表格浮动问题
+
+\usepackage{subfiles} % 尽量置于导言区的最后
+
+\makeatletter
+\newcommand{\figcaption}{\def\@captype{figure}\caption}
+\newcommand{\tabcaption}{\def\@captype{table}\caption}
+\makeatother
+%插入表格以及图片的浮动问题
+\parindent=0pt
+
+\title{Jimmy Wang的算法竞赛代码模板}
+\author{Jimmy Wang}
+
+\begin{document}
+\begin{sloppypar} % geometry 宏包命令
+    \maketitle
+    \tableofcontents
+    \subfile{Templates/main.tex}
+
+\end{sloppypar} % geometry 宏包命令
+\end{document}

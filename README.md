@@ -8,13 +8,12 @@ Count My Code:
 ===============================================================================
  Language            Files        Lines         Code     Comments       Blanks
 ===============================================================================
- C Header                1         4249         3536          299          414
- C++                     2          130          130            0            0
- C++ Header             15         1992         1123          580          289
+ C++                     1          192          180            9            3
+ C++ Header             11          504          489            9            6
  Markdown                1           29            0           26            3
- Python                  2           21           18            2            1
+ Python                  1           20           18            1            1
 ===============================================================================
- Total                  21         6421         4807          907          707
+ Total                  14          745          687           45           13
 ===============================================================================
 ```
 <!-- count the code end -->
@@ -24,6 +23,23 @@ The Directory Tree of My Codes:
 ```plain
 .
 ├── Generator.py
-└── README.md
+├── LICENSE
+├── README.md
+└── Templates
+    ├── Geometry
+    │   └── 2D
+    │       ├── circle.hpp
+    │       ├── convex-hull.hpp
+    │       ├── line.hpp
+    │       ├── point.hpp
+    │       ├── polygon.hpp
+    │       └── segment.hpp
+    └── Normal Snippets
+        ├── Checker.hpp
+        ├── FASTIO.cpp
+        ├── FILEIO.hpp
+        ├── Generator.hpp
+        ├── Interator.hpp
+        └── ModInt.hpp
 ```
 <!-- directory tree end -->

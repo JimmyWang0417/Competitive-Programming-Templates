@@ -21,6 +21,8 @@
 			"\\usepackage{float}",
 			"% 扩展解决图片和表格浮动问题",
 			"",
+            "\\usepackage{subfiles} % 尽量置于导言区的最后",
+            "",
 			"\\makeatletter",
 			"\\newcommand{\\figcaption}{\\def\\@captype{figure}\\caption}",
 			"\\newcommand{\\tabcaption}{\\def\\@captype{table}\\caption}",
