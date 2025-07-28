@@ -1,3 +1,4 @@
+```cpp
 namespace MODINT
 {
     template <const int _mod>
@@ -119,3 +120,4 @@ namespace MODINT
         }
     };
 }
+```

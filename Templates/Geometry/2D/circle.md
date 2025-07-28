@@ -1,3 +1,4 @@
+```cpp
 namespace twoDimension
 {
     // circle
@@ -71,3 +72,4 @@ namespace twoDimension
             return {};
     }
 };
+```

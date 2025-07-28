@@ -1,3 +1,4 @@
+```cpp
 namespace twoDimension
 {
     // segment
@@ -52,3 +53,4 @@ namespace twoDimension
         return min({segPoint(a, b, c), segPoint(a, b, d), segPoint(c, d, a), segPoint(c, d, b)});
     }
 }
+```

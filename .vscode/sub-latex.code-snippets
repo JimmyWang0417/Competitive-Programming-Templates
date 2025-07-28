@@ -1,14 +1,10 @@
 {
     "latex": {
-        "prefix": "latex",
+        "prefix": "sub-latex",
         "body": [
             "\\documentclass[../main.tex]{subfiles} % 使用 subfiles 文档类，指定主文档",
             "\\begin{document}",
-            "\\chapter{第一章}",
-            "这是第一章的内容",
-            "\\subfile{chp-01/sec-01.01}",
-            "\\subfile{chp-01/sec-01.02}",
-            "",
+            "$1",
             "\\end{document}"
         ],
         "description": "Log output to console"

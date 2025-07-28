@@ -1,11 +1,4 @@
-/**
- *    name:     
- *    author:   JimmyWang0417 (蒟蒻wjr)
- *    located:  Beilin District, Xi'an City, Shaanxi Province, China
- *    created:  
- *    unicode:  UTF-8
- *    standard: c++17
- **/
+```cpp
 #include <bits/stdc++.h>
 typedef long long ll;
 typedef unsigned long long ull;
@@ -190,3 +183,4 @@ signed main()
 #endif
     return 0;
 }
+```

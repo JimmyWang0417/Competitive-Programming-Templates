@@ -1,3 +1,4 @@
+```cpp
 namespace twoDimension
 {
     // polygon
@@ -30,3 +31,4 @@ namespace twoDimension
         return flag;
     }
 }
+```

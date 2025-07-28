@@ -1,3 +1,4 @@
+```cpp
 namespace std
 {
     template <typename T>
@@ -67,3 +68,4 @@ namespace twoDimension
         return orient(a, b, p) >= 0 && orient(a, p, c) >= 0;
     }
 };
+```

@@ -1,6 +1,6 @@
 {
 	"latex": {
-		"prefix": "latex",
+		"prefix": "main-latex",
 		"body": [
 			"%! TEX program=xelatex",
 			"",
@@ -22,6 +22,8 @@
 			"% 扩展解决图片和表格浮动问题",
 			"",
             "\\usepackage{subfiles} % 尽量置于导言区的最后",
+            "",
+            "\\usepackage{listings}",
             "",
 			"\\makeatletter",
 			"\\newcommand{\\figcaption}{\\def\\@captype{figure}\\caption}",

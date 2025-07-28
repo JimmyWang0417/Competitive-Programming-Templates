@@ -1,3 +1,4 @@
+```cpp
 namespace twoDimension
 {
     // convex hull
@@ -60,3 +61,4 @@ namespace twoDimension
         return c;
     }
 }
+```
