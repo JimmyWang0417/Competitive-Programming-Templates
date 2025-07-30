@@ -43,9 +43,9 @@ namespace twoDimension
         {
             double d = cross(l1.v, l2.v);
             if (sgn(d))
-                return make_pair(false, 0);
+                return {false, 0};
             else
-                return make_pair(true, (l2.v * l1.c - l1.v * l2.c) / d);
+                return {true, (l2.v * l1.c - l1.v * l2.c) / d};
         }
         auto proj(p2 p) const
         {

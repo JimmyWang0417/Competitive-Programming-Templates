@@ -13,15 +13,15 @@ namespace twoDimension
         double oc = orient(a, b, c);
         double od = orient(a, b, d);
         if (oa * ob < 0 && oc * od < 0)
-            return make_pair(true, (a * ob - b * oa) / (ob - oa));
+            return {true, (a * ob - b * oa) / (ob - oa)};
         else
-            return make_pair(false, 0);
+            return {false, 0};
     }
-    auto inters(p2 a, p2 b, p2 c, p2 d)
+    auto inters(p2 a, p2 b, p2 c, p2 d) -> vector<p2>
     {
         auto [x, y] = properInter(a, b, c, d);
         if (x)
-            return vector<p2>(1, y);
+            return {y};
         set<p2> se;
         if (onSegment(c, d, a))
             se.insert(a);
