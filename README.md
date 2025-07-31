@@ -8,12 +8,11 @@ Count My Code:
 ===============================================================================
  Language            Files        Lines         Code     Comments       Blanks
 ===============================================================================
- C++                     1          192          180            9            3
- C++ Header             11          504          489            9            6
- Markdown                1           29            0           26            3
+ C++ Header              4           28           28            0            0
+ Markdown               22         1170            0         1149           21
  Python                  1           20           18            1            1
 ===============================================================================
- Total                  14          745          687           45           13
+ Total                  27         1218           46         1150           22
 ===============================================================================
 ```
 <!-- count the code end -->
@@ -24,22 +23,36 @@ The Directory Tree of My Codes:
 .
 ├── Generator.py
 ├── LICENSE
+├── main.md
 ├── README.md
 └── Templates
     ├── Geometry
-    │   └── 2D
-    │       ├── circle.hpp
-    │       ├── convex-hull.hpp
-    │       ├── line.hpp
-    │       ├── point.hpp
-    │       ├── polygon.hpp
-    │       └── segment.hpp
+    │   ├── 2D
+    │   │   ├── circle.md
+    │   │   ├── convex-hull.md
+    │   │   ├── line.md
+    │   │   ├── main.md
+    │   │   ├── point.md
+    │   │   ├── polygon.md
+    │   │   └── segment.md
+    │   ├── 3D
+    │   │   ├── convex-hull.md
+    │   │   ├── Coordinate-System.md
+    │   │   ├── line.md
+    │   │   ├── main.md
+    │   │   ├── plane.md
+    │   │   ├── point.md
+    │   │   ├── polygon.md
+    │   │   └── sphere.md
+    │   └── main.md
+    ├── main.md
     └── Normal Snippets
         ├── Checker.hpp
-        ├── FASTIO.cpp
+        ├── FASTIO.md
         ├── FILEIO.hpp
         ├── Generator.hpp
         ├── Interator.hpp
-        └── ModInt.hpp
+        ├── main.md
+        └── ModInt.md
 ```
 <!-- directory tree end -->
