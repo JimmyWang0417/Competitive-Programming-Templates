@@ -41,3 +41,4 @@ __pycache__/*
 Environment/Contest
 *.synctex.gz
 *.pdf
+main_.md

@@ -1,0 +1,9 @@
+## 数学
+### 多项式算法
+@import "polynomial.md"
+### min25筛
+@import "min25.md"
+### 万能欧几里得
+@import "euclidean.md"
+### Schreier-Sims
+@import "schreierSims.md"

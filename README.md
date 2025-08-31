@@ -9,10 +9,11 @@ Count My Code:
  Language            Files        Lines         Code     Comments       Blanks
 ===============================================================================
  C++ Header              4           28           28            0            0
- Markdown               22         1170            0         1149           21
+ Markdown               45         3390            0         3295           95
  Python                  1           20           18            1            1
+ Shell                   1           15            5            5            5
 ===============================================================================
- Total                  27         1218           46         1150           22
+ Total                  51         3453           51         3301          101
 ===============================================================================
 ```
 <!-- count the code end -->
@@ -21,11 +22,17 @@ The Directory Tree of My Codes:
 <!-- directory tree begin -->
 ```plain
 .
+├── assets
+├── auto.sh
 ├── Generator.py
 ├── LICENSE
-├── main.md
 ├── README.md
 └── Templates
+    ├── dataStructure
+    │   ├── decomposition.md
+    │   ├── linkCutTree.md
+    │   ├── main.md
+    │   └── topTree.md
     ├── Geometry
     │   ├── 2D
     │   │   ├── circle.md
@@ -46,13 +53,39 @@ The Directory Tree of My Codes:
     │   │   └── sphere.md
     │   └── main.md
     ├── main.md
-    └── Normal Snippets
-        ├── Checker.hpp
-        ├── FASTIO.md
-        ├── FILEIO.hpp
-        ├── Generator.hpp
-        ├── Interator.hpp
+    ├── main_.md
+    ├── main_.pdf
+    ├── math
+    │   ├── euclidean.md
+    │   ├── main.md
+    │   ├── min25.md
+    │   ├── polynomial.md
+    │   └── schreierSims.md
+    ├── misc
+    │   └── main.md
+    ├── networkFlow
+    │   ├── main.md
+    │   ├── minCostFlow.md
+    │   └── networkFlow.md
+    ├── Normal Snippets
+    │   ├── Checker.hpp
+    │   ├── FASTIO.md
+    │   ├── FILEIO.hpp
+    │   ├── Generator.hpp
+    │   ├── Interator.hpp
+    │   ├── main.md
+    │   └── ModInt.md
+    └── stringAlgorithm
+        ├── acam.md
+        ├── exkmp.md
+        ├── exsam.md
+        ├── kmp.md
+        ├── lyndon.md
         ├── main.md
-        └── ModInt.md
+        ├── manacher.md
+        ├── pam.md
+        ├── sa.md
+        ├── sam.md
+        └── trie.md
 ```
 <!-- directory tree end -->
