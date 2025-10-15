@@ -8,12 +8,13 @@ Count My Code:
 ===============================================================================
  Language            Files        Lines         Code     Comments       Blanks
 ===============================================================================
- C++ Header              4           28           28            0            0
- Markdown               45         3390            0         3295           95
+ C++ Header             55         5103         4931           60          112
+ Makefile                1            2            2            0            0
+ Markdown                2          263            0          226           37
  Python                  1           20           18            1            1
  Shell                   1           15            5            5            5
 ===============================================================================
- Total                  51         3453           51         3301          101
+ Total                  60         5403         4956          292          155
 ===============================================================================
 ```
 <!-- count the code end -->
@@ -29,63 +30,83 @@ The Directory Tree of My Codes:
 ├── README.md
 └── Templates
     ├── dataStructure
-    │   ├── decomposition.md
-    │   ├── linkCutTree.md
-    │   ├── main.md
-    │   └── topTree.md
-    ├── Geometry
+    │   ├── cartesianTree.hpp
+    │   ├── decomposition.hpp
+    │   ├── fenwick.hpp
+    │   ├── linkCutTree.hpp
+    │   ├── main.typ
+    │   ├── segmentTreeBeats.hpp
+    │   └── topTree.hpp
+    ├── geometry
     │   ├── 2D
-    │   │   ├── circle.md
-    │   │   ├── convex-hull.md
-    │   │   ├── line.md
-    │   │   ├── main.md
-    │   │   ├── point.md
-    │   │   ├── polygon.md
-    │   │   └── segment.md
+    │   │   ├── 2d.hpp
+    │   │   ├── circle.hpp
+    │   │   ├── convex-hull.hpp
+    │   │   ├── half-convex-hull.hpp
+    │   │   ├── line.hpp
+    │   │   ├── main.typ
+    │   │   ├── point.hpp
+    │   │   ├── polygon.hpp
+    │   │   └── segment.hpp
     │   ├── 3D
-    │   │   ├── convex-hull.md
-    │   │   ├── Coordinate-System.md
-    │   │   ├── line.md
-    │   │   ├── main.md
-    │   │   ├── plane.md
-    │   │   ├── point.md
-    │   │   ├── polygon.md
-    │   │   └── sphere.md
-    │   └── main.md
-    ├── main.md
+    │   │   ├── 3d.hpp
+    │   │   ├── convex-hull.hpp
+    │   │   ├── Coordinate-System.hpp
+    │   │   ├── line.hpp
+    │   │   ├── main.typ
+    │   │   ├── plane.hpp
+    │   │   ├── point.hpp
+    │   │   ├── polygon.hpp
+    │   │   └── sphere.hpp
+    │   └── main.typ
+    ├── graph
+    │   ├── blockForest.hpp
+    │   ├── eulerTour.hpp
+    │   ├── johnson.hpp
+    │   ├── main.typ
+    │   ├── minCycle.hpp
+    │   ├── networkFlow
+    │   │   ├── main.typ
+    │   │   ├── minCostFlow.hpp
+    │   │   └── networkFlow.hpp
+    │   ├── ringCount.hpp
+    │   ├── steinerTree.hpp
+    │   ├── stoerWagner.hpp
+    │   └── tarjan.hpp
+    ├── initialization & misc
+    │   ├── approx.hpp
+    │   ├── bit.hpp
+    │   ├── hashTable.hpp
+    │   ├── io.hpp
+    │   ├── main.md
+    │   ├── main.typ
+    │   └── makefile
+    ├── main.typ
     ├── main_.md
     ├── main_.pdf
     ├── math
-    │   ├── euclidean.md
-    │   ├── main.md
-    │   ├── min25.md
-    │   ├── polynomial.md
-    │   └── schreierSims.md
-    ├── misc
-    │   └── main.md
-    ├── networkFlow
-    │   ├── main.md
-    │   ├── minCostFlow.md
-    │   └── networkFlow.md
-    ├── Normal Snippets
-    │   ├── Checker.hpp
-    │   ├── FASTIO.md
-    │   ├── FILEIO.hpp
-    │   ├── Generator.hpp
-    │   ├── Interator.hpp
-    │   ├── main.md
-    │   └── ModInt.md
+    │   ├── berlekampMassey.hpp
+    │   ├── euclidean.hpp
+    │   ├── linnerBasis.hpp
+    │   ├── main.typ
+    │   ├── matrix.hpp
+    │   ├── min25.hpp
+    │   ├── modint.hpp
+    │   ├── numberTheory.hpp
+    │   ├── polynomial.hpp
+    │   ├── prime.typ
+    │   └── schreierSims.hpp
     └── stringAlgorithm
-        ├── acam.md
-        ├── exkmp.md
-        ├── exsam.md
-        ├── kmp.md
-        ├── lyndon.md
-        ├── main.md
-        ├── manacher.md
-        ├── pam.md
-        ├── sa.md
-        ├── sam.md
-        └── trie.md
+        ├── acam.hpp
+        ├── exkmp.hpp
+        ├── exsam.hpp
+        ├── kmp.hpp
+        ├── lyndon.hpp
+        ├── main.typ
+        ├── manacher.hpp
+        ├── pam.hpp
+        ├── sa.hpp
+        ├── sam.hpp
+        └── trie.hpp
 ```
 <!-- directory tree end -->
