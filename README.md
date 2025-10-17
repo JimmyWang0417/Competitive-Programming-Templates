@@ -11,11 +11,11 @@ Count My Code:
  C++                     1           91           91            0            0
  C++ Header             57         5261         5090           59          112
  Makefile                1            2            2            0            0
- Markdown                2          284            0          247           37
+ Markdown                2          299            0          262           37
  Python                  1           20           18            1            1
  Shell                   1           15            5            5            5
 ===============================================================================
- Total                  63         5673         5206          312          155
+ Total                  63         5688         5206          327          155
 ===============================================================================
 ```
 <!-- count the code end -->
@@ -90,8 +90,6 @@ The Directory Tree of My Codes:
     │   ├── main.typ
     │   └── makefile
     ├── main.typ
-    ├── main_.md
-    ├── main_.pdf
     ├── math
     │   ├── berlekampMassey.hpp
     │   ├── comb.hpp
@@ -123,5 +121,8 @@ The Directory Tree of My Codes:
         ├── sa.hpp
         ├── sam.hpp
         └── trie.hpp
+```
+<!-- directory tree end -->
+��─ trie.hpp
 ```
 <!-- directory tree end -->
