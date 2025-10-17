@@ -8,13 +8,14 @@ Count My Code:
 ===============================================================================
  Language            Files        Lines         Code     Comments       Blanks
 ===============================================================================
- C++ Header             55         5103         4931           60          112
+ C++                     1           91           91            0            0
+ C++ Header             57         5261         5090           59          112
  Makefile                1            2            2            0            0
- Markdown                2          263            0          226           37
+ Markdown                2          284            0          247           37
  Python                  1           20           18            1            1
  Shell                   1           15            5            5            5
 ===============================================================================
- Total                  60         5403         4956          292          155
+ Total                  63         5673         5206          312          155
 ===============================================================================
 ```
 <!-- count the code end -->
@@ -23,10 +24,16 @@ The Directory Tree of My Codes:
 <!-- directory tree begin -->
 ```plain
 .
+├── articles
+│   └── main.pdf
 ├── assets
 ├── auto.sh
 ├── Generator.py
+├── image
+│   └── 88D2DB2E657F7DB09DAB8A02818C9A60.jpg
+├── lib.typ
 ├── LICENSE
+├── main.typ
 ├── README.md
 └── Templates
     ├── dataStructure
@@ -58,7 +65,8 @@ The Directory Tree of My Codes:
     │   │   ├── point.hpp
     │   │   ├── polygon.hpp
     │   │   └── sphere.hpp
-    │   └── main.typ
+    │   ├── main.typ
+    │   └── nearestPoints.cpp
     ├── graph
     │   ├── blockForest.hpp
     │   ├── eulerTour.hpp
@@ -86,7 +94,12 @@ The Directory Tree of My Codes:
     ├── main_.pdf
     ├── math
     │   ├── berlekampMassey.hpp
+    │   ├── comb.hpp
+    │   ├── combinatorics.typ
     │   ├── euclidean.hpp
+    │   ├── fib.typ
+    │   ├── gameTheory.typ
+    │   ├── jYZpd0.png
     │   ├── linnerBasis.hpp
     │   ├── main.typ
     │   ├── matrix.hpp
@@ -94,8 +107,10 @@ The Directory Tree of My Codes:
     │   ├── modint.hpp
     │   ├── numberTheory.hpp
     │   ├── polynomial.hpp
+    │   ├── prime.hpp
     │   ├── prime.typ
-    │   └── schreierSims.hpp
+    │   ├── schreierSims.hpp
+    │   └── stirling.typ
     └── stringAlgorithm
         ├── acam.hpp
         ├── exkmp.hpp

@@ -19,6 +19,17 @@
 #raw(read("schreierSims.hpp"), lang: "cpp");
 == 组合数学
 
+#include "combinatorics.typ"
+
+=== 排列数和组合数封装
+#raw(read("comb.hpp"), lang : "hpp")
+
+#include "stirling.typ"
+
+== 特殊数列
+=== 斐波拉切数列
+#include "fib.typ"
+
 == 群论
 === Burnside引理
 等价类数量为 
@@ -46,5 +57,11 @@ $ [x^n]G^k (x)=[x^(n-k)]F'(x)(x/F(x))^(n+1) $
 该式子有一个更一般的形式
 $ [x^n]H(G^k (x))=[x^(n-k)]H(x)F'(x)(x/F(x))^(n+1) $
 
-== 特殊质数及其相关信息
+== 博弈论
+#include "gameTheory.typ"
+
+== 质数
+=== 质数检验与分解质因数
+#raw(read("prime.hpp"), lang : "cpp")
+
 #include "prime.typ"

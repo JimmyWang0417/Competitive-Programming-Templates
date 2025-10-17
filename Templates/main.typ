@@ -1,5 +1,5 @@
 #include "initialization & misc/main.typ"
-#include "Geometry/main.typ"
+#include "geometry/main.typ"
 #include "graph/main.typ"
 #include "stringAlgorithm/main.typ"
 #include "dataStructure/main.typ"

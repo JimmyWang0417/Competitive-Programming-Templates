@@ -8,6 +8,7 @@ typedef __uint128_t u128;
 typedef __float80 f80;
 typedef __float128 f128;
 constexpr int mod = 998244353;
+mt19937 rnd((random_device())());
 struct Main
 {
     Main()
@@ -20,10 +21,7 @@ signed main()
     cin.tie(0), cout.tie(0);
     int T = 1;
     cin >> T;
-    for (int _ = 1; _ <= T; ++_)
-    {
-        // cout << "Case #" << _ << ":\n";
+    while (T--)
         Main();
-    }
     return 0;
 }

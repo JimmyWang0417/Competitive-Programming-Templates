@@ -13,10 +13,13 @@
 #raw(read("blockForest.hpp"), lang: "cpp")
 == 斯坦纳树
 #raw(read("steinerTree.hpp"), lang: "cpp")
-== 全局最小割算法
-#raw(read("stoerWagner.hpp"), lang: "cpp")
+== 网络流
+
 
 #include "networkFlow/main.typ"
+
+=== 全局最小割算法（Stoer-Wagner）
+#raw(read("stoerWagner.hpp"), lang: "cpp")
 
 == 矩阵树定理
 === 无向图
@@ -66,9 +69,7 @@ $ t^(l e a f)(G,k) = det L^(i n)(G)_([n]\\{k},[n]\\{k}). $
 == LGV引理
 
 === 引理说明
-Lindström–Gessel–Viennot lemma，即 LGV 引理，可以用来处理有向无环图上不相交路径计数等问题。
-
-LGV 引理仅适用于 #strong([有向无环图])。
+LGV 引理可以用来处理有向无环图上不相交路径计数等问题，仅适用于 #strong([有向无环图])。
 
 $omega(P)$ 表示 $P$ 这条路径上所有边的边权之积。（路径计数时，可以将边权都设为 $1$）（事实上，边权可以为生成函数）
 
@@ -89,15 +90,19 @@ $
     dots.v, dots.v, dots.down, dots.v;
     e(A_n,B_1), e(A_n,B_2), ..., e(A_n,B_n);
   )\
-  det(M)=sum_(S:A arrow B)(-1)^{t(sigma(S))} product_(i=1)^n omega(S_i)
+  det(M)=sum_(S:A arrow B)(-1)^(t(sigma(S))) product_(i=1)^n omega(S_i)
 $
 
 
 其中 $sum_(S:A arrow B)$ 表示满足上文要求的 $A arrow B$ 的每一组不相交路径 $S$。
 
 === 引理应用
-另外我们可以发现，如果给出的图是 #strong([有向无环平面图]) 。
+我们可以发现，如果给出的图是 #strong([有向无环平面图]) 。
 
 实际上引理右式等价于不相交路径计算的子集容斥。
 
 所以我们可以通过这个引理处理平面图上不相交路径的计数。
+
+=== 树哈希
+使用函数 $f(x)$ 来解决树哈希问题。
+$ f(u) equiv sum_(v in s o n_v)f(v) dot op("prime")(s i v e_v) $
