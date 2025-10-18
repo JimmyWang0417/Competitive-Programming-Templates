@@ -21,6 +21,7 @@ $ q equiv x/a (mod p), |a| <= A $
 -   `int __builtin_clzll (unsigned long long x)`
 
 #strong("用途")：计算一个数的对数（log2），找到最高有效位（MSB）的位置。
+
 #strong("示例")：`32 - __builtin_clz(x)` 可以快速得到存储 `x` 所需的最小位数，或者 `31 - __builtin_clz(x)` 得到 `x` 的以 2 为底的对数（对于 `x > 0`）。
 
 ==== 尾随零 (Count Trailing Zeros)
@@ -31,6 +32,7 @@ $ q equiv x/a (mod p), |a| <= A $
 -   `int __builtin_ctzll (unsigned long long x)`
 
 #strong("用途")：常用于位图算法，快速找到第一个被置 1 的位（从右向左）。
+
 #strong("示例")：`__builtin_ctz(0b00010000)` 返回 `4`。
 
 ==== 位元计数 (Population Count / Popcount)
@@ -41,6 +43,7 @@ $ q equiv x/a (mod p), |a| <= A $
 -   `int __builtin_popcountll (unsigned long long x)`
 
 #strong("用途")：计算汉明重量（Hamming Weight），在信息论、密码学、稀疏矩阵/数组中非常有用。
+
 #strong("示例")：`__builtin_popcount(0b10101010)` 返回 `4`。
 
 ==== 奇偶校验 (Parity)
@@ -51,6 +54,7 @@ $ q equiv x/a (mod p), |a| <= A $
 -   `int __builtin_parityll (unsigned long long x)`
 
 #strong("用途")：简单的错误检测码。
+
 #strong("示例")：`__builtin_parity(0b10101011)` 返回 `1` (因为有 5 个 '1'，5 % 2 = 1)。
 
 ==== 查找第一个置位 (Find First Set)
@@ -61,6 +65,7 @@ $ q equiv x/a (mod p), |a| <= A $
 -   `int __builtin_ffsll (long long x)`
 
 #strong("用途")：和 `ctz` 类似，但 `ffs` 对 0 输入是安全的，且索引从 1 开始。注意：`__builtin_ffs(x) = __builtin_ctz(x) + 1` (对于 `x != 0`)。
+
 #strong("示例")：`__builtin_ffs(0b00010000)` 返回 `5`。
 
 ---
@@ -75,6 +80,7 @@ $ q equiv x/a (mod p), |a| <= A $
 -   `unsigned long long __builtin_bitreversell (unsigned long long x)`
 
 #strong("注意")：这个函数相对较新，在老版本的编译器中可能不支持。
+
 #strong("用途")：在一些编解码、FFT 算法中会用到。
 
 ==== 字节序交换 (Endianness Swap)

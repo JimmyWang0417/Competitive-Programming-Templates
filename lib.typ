@@ -215,7 +215,7 @@
   date: none,
   abstract: none,
   keywords: (),
-  outlines : false,
+  outlines: false,
 ) = {
   // 主标题
   align(center)[
@@ -258,11 +258,6 @@
     ]
     #v(2pt)
   ]
-  if (outlines == true) [
-    #pagebreak()
-    #outline()
-    #pagebreak()
-  ]
 }
 
 // ================================
@@ -275,7 +270,7 @@
   date: none,
   abstract: none,
   keywords: (),
-  outlines : false,
+  outlines: false,
   body,
 ) = {
   title-state.update(title)
@@ -284,11 +279,6 @@
   set document(author: author, title: title, date: date, keywords: keywords)
 
   // 页面设置
-  set page(
-    numbering: "1",
-    number-align: center,
-    header: prev-header,
-  )
 
   // 基础样式设置
   set heading(numbering: "1.1")
@@ -409,27 +399,27 @@
   }
 
   // 代码样式
-//   show raw.where(block: false): it => {
-//     set text(font: config.raw-font)
-//     box(
-//       fill: config.raw-color,
-//       inset: (x: 3pt, y: 0pt),
-//       outset: (x: 0pt, y: 3pt),
-//       radius: 2pt,
-//       it,
-//     )
-//   }
-//   show raw.where(block: true): it => {
-//     set text(font: config.raw-font)
-//     set block(
-//       width: 100%,
-//       fill: config.raw-color,
-//       outset: (x: 0pt, y: 4pt),
-//       inset: (x: 8pt, y: 4pt),
-//       radius: 4pt,
-//     )
-//     it + fake-par
-//   }
+    // show raw.where(block: false): it => {
+    //   set text(font: config.raw-font)
+    //   box(
+    //     fill: config.raw-color,
+    //     inset: (x: 3pt, y: 0pt),
+    //     outset: (x: 0pt, y: 3pt),
+    //     radius: 2pt,
+    //     it,
+    //   )
+    // }
+    // show raw.where(block: true): it => {
+    //   set text(font: config.raw-font)
+    //   set block(
+    //     width: 100%,
+    //     fill: config.raw-color,
+    //     outset: (x: 0pt, y: 4pt),
+    //     inset: (x: 8pt, y: 4pt),
+    //     radius: 4pt,
+    //   )
+    //   it + fake-par
+    // }
 
   // ================================
   // 文档标题部分
@@ -440,8 +430,18 @@
     date: date,
     abstract: abstract,
     keywords: keywords,
-    outlines : outlines,
   )
+  if (outlines == true) [
+    #counter(page).update(1)
+    #set page(
+      numbering: "I",
+      number-align: center,
+      header: prev-header,
+    )
+    #pagebreak()
+    #outline()
+    #pagebreak()
+  ]
   set page(
     numbering: "1/1",
     number-align: center,
