@@ -399,16 +399,15 @@
   }
 
   // 代码样式
-    // show raw.where(block: false): it => {
-    //   set text(font: config.raw-font)
-    //   box(
-    //     fill: config.raw-color,
-    //     inset: (x: 3pt, y: 0pt),
-    //     outset: (x: 0pt, y: 3pt),
-    //     radius: 2pt,
-    //     it,
-    //   )
-    // }
+    show raw.where(block: false): it => {
+      set text(font: config.raw-font)
+      
+        // fill: config.raw-color,
+        // inset: (x: 3pt, y: 0pt),
+        // outset: (x: 0pt, y: 3pt),
+        // radius: 2pt,
+        it
+    }
     // show raw.where(block: true): it => {
     //   set text(font: config.raw-font)
     //   set block(
