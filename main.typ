@@ -10,13 +10,9 @@
       image("image/88D2DB2E657F7DB09DAB8A02818C9A60.jpg")
     }
   ],
+  outlines: true,
   //   keywords: ("算法竞赛", "代码模板", "算法分析"),
 )
 #show table: three-line-table
-
-
-#pagebreak()
-#outline()
-#pagebreak()
 
 #include "Templates/main.typ"

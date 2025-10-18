@@ -215,6 +215,7 @@
   date: none,
   abstract: none,
   keywords: (),
+  outlines : false,
 ) = {
   // 主标题
   align(center)[
@@ -257,6 +258,11 @@
     ]
     #v(2pt)
   ]
+  if (outlines == true) [
+    #pagebreak()
+    #outline()
+    #pagebreak()
+  ]
 }
 
 // ================================
@@ -269,6 +275,7 @@
   date: none,
   abstract: none,
   keywords: (),
+  outlines : false,
   body,
 ) = {
   title-state.update(title)
@@ -433,8 +440,14 @@
     date: date,
     abstract: abstract,
     keywords: keywords,
+    outlines : outlines,
   )
-
+  set page(
+    numbering: "1/1",
+    number-align: center,
+    header: prev-header,
+  )
+  counter(page).update(1)
   // 正文内容
   body
 }
