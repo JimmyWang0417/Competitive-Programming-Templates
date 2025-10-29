@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/priority_queue.hpp>
 using namespace std;
 typedef int64_t i64;
 typedef uint64_t u64;
