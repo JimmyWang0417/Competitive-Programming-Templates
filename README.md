@@ -5,18 +5,22 @@ JimmyWang0417 's Competitive Programming Templates
 Count My Code:
 <!-- count the code begin -->
 ```plain
-===============================================================================
- Language            Files        Lines         Code     Comments       Blanks
-===============================================================================
- C++                     1           91           91            0            0
- C++ Header             57         5298         5127           59          112
- Makefile                1            2            2            0            0
- Markdown                2          297            0          260           37
- Python                  1           20           18            1            1
- Shell                   1           15            5            5            5
-===============================================================================
- Total                  63         5723         5243          325          155
-===============================================================================
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ Language              Files        Lines         Code     Comments       Blanks
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ C++                       1           91           91            0            0
+ C++ Header               81         8612         8110           55          447
+ Makefile                  1            2            2            0            0
+ Python                    1           20           18            1            1
+ Shell                     1           15            5            5            5
+ Typst                    21         1831         1408           77          346
+─────────────────────────────────────────────────────────────────────────────────
+ Markdown                  3          379            0          330           49
+ |- BASH                   1            2            2            0            0
+ (Total)                              381            2          330           49
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ Total                   109        10952         9636          468          848
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 <!-- count the code end -->
 
@@ -24,6 +28,7 @@ The Directory Tree of My Codes:
 <!-- directory tree begin -->
 ```plain
 .
+├── agend.md
 ├── articles
 │   └── main.pdf
 ├── assets
@@ -39,11 +44,26 @@ The Directory Tree of My Codes:
     ├── dataStructure
     │   ├── cartesianTree.hpp
     │   ├── decomposition.hpp
+    │   ├── decompTree.hpp
+    │   ├── dynamicSeg.hpp
     │   ├── fenwick.hpp
+    │   ├── fhqTreap.hpp
+    │   ├── implicitTreap.hpp
+    │   ├── lichao.hpp
     │   ├── linkCutTree.hpp
     │   ├── main.typ
+    │   ├── persistImplicitTreap.hpp
+    │   ├── persistSeg.hpp
+    │   ├── persistTreap.hpp
+    │   ├── scanlineSeg.hpp
+    │   ├── scapegoat.hpp
+    │   ├── segBeats.hpp
+    │   ├── segDivide.hpp
     │   ├── segmentTreeBeats.hpp
-    │   └── topTree.hpp
+    │   ├── segTree.hpp
+    │   ├── splay.hpp
+    │   ├── topTree.hpp
+    │   └── treap.hpp
     ├── geometry
     │   ├── 2D
     │   │   ├── 2d.hpp
@@ -94,20 +114,34 @@ The Directory Tree of My Codes:
     │   ├── berlekampMassey.hpp
     │   ├── comb.hpp
     │   ├── combinatorics.typ
+    │   ├── duSieve.hpp
     │   ├── euclidean.hpp
+    │   ├── euclidean.typ
     │   ├── fib.typ
+    │   ├── fwt.hpp
+    │   ├── fwt.typ
     │   ├── gameTheory.typ
     │   ├── jYZpd0.png
-    │   ├── linnerBasis.hpp
+    │   ├── linearBasis.hpp
     │   ├── main.typ
     │   ├── matrix.hpp
     │   ├── min25.hpp
     │   ├── modint.hpp
     │   ├── numberTheory.hpp
+    │   ├── numberTheorySieve.typ
+    │   ├── polynomial
+    │   │   ├── lagrange.hpp
+    │   │   ├── linearRecurrence.hpp
+    │   │   └── poly.hpp
     │   ├── polynomial.hpp
     │   ├── prime.hpp
     │   ├── prime.typ
     │   ├── schreierSims.hpp
+    │   ├── setPowerSeries.hpp
+    │   ├── setPowerSeries.typ
+    │   ├── sieve.hpp
+    │   ├── Simpson.hpp
+    │   ├── stirling.hpp
     │   └── stirling.typ
     └── stringAlgorithm
         ├── acam.hpp

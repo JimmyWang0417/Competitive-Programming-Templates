@@ -5,11 +5,11 @@
 
 #let font = (
   // 中文字体
-  zh_shusong: "SimSun",
-  zh_zhongsong: "STZhongsong",
-  zh_kai: "KaiTi",
-  zh_hei: "SimHei",
-  zh_fangsong: "STFangsong",
+  zh_shusong: "FZShuSong-Z01",
+  zh_zhongsong: "HYZhongSongJ",
+  zh_kai: "FZKai-Z03",
+  zh_hei: "FZHei-B01",
+  zh_fangsong: "FZFangSong-Z02",
   // 英文字体
   en_sans_serif: "New Computer Modern",
   en_serif: "New Computer Modern",
@@ -352,9 +352,9 @@
   // 数学公式：无标签则不编号
   show math.equation: it => {
     set block(breakable: true)
-    if it.block and not it.has("label") [
+    if it.block and it.numbering != none and not it.has("label") [
       #counter(math.equation).update(v => v - 1)
-      #math.equation(it.body, block: true, numbering: none)#label("")
+      #math.equation(it.body, block: true, numbering: none)
     ] else {
       it
     }
