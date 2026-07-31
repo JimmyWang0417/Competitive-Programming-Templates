@@ -18,3 +18,4 @@ with open("README.md", "r+", encoding="utf-8") as filetxt:
             flags=re.M  # 明确指定 flags 参数
         )
     filetxt.write(lines)
+    filetxt.truncate()

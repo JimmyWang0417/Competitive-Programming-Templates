@@ -2,21 +2,26 @@
 
 JimmyWang0417 's Competitive Programming Templates
 
+## Documentation
+
+- [文档索引](docs/README.md)
+
 Count My Code:
 <!-- count the code begin -->
 ```plain
-===============================================================================
- Language            Files        Lines         Code     Comments       Blanks
-===============================================================================
- C++                     1           91           91            0            0
- C++ Header             57         5298         5127           59          112
- Makefile                1            2            2            0            0
- Markdown                2          297            0          260           37
- Python                  1           20           18            1            1
- Shell                   1           15            5            5            5
-===============================================================================
- Total                  63         5723         5243          325          155
-===============================================================================
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ Language              Files        Lines         Code     Comments       Blanks
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ C++                       1           91           91            0            0
+ C++ Header               57         5298         5127           59          112
+ Makefile                  1            2            2            0            0
+ Markdown                  7         4017            0         2912         1105
+ Python                    1           21           19            1            1
+ Shell                     1           15            5            5            5
+ Typst                    20         1601         1201           79          321
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ Total                    88        11045         6445         3056         1544
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 <!-- count the code end -->
 
@@ -24,10 +29,17 @@ The Directory Tree of My Codes:
 <!-- directory tree begin -->
 ```plain
 .
+├── agent.md
 ├── articles
 │   └── main.pdf
-├── assets
 ├── auto.sh
+├── docs
+│   ├── graph
+│   │   ├── dilworth.md
+│   │   └── two-sat.md
+│   ├── math
+│   │   └── young-tableaux.md
+│   └── README.md
 ├── Generator.py
 ├── image
 │   └── 88D2DB2E657F7DB09DAB8A02818C9A60.jpg
@@ -69,6 +81,7 @@ The Directory Tree of My Codes:
     │   └── nearestPoints.cpp
     ├── graph
     │   ├── blockForest.hpp
+    │   ├── dilworth.typ
     │   ├── eulerTour.hpp
     │   ├── johnson.hpp
     │   ├── main.typ
@@ -80,7 +93,8 @@ The Directory Tree of My Codes:
     │   ├── ringCount.hpp
     │   ├── steinerTree.hpp
     │   ├── stoerWagner.hpp
-    │   └── tarjan.hpp
+    │   ├── tarjan.hpp
+    │   └── twoSat.typ
     ├── initialization & misc
     │   ├── approx.hpp
     │   ├── bit.hpp
@@ -108,7 +122,8 @@ The Directory Tree of My Codes:
     │   ├── prime.hpp
     │   ├── prime.typ
     │   ├── schreierSims.hpp
-    │   └── stirling.typ
+    │   ├── stirling.typ
+    │   └── youngTableaux.typ
     └── stringAlgorithm
         ├── acam.hpp
         ├── exkmp.hpp

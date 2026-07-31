@@ -54,6 +54,8 @@ for (int i = 1; i <= tot; ++i)
 
 #include "stirling.typ"
 
+#include "youngTableaux.typ"
+
 == 特殊数列
 === 斐波拉切数列
 #include "fib.typ"

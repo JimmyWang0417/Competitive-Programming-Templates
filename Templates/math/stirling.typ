@@ -1,3 +1,6 @@
+#let stirlingFirst(n, m) = math.vec(n, m, delim: "[")
+#let stirlingSecond(n, m) = math.vec(n, m, delim: "{")
+
 === 自然幂，上升幂和下降幂
 
 在介绍斯特林数之前，我先介绍一下自然幂，上升幂和下降幂，因为斯特林数的性质和这三种幂紧密相关。
@@ -23,37 +26,37 @@ $ (-m)^(overline(n))=(-1)^n m^(underline(n)) $
 
 ==== 介绍
 
-第一类斯特林数（斯特林轮换数）$vec(n, m, delim: "[")$，表示将 $n$ 个两两不同的元素，划分成 $m$ 个互不区分的非空置换的方案数。
+第一类斯特林数（斯特林轮换数）$stirlingFirst(n, m)$，表示将 $n$ 个两两不同的元素，划分成 $m$ 个互不区分的非空置换的方案数。
 
 注：一个轮换是一个收尾相接的环形排列。两个可以通过旋转而互相得到的轮换是等价的（我们不认为两个可以通过翻转而相互得到的轮换等价）。
 
 ==== 递推式
-$ vec(n, m, delim: "[") = vec(n-1, m-1, delim: "[")+(n-1)vec(n-1, m, delim: "[") $
+$ stirlingFirst(n, m) = stirlingFirst(n-1, m-1)+(n-1)stirlingFirst(n-1, m) $
 
-边界为：$vec(n, 0, delim: "[")=[n=0]$。
+边界为：$stirlingFirst(n, 0)=[n=0]$。
 
 运用组合意义证明：
 
-- 新加入的元素独立作为一个置换，方案数为 $vec(n-1, m-1, delim: "[")}$ 。
+- 新加入的元素独立作为一个置换，方案数为 $stirlingFirst(n-1, m-1)$ 。
 
-- 新加入的元素加入现有的置换当中，因为对任意长度为 $l$ 的置换插入该置换的方案数为 $l$ ，当前置换总长为 $n-1$ ，所以方案数为 $(n-1)vec(n - 1, m, delim: "[")$ 。
+- 新加入的元素加入现有的置换当中，因为对任意长度为 $l$ 的置换插入该置换的方案数为 $l$ ，当前置换总长为 $n-1$ ，所以方案数为 $(n-1)stirlingFirst(n - 1, m)$ 。
 
 根据加法原理，将两式相加即可得到递推式。
 
 ==== 性质
 
-1. $ n! = sum_(i=0)^n vec(n, i, delim: "[") $
+1. $ n! = sum_(i=0)^n stirlingFirst(n, i) $
 
 理解：对于一个排列 $P$ 我们可以将所有的 $(p_i, i)$ 连边，一个环则为一组轮换，每种排列一一每种置换。
 
-2. $ m^(overline(n))=sum_(i=0)^n vec(n, i, delim: "[") m^i $
+2. $ m^(overline(n))=sum_(i=0)^n stirlingFirst(n, i) m^i $
 
 
-3. $ m^(underline(n))=sum_(i=0)^n (-1)^(n-i)vec(n, i, delim: "[") m^i $
+3. $ m^(underline(n))=sum_(i=0)^n (-1)^(n-i)stirlingFirst(n, i) m^i $
 
 ==== 同一行第一类斯特林数的计算
 
-考虑构造生成函数 $ F_n(x)=product_(i=0)^(n-1) (x+i)=product_(i=0)^(n)a_i x^i $ ，可以根据 $ m^(overline(n))=sum_(i=0)^n vec(n, i, delim: "[")m^i$ 得到其中的 $a_i=vec(n, i, delim: "[")$ 。
+考虑构造生成函数 $ F_n(x)=product_(i=0)^(n-1) (x+i)=product_(i=0)^(n)a_i x^i $ ，可以根据 $ m^(overline(n))=sum_(i=0)^n stirlingFirst(n, i)m^i$ 得到其中的 $a_i=stirlingFirst(n, i)$ 。
 
 显然 $F_(2n)(x)^=F_n(x) F_n(x+n)$ 。
 
@@ -76,31 +79,31 @@ a_j\
 
 ==== 介绍
 
-第二类斯特林数（斯特林子集数）$vec(n, m, delim: "{")$ ，表示将 $n$ 个两两不同的元素，划分为 $m$ 个互不区分的非空子集的方案数。
+第二类斯特林数（斯特林子集数）$stirlingSecond(n, m)$ ，表示将 $n$ 个两两不同的元素，划分为 $m$ 个互不区分的非空子集的方案数。
 
 ==== 递推式
 
-$ vec(n, m, delim: "{")=vec(n-1, m-1, delim: "{")+m vec(n-1, m, delim: "{") $
+$ stirlingSecond(n, m)=stirlingSecond(n-1, m-1)+m stirlingSecond(n-1, m) $
 
-边界为 $vec(n, 0, delim: "{")=[n=0]$。
+边界为 $stirlingSecond(n, 0)=[n=0]$。
 
 运用组合意义证明：
 
-- 将新元素单独放入一个子集，方案数为 $vec(n-1, m-1, delim: "{")$ 。
+- 将新元素单独放入一个子集，方案数为 $stirlingSecond(n-1, m-1)$ 。
 
-- 新将新元素放入一个现有的非空子集，方案数为 $m vec(n-1, m, delim: "{")$ 。
+- 新将新元素放入一个现有的非空子集，方案数为 $m stirlingSecond(n-1, m)$ 。
 
 根据加法原理，将两式相加即可得到递推式。
 
 ==== 性质
 
-1. $ m^n=sum_(i=0)^n vec(n, i, delim: "{")m^(underline(i)) $
+1. $ m^n=sum_(i=0)^n stirlingSecond(n, i)m^(underline(i)) $
 
-2. $ m^n=sum_(i=0)^n (-1)^(n-i)vec(n, i, delim: "{")m^(overline(i)) $
+2. $ m^n=sum_(i=0)^n (-1)^(n-i)stirlingSecond(n, i)m^(overline(i)) $
 
 ==== 通项公式
 
-$ vec(n, m, delim: "{")=sum_(i=0)^m ((-1)^(m-i)i^n)/(i!(m-i)!) $
+$ stirlingSecond(n, m)=sum_(i=0)^m ((-1)^(m-i)i^n)/(i!(m-i)!) $
 
 证明：
 
@@ -108,7 +111,7 @@ $ vec(n, m, delim: "{")=sum_(i=0)^m ((-1)^(m-i)i^n)/(i!(m-i)!) $
 
 令 $f_i$ 为表示将 $n$ 个两两不同的元素，划分为 $i$ 个互不相同的 *非空子集* 的方案数。
 
-显然 $f_i=i!vec(n, i, delim: "{")$ 。
+显然 $f_i=i!stirlingSecond(n, i)$ 。
 
 考虑令 $g_i$ 为表示将 $n$ 个两两不同的元素，划分为 $i$ 个互不相同的子集 *（可非空）* 的方案数。
 
@@ -124,7 +127,7 @@ f_i&=sum_(j=0)^i(-1)^(i-j)binom(i,j) g_j\
 &=sum_(j=0)^i(-1)^(i-j)binom(i, j)j^n\ 
 &=sum_(j=0)^i (i!(i-1)^(i-j)j^n)/(j!(i-j)!) $
 
-$ vec(n, m, delim: "{")=(f_m)/(m!)=sum_(i=0)^m ((-1)^(m-i)i^n)/(i!(m-i)!) $
+$ stirlingSecond(n, m)=(f_m)/(m!)=sum_(i=0)^m ((-1)^(m-i)i^n)/(i!(m-i)!) $
 
 ==== 同一行第二类斯特林数的计算
 
@@ -191,16 +194,16 @@ $L(n, 0)=0$，$L(1, 1)=1$
 ==== 原理
 由此我们就有两个非常对称的恒等式：
 $ 
-sum_(i=m)^n (-1)^(n-i)vec(n, i, delim: "{")vec(i, m, delim: "[")=[n=m]
+sum_(i=m)^n (-1)^(n-i)stirlingSecond(n, i)stirlingFirst(i, m)=[n=m]
  $
 $
-sum_(i=m)^n (-1)^(n-i)vec(n, i, delim: "[")vec(i, m, delim: "{")=[n=m]
+sum_(i=m)^n (-1)^(n-i)stirlingFirst(n, i)stirlingSecond(i, m)=[n=m]
  $
 ==== 反演形式
 
 $ 
-f_n=sum_(i=0)^n vec(n, i, delim: "{")g_i arrow.l.r.double g_n=sum_(i=0)^n (-1)^(n-i)vec(n, i, delim: "[") f_i
+f_n=sum_(i=0)^n stirlingSecond(n, i)g_i arrow.l.r.double g_n=sum_(i=0)^n (-1)^(n-i)stirlingFirst(n, i) f_i
  $
 $
-f_n=sum_(i=0)^n vec(n, i, delim: "[")g_i arrow.l.r.double g_n=sum_(i=0)^n (-1)^(n-i)vec(n, i, delim: "{")f_i
+f_n=sum_(i=0)^n stirlingFirst(n, i)g_i arrow.l.r.double g_n=sum_(i=0)^n (-1)^(n-i)stirlingSecond(n, i)f_i
  $

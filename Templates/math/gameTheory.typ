@@ -2,13 +2,13 @@
   - 规则：有 (n)
     堆石子，玩家轮流从任意一堆取走任意多石子，不能取走最后一颗石子的玩家获胜。
   - 关键结论：状态 $a_1, a_2, dots , a_n$ 是必败状态（$PP$ 态）当且仅当
-    Nim 和 $a_1 plus.circle a_2 plus.circle dots plus.circle a_n = 0$。
+    Nim 和 $a_1 ⊕ a_2 ⊕ dots ⊕ a_n = 0$。
   - 证明思路：通过博弈图归纳，证明 Nim 和为零时所有后继状态 Nim
     和不为零，反之亦然。
 === Sprague--Grundy 理论：
   - 所有公平组合游戏都等价于一个单堆 Nim 游戏。
   - #strong[SG 函数]：定义 $op("SG")(x) = op("mex"){op("SG")(x') : x' 是 x 的 后 继 状 态 }$。
-  - 游戏和的 SG 值：$op("SG")(G_1 + G_2 + dots + G_n) = op("SG")(G_1) plus.circle op("SG")(G_2) plus.circle dots plus.circle op("SG")(G_n)$。
+  - 游戏和的 SG 值：$op("SG")(G_1 + G_2 + dots + G_n) = op("SG")(G_1) ⊕ op("SG")(G_2) ⊕ dots ⊕ op("SG")(G_n)$。
   - #strong[Nim 数]：每个游戏状态对应一个 Nim 数，SG 函数值即为 Nim 数。
 === 常见公平游戏：
 ==== Bachet 游戏：

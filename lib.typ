@@ -352,9 +352,9 @@
   // 数学公式：无标签则不编号
   show math.equation: it => {
     set block(breakable: true)
-    if it.block and not it.has("label") [
+    if it.block and it.numbering != none and not it.has("label") [
       #counter(math.equation).update(v => v - 1)
-      #math.equation(it.body, block: true, numbering: none)#label("")
+      #math.equation(it.body, block: true, numbering: none)
     ] else {
       it
     }
