@@ -11,3 +11,5 @@
 
 - [2-SAT：蕴含图、配对反边与强连通分量](./graph/two-sat.md)：重点解释为什么每条蕴含必须显式加入逆否边，并给出省略后的误判反例。
 - [Dilworth 定理、Mirsky 定理与 DAG 覆盖](./graph/dilworth.md)：整理两个极值定理、二分图匹配算法及传递闭包边界。
+- [支配树：Lengauer–Tarjan 算法教程](./graph/dominator-tree.md)：只保留支配树必要前置、半支配点、LINK/EVAL、桶、正序修正及当前结构体对应关系。
+- [支配树纸质速查版](../Templates/graph/dominatorTree.typ)：竞赛常用性质与原样 `DominantTree` 结构体。

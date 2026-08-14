@@ -13,14 +13,14 @@ Count My Code:
  Language              Files        Lines         Code     Comments       Blanks
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  C++                       1           91           91            0            0
- C++ Header               57         5298         5127           59          112
+ C++ Header               58         5377         5206           59          112
  Makefile                  1            2            2            0            0
- Markdown                  7         4017            0         2912         1105
+ Markdown                  8         4992            0         3595         1397
  Python                    1           21           19            1            1
  Shell                     1           15            5            5            5
- Typst                    20         1601         1201           79          321
+ Typst                    21         1620         1211           79          330
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- Total                    88        11045         6445         3056         1544
+ Total                    91        12118         6534         3739         1845
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 <!-- count the code end -->
@@ -36,6 +36,7 @@ The Directory Tree of My Codes:
 ├── docs
 │   ├── graph
 │   │   ├── dilworth.md
+│   │   ├── dominator-tree.md
 │   │   └── two-sat.md
 │   ├── math
 │   │   └── young-tableaux.md
@@ -82,6 +83,8 @@ The Directory Tree of My Codes:
     ├── graph
     │   ├── blockForest.hpp
     │   ├── dilworth.typ
+    │   ├── dominatorTree.hpp
+    │   ├── dominatorTree.typ
     │   ├── eulerTour.hpp
     │   ├── johnson.hpp
     │   ├── main.typ

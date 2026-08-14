@@ -12,6 +12,8 @@
 
 #include "twoSat.typ"
 
+#include "dominatorTree.typ"
+
 == 圆方树
 #raw(read("blockForest.hpp"), lang: "cpp")
 == 斯坦纳树
