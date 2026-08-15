@@ -68,5 +68,6 @@
 - 改动 Typst 文档后，运行：
   ```bash
   typst compile Templates/math/main.typ /tmp/cp-math.pdf
-  typst compile main.typ /tmp/cp-all.pdf
+  typst compile --root . codebook/wide/main.typ /tmp/cp-wide.pdf
+  typst compile --root . codebook/compact/main.typ /tmp/cp-compact.pdf
   ```

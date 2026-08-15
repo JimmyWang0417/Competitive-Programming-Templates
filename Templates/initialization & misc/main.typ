@@ -1,4 +1,6 @@
 = 初始化与杂项
+== makefile
+#raw(read("makefile"), lang : "makefile")
 == 常用缺省源
 #raw(read("io.hpp"), lang : "cpp")
 == 哈希表（个人定制防卡加速版）
@@ -104,5 +106,3 @@ $ q equiv x/a (mod p), |a| <= A $
 
 === 封装函数
 #raw(read("bit.hpp"), lang : "cpp")
-== makefile
-#raw(read("makefile"), lang : "makefile")

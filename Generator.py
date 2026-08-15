@@ -6,7 +6,10 @@ intxt = [
     "<!-- count the code begin -->\n[^<]*<!-- count the code end -->\n",
     "<!-- directory tree begin -->\n[^<]*<!-- directory tree end -->\n"
 ]
-outxt = ["tokei", "lsd --tree -I Environment -I __pycache__ --icon never"]
+outxt = [
+    "tokei -e articles -e dist -e Environment -e __pycache__",
+    "lsd --tree -I .git -I articles -I dist -I Environment -I __pycache__ --icon never",
+]
 with open("README.md", "r+", encoding="utf-8") as filetxt:
     lines = filetxt.read()
     filetxt.seek(0)
@@ -18,3 +21,4 @@ with open("README.md", "r+", encoding="utf-8") as filetxt:
             flags=re.M  # 明确指定 flags 参数
         )
     filetxt.write(lines)
+    filetxt.truncate()
