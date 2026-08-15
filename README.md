@@ -39,6 +39,8 @@ typst compile --root . codebook/compact/main.typ dist/competitive-programming-te
 
 直接回车默认不发布。输入 `y` 后，Release 标签默认取“最新稳定版本 + 0.0.1”（例如最新为 `v1.1.1`，默认发布 `v1.1.2`），也可以手动修改；脚本会推送提交和标签。GitHub Actions 收到 `v*` 标签后自动创建 Release，并附上宽版、紧凑版两个 PDF。普通 push 和 pull request 也会构建两份 PDF 作为 Actions Artifact。
 
+也可以在 GitHub Actions 页面点击 **Run workflow**：勾选发布 Release，标签留空时同样自动使用“最新稳定版本 + 0.0.1”。不勾选则只构建并上传 PDF Artifact。
+
 ## Documentation
 
 - [文档索引](docs/README.md)
