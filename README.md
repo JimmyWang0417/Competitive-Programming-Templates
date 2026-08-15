@@ -37,7 +37,11 @@ typst compile --root . codebook/compact/main.typ dist/competitive-programming-te
 本次提交后是否发布 GitHub Release？[y/N]
 ```
 
-直接回车默认不发布。输入 `y` 后可确认或修改建议版本号（例如 `v1.2.0`）；脚本会推送提交和标签。GitHub Actions 收到 `v*` 标签后自动创建 Release，并附上宽版、紧凑版两个 PDF。普通 push 和 pull request 也会构建两份 PDF 作为 Actions Artifact。
+直接回车默认不发布。输入 `y` 后，Release 标签默认取“最新稳定版本 + 0.0.1”（例如最新为 `v1.1.1`，默认发布 `v1.1.2`），也可以手动修改；脚本会推送提交和标签。GitHub Actions 收到 `v*` 标签后自动创建 Release，并附上宽版、紧凑版两个 PDF。普通 push 和 pull request 也会构建两份 PDF 作为 Actions Artifact。
+
+## Documentation
+
+- [文档索引](docs/README.md)
 
 Count My Code:
 <!-- count the code begin -->
@@ -46,17 +50,17 @@ Count My Code:
  Language              Files        Lines         Code     Comments       Blanks
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  C++                       1           91           91            0            0
- C++ Header               81         8612         8110           55          447
+ C++ Header               82         8691         8189           55          447
  Makefile                  1            2            2            0            0
  Python                    1           24           22            1            1
  Shell                     1           61           50            1           10
- Typst                    26         2021         1575           85          361
+ Typst                    30         2333         1823           85          425
 ─────────────────────────────────────────────────────────────────────────────────
- Markdown                  3          441            0          381           60
+ Markdown                  9         5122            0         3702         1420
  |- BASH                   2            6            6            0            0
- (Total)                              447            6          381           60
+ (Total)                             5128            6         3702         1420
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- Total                   114        11258         9856          523          879
+ Total                   125        16330        10183         3844         2303
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 <!-- count the code end -->
@@ -66,6 +70,7 @@ The Directory Tree of My Codes:
 ```plain
 .
 ├── agend.md
+├── agent.md
 ├── assets
 ├── auto.sh
 ├── codebook
@@ -76,6 +81,14 @@ The Directory Tree of My Codes:
 │   └── wide
 │       ├── main.typ
 │       └── theme.typ
+├── docs
+│   ├── graph
+│   │   ├── dilworth.md
+│   │   ├── dominator-tree.md
+│   │   └── two-sat.md
+│   ├── math
+│   │   └── young-tableaux.md
+│   └── README.md
 ├── Generator.py
 ├── image
 │   └── 88D2DB2E657F7DB09DAB8A02818C9A60.jpg
@@ -132,6 +145,9 @@ The Directory Tree of My Codes:
     │   └── nearestPoints.cpp
     ├── graph
     │   ├── blockForest.hpp
+    │   ├── dilworth.typ
+    │   ├── dominatorTree.hpp
+    │   ├── dominatorTree.typ
     │   ├── eulerTour.hpp
     │   ├── johnson.hpp
     │   ├── main.typ
@@ -143,7 +159,8 @@ The Directory Tree of My Codes:
     │   ├── ringCount.hpp
     │   ├── steinerTree.hpp
     │   ├── stoerWagner.hpp
-    │   └── tarjan.hpp
+    │   ├── tarjan.hpp
+    │   └── twoSat.typ
     ├── initialization & misc
     │   ├── approx.hpp
     │   ├── bit.hpp
@@ -185,7 +202,8 @@ The Directory Tree of My Codes:
     │   ├── sieve.hpp
     │   ├── Simpson.hpp
     │   ├── stirling.hpp
-    │   └── stirling.typ
+    │   ├── stirling.typ
+    │   └── youngTableaux.typ
     └── stringAlgorithm
         ├── acam.hpp
         ├── exkmp.hpp

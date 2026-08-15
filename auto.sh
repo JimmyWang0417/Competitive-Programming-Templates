@@ -28,15 +28,15 @@ fi
 release_tag=""
 case "$release" in
   y|Y|yes|YES)
-    latest_tag=$(git tag --list 'v[0-9]*' --sort=-v:refname | head -n 1)
+    latest_tag=$(git tag --list 'v[0-9]*.[0-9]*.[0-9]*' --sort=-v:refname | head -n 1)
     if [[ "$latest_tag" =~ ^v([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
-      suggested_tag="v${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.$((BASH_REMATCH[3] + 1))"
+      default_tag="v${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.$((BASH_REMATCH[3] + 1))"
     else
-      suggested_tag="v1.0.0"
+      default_tag="v0.0.1"
     fi
 
-    read -r -p "Release 标签 [${suggested_tag}]: " release_tag
-    release_tag=${release_tag:-$suggested_tag}
+    read -r -p "Release 标签（默认：最新版本 + 0.0.1）[${default_tag}]: " release_tag
+    release_tag=${release_tag:-$default_tag}
     if [[ ! "$release_tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
       echo "标签格式无效：$release_tag（示例：v1.2.3）" >&2
       exit 1

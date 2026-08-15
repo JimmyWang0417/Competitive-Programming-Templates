@@ -9,6 +9,11 @@
 #raw(read("eulerTour.hpp"), lang: "cpp")
 == tarjan（有向图/无向图）
 #raw(read("tarjan.hpp"), lang: "cpp")
+
+#include "twoSat.typ"
+
+#include "dominatorTree.typ"
+
 == 圆方树
 #raw(read("blockForest.hpp"), lang: "cpp")
 == 斯坦纳树
@@ -17,6 +22,8 @@
 
 
 #include "networkFlow/main.typ"
+
+#include "dilworth.typ"
 
 === 全局最小割算法（Stoer-Wagner）
 #raw(read("stoerWagner.hpp"), lang: "cpp")

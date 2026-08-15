@@ -135,6 +135,8 @@ for (int i = 1; i <= tot; ++i)
 === Stirling 数代码
 #raw(read("stirling.hpp"), lang: "cpp")
 
+#include "youngTableaux.typ"
+
 == 特殊数列
 === 斐波拉切数列
 #include "fib.typ"
