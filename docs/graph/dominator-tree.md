@@ -1,6 +1,6 @@
 # 支配树：Lengauer–Tarjan 算法教程
 
-> 本文只讲 Lengauer–Tarjan 支配树算法及其必要前置。纸质速查见 [支配树模板](../../Templates/graph/dominatorTree.typ)，实现见 [`DominantTree` 结构体](../../Templates/graph/dominatorTree.hpp)。
+> 本文只讲 Lengauer–Tarjan 支配树算法及其必要前置。纸质速查见 [支配树模板](../../Templates/graph/dominator_tree.typ)，实现见 [`DominantTree` 结构体](../../Templates/graph/dominator_tree.hpp)。
 >
 > 本文按 [Lengauer–Tarjan 原论文](https://www.cs.princeton.edu/courses/archive/spring03/cs423/download/dominators.pdf) 核对定义、推导和复杂度；[OI Wiki 支配树页面](https://oi-wiki.org/graph/dominator-tree/) 中与 LT 有关的不准确表述不再沿用，正文直接给出修正后的版本。
 >
@@ -871,7 +871,7 @@ $$
 
 ## 8. 数学对象与当前结构体的对应关系
 
-本节只解释 [`DominantTree`](../../Templates/graph/dominatorTree.hpp)，不改代码和变量名。
+本节只解释 [`DominantTree`](../../Templates/graph/dominator_tree.hpp)，不改代码和变量名。
 
 | 数学对象或步骤 | 代码名 | 说明 |
 |---|---|---|
@@ -966,5 +966,5 @@ $$
 
 - [Lengauer–Tarjan 原论文](https://www.cs.princeton.edu/courses/archive/spring03/cs423/download/dominators.pdf)；
 - [OI Wiki：支配树](https://oi-wiki.org/graph/dominator-tree/)；
-- [纸质速查版](../../Templates/graph/dominatorTree.typ)；
-- [`DominantTree` 结构体](../../Templates/graph/dominatorTree.hpp)。
+- [纸质速查版](../../Templates/graph/dominator_tree.typ)；
+- [`DominantTree` 结构体](../../Templates/graph/dominator_tree.hpp)。

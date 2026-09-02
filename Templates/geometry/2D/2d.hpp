@@ -324,7 +324,7 @@ namespace twoDimension
         adjacent_difference(a.begin(), a.end(), a.begin());
         adjacent_difference(b.begin(), b.end(), b.begin());
         merge(a.begin() + 1, a.end(), b.begin() + 1, b.end(), c.begin() + 1, [](auto x, auto y)
-        { return cross(x, y) > 0; });
+              { return cross(x, y) > 0; });
         partial_sum(c.begin(), c.end(), c.begin());
         return c;
     }
@@ -363,7 +363,7 @@ namespace twoDimension
         for (int i = 0, j = 3; i < n; ++i)
         {
             while (i != (j + 1) % n &&
-                abs(orient(p[i], p[(i + 1) % n], p[j])) <= abs(orient(p[i], p[(i + 1) % n], p[(j + 1) % n])))
+                   abs(orient(p[i], p[(i + 1) % n], p[j])) <= abs(orient(p[i], p[(i + 1) % n], p[(j + 1) % n])))
                 j = (j + 1) % n;
             res = max({res, norm(p[j] - p[i]), norm(p[j] - p[(i + 1) % n])});
         }
@@ -380,7 +380,7 @@ namespace twoDimension
         adjacent_difference(a.begin(), a.end(), a.begin());
         adjacent_difference(b.begin(), b.end(), b.begin());
         merge(a.begin() + 1, a.end(), b.begin() + 1, b.end(), c.begin() + 1, [](auto x, auto y)
-        { return cross(x, y) > 0; });
+              { return cross(x, y) > 0; });
         partial_sum(c.begin(), c.end(), c.begin());
         c.pop_back();
         return c;

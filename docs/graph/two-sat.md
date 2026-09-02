@@ -1,6 +1,6 @@
 # 2-SAT：蕴含图、配对反边与强连通分量
 
-> 本文用于解释 2-SAT 建图和正确性；纸质速查见 [2-SAT 模板](../../Templates/graph/twoSat.typ)。
+> 本文用于解释 2-SAT 建图和正确性；纸质速查见 [2-SAT 模板](../../Templates/graph/two_sat.typ)。
 
 ## 1. 问题形式
 

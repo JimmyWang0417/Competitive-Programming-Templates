@@ -22,7 +22,7 @@
 - 空构造函数如果确实什么都不做，可以写 `= default`。
 - 如果无参构造需要初始化哨兵节点、根数组、随机数种子等，不写 `= default`，要写初始化列表：
   ```cpp
-  fhqTreap() : tree(1), rnd((unsigned)chrono::steady_clock::now().time_since_epoch().count()) {}
+  FhqTreap() : tree(1), rnd((unsigned)chrono::steady_clock::now().time_since_epoch().count()) {}
   ```
 - 有参构造不要写成单纯转发：
   ```cpp
@@ -57,7 +57,7 @@
 
 - 多项式模板按原先整理方式保留完整 `polynomial/poly.hpp`。
 - 不拆成 `poly-basic.hpp`、`poly-ntt.hpp`、`poly-calculus.hpp` 等片段文件。
-- `math/main.typ` 中展示完整 `poly.hpp`，再展示 `lagrange.hpp` 和 `linearRecurrence.hpp`。
+- `math/main.typ` 中展示完整 `poly.hpp`，再展示 `lagrange.hpp` 和 `linear_recurrence.hpp`。
 
 ## 验证流程
 

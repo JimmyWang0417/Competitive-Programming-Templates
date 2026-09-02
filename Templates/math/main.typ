@@ -8,7 +8,7 @@
 2. 卢卡斯定理
 3. 离散对数（BSGS）
 4. 二次剩余
-#raw(read("numberTheory.hpp"), lang: "cpp")
+#raw(read("number_theory.hpp"), lang: "cpp")
 == 多项式算法
 === 多项式模板
 #raw(read("polynomial/poly.hpp"), lang: "cpp")
@@ -16,10 +16,10 @@
 === FWT 代码
 #raw(read("fwt.hpp"), lang: "cpp")
 === 线性基代码
-#raw(read("linearBasis.hpp"), lang: "cpp")
-#include "setPowerSeries.typ"
+#raw(read("linear_basis.hpp"), lang: "cpp")
+#include "set_power_series.typ"
 === 复合集合幂代码
-#raw(read("setPowerSeries.hpp"), lang: "cpp")
+#raw(read("set_power_series.hpp"), lang: "cpp")
 
 === 牛顿多项式迭代
 
@@ -78,7 +78,7 @@ $
 === 多点求值与插值
 #raw(read("polynomial/lagrange.hpp"), lang: "cpp")
 === 常系数线性递推
-#raw(read("polynomial/linearRecurrence.hpp"), lang: "cpp")
+#raw(read("polynomial/linear_recurrence.hpp"), lang: "cpp")
 == 自适应 Simpson 积分
 #raw(read("Simpson.hpp"), lang: "cpp")
 
@@ -86,21 +86,21 @@ $
 
 该算法是求解给定序列最短递推式的算法。
 
-#raw(read("berlekampMassey.hpp"), lang: "cpp");
+#raw(read("berlekamp_massey.hpp"), lang: "cpp");
 
 == 筛法
-#include "numberTheorySieve.typ"
+#include "number_theory_sieve.typ"
 === Min25 筛代码
 #raw(read("min25.hpp"), lang: "cpp");
 === 线性筛
 #raw(read("sieve.hpp"), lang: "cpp");
 === 杜教筛
-#raw(read("duSieve.hpp"), lang: "cpp");
+#raw(read("du_sieve.hpp"), lang: "cpp");
 == 万能欧几里得
 #include "euclidean.typ"
 #raw(read("euclidean.hpp"), lang: "cpp");
 == Schreier-Sims
-#raw(read("schreierSims.hpp"), lang: "cpp");
+#raw(read("schreier_sims.hpp"), lang: "cpp");
 == 容斥和反演
 === min-max 容斥
 $
@@ -135,7 +135,7 @@ for (int i = 1; i <= tot; ++i)
 === Stirling 数代码
 #raw(read("stirling.hpp"), lang: "cpp")
 
-#include "youngTableaux.typ"
+#include "young_tableaux.typ"
 
 == 特殊数列
 === 斐波拉切数列

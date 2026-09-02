@@ -10,7 +10,7 @@ Pick 定理：给定顶点均为整点的简单多边形，皮克定理说明了
 皮克定理和 欧拉公式 $V-E+F=2$ （其中 $V$、$E$ 和 $F$ 分别是点、边和面的个数）等价。
 == 平面最近点对
 
-#raw(read("nearestPoints.cpp"), lang : "cpp")
+#raw(read("nearest_points.cpp"), lang : "cpp")
 
 == 随机增量法
 

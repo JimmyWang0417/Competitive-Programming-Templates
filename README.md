@@ -52,17 +52,17 @@ Count My Code:
  Language              Files        Lines         Code     Comments       Blanks
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  C++                       1           91           91            0            0
- C++ Header               82         8691         8189           55          447
+ C++ Header               84         8745         8242           56          447
  Makefile                  1            2            2            0            0
  Python                    1           24           22            1            1
  Shell                     1           61           50            1           10
  Typst                    30         2333         1823           85          425
 ─────────────────────────────────────────────────────────────────────────────────
- Markdown                  9         5136            0         3716         1420
+ Markdown                  9         5140            0         3719         1421
  |- BASH                   2            6            6            0            0
- (Total)                             5142            6         3716         1420
+ (Total)                             5146            6         3719         1421
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- Total                   125        16344        10183         3858         2303
+ Total                   127        16402        10236         3862         2304
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 <!-- count the code end -->
@@ -99,28 +99,28 @@ The Directory Tree of My Codes:
 ├── main.typ
 ├── README.md
 └── Templates
-    ├── dataStructure
-    │   ├── cartesianTree.hpp
+    ├── data_structure
+    │   ├── cartesian_tree.hpp
+    │   ├── decomp_tree.hpp
     │   ├── decomposition.hpp
-    │   ├── decompTree.hpp
-    │   ├── dynamicSeg.hpp
+    │   ├── dynamic_seg.hpp
     │   ├── fenwick.hpp
-    │   ├── fhqTreap.hpp
-    │   ├── implicitTreap.hpp
+    │   ├── fhq_treap.hpp
+    │   ├── implicit_treap.hpp
     │   ├── lichao.hpp
-    │   ├── linkCutTree.hpp
+    │   ├── link_cut_tree.hpp
     │   ├── main.typ
-    │   ├── persistImplicitTreap.hpp
-    │   ├── persistSeg.hpp
-    │   ├── persistTreap.hpp
-    │   ├── scanlineSeg.hpp
+    │   ├── persist_implicit_treap.hpp
+    │   ├── persist_seg.hpp
+    │   ├── persist_treap.hpp
+    │   ├── scanline_seg.hpp
     │   ├── scapegoat.hpp
-    │   ├── segBeats.hpp
-    │   ├── segDivide.hpp
-    │   ├── segmentTreeBeats.hpp
-    │   ├── segTree.hpp
+    │   ├── seg_beats.hpp
+    │   ├── seg_divide.hpp
+    │   ├── seg_tree.hpp
+    │   ├── segment_tree_beats.hpp
     │   ├── splay.hpp
-    │   ├── topTree.hpp
+    │   ├── top_tree.hpp
     │   └── treap.hpp
     ├── geometry
     │   ├── 2D
@@ -144,39 +144,39 @@ The Directory Tree of My Codes:
     │   │   ├── polygon.hpp
     │   │   └── sphere.hpp
     │   ├── main.typ
-    │   └── nearestPoints.cpp
+    │   └── nearest_points.cpp
     ├── graph
-    │   ├── blockForest.hpp
+    │   ├── block_forest.hpp
     │   ├── dilworth.typ
-    │   ├── dominatorTree.hpp
-    │   ├── dominatorTree.typ
-    │   ├── eulerTour.hpp
+    │   ├── dominator_tree.hpp
+    │   ├── dominator_tree.typ
+    │   ├── euler_tour.hpp
     │   ├── johnson.hpp
     │   ├── main.typ
-    │   ├── minCycle.hpp
-    │   ├── networkFlow
+    │   ├── min_cycle.hpp
+    │   ├── network_flow
     │   │   ├── main.typ
-    │   │   ├── minCostFlow.hpp
-    │   │   └── networkFlow.hpp
-    │   ├── ringCount.hpp
-    │   ├── steinerTree.hpp
-    │   ├── stoerWagner.hpp
+    │   │   ├── min_cost_flow.hpp
+    │   │   └── network_flow.hpp
+    │   ├── ring_count.hpp
+    │   ├── steiner_tree.hpp
+    │   ├── stoer_wagner.hpp
     │   ├── tarjan.hpp
-    │   └── twoSat.typ
-    ├── initialization & misc
+    │   └── two_sat.typ
+    ├── initialization_misc
     │   ├── approx.hpp
     │   ├── bit.hpp
-    │   ├── hashTable.hpp
+    │   ├── hash_table.hpp
     │   ├── io.hpp
     │   ├── main.md
     │   ├── main.typ
     │   └── makefile
     ├── main.typ
     ├── math
-    │   ├── berlekampMassey.hpp
+    │   ├── berlekamp_massey.hpp
     │   ├── comb.hpp
     │   ├── combinatorics.typ
-    │   ├── duSieve.hpp
+    │   ├── du_sieve.hpp
     │   ├── euclidean.hpp
     │   ├── euclidean.typ
     │   ├── fib.typ
@@ -184,36 +184,38 @@ The Directory Tree of My Codes:
     │   ├── fwt.typ
     │   ├── gameTheory.typ
     │   ├── jYZpd0.png
-    │   ├── linearBasis.hpp
+    │   ├── linear_basis.hpp
     │   ├── main.typ
     │   ├── matrix.hpp
     │   ├── min25.hpp
     │   ├── modint.hpp
-    │   ├── numberTheory.hpp
-    │   ├── numberTheorySieve.typ
+    │   ├── number_theory.hpp
+    │   ├── number_theory_sieve.typ
     │   ├── polynomial
     │   │   ├── lagrange.hpp
-    │   │   ├── linearRecurrence.hpp
+    │   │   ├── linear_recurrence.hpp
     │   │   └── poly.hpp
     │   ├── polynomial.hpp
     │   ├── prime.hpp
     │   ├── prime.typ
-    │   ├── schreierSims.hpp
-    │   ├── setPowerSeries.hpp
-    │   ├── setPowerSeries.typ
+    │   ├── schreier_sims.hpp
+    │   ├── set_power_series.hpp
+    │   ├── set_power_series.typ
     │   ├── sieve.hpp
     │   ├── Simpson.hpp
     │   ├── stirling.hpp
     │   ├── stirling.typ
-    │   └── youngTableaux.typ
-    └── stringAlgorithm
+    │   └── young_tableaux.typ
+    └── string_algorithm
         ├── acam.hpp
         ├── exkmp.hpp
         ├── exsam.hpp
+        ├── hash.hpp
         ├── kmp.hpp
         ├── lyndon.hpp
         ├── main.typ
         ├── manacher.hpp
+        ├── min_rep.hpp
         ├── pam.hpp
         ├── sa.hpp
         ├── sam.hpp

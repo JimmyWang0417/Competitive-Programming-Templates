@@ -1,32 +1,32 @@
 = 图论
 == 最小环
-#raw(read("minCycle.hpp"), lang: "cpp")
+#raw(read("min_cycle.hpp"), lang: "cpp")
 == 环计数
-#raw(read("ringCount.hpp"), lang: "cpp")
+#raw(read("ring_count.hpp"), lang: "cpp")
 == Johnson 多源最短路
 #raw(read("johnson.hpp"), lang: "cpp")
 == 欧拉路径
-#raw(read("eulerTour.hpp"), lang: "cpp")
+#raw(read("euler_tour.hpp"), lang: "cpp")
 == tarjan（有向图/无向图）
 #raw(read("tarjan.hpp"), lang: "cpp")
 
-#include "twoSat.typ"
+#include "two_sat.typ"
 
-#include "dominatorTree.typ"
+#include "dominator_tree.typ"
 
 == 圆方树
-#raw(read("blockForest.hpp"), lang: "cpp")
+#raw(read("block_forest.hpp"), lang: "cpp")
 == 斯坦纳树
-#raw(read("steinerTree.hpp"), lang: "cpp")
+#raw(read("steiner_tree.hpp"), lang: "cpp")
 == 网络流
 
 
-#include "networkFlow/main.typ"
+#include "network_flow/main.typ"
 
 #include "dilworth.typ"
 
 === 全局最小割算法（Stoer-Wagner）
-#raw(read("stoerWagner.hpp"), lang: "cpp")
+#raw(read("stoer_wagner.hpp"), lang: "cpp")
 
 == 矩阵树定理
 === 无向图
