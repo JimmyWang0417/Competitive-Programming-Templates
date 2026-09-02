@@ -25,3 +25,8 @@ lyndon串是该串原串是字典序最小的后缀串
 + 一个Lyndon串不能分成多个比原串更小的子序列（这几个子序列都满足字典序小于原串）。
 
 #raw(read("lyndon.hpp"), lang : "cpp")
+== 最小表示法
+求字符串所有循环移位中字典序最小的起始位置。
+#raw(read("min_rep.hpp"), lang : "cpp")
+== 字符串哈希
+#raw(read("hash.hpp"), lang : "cpp")
