@@ -1,8 +1,8 @@
-== 支配树（Dominator Tree）
+=== 支配树（Dominator Tree）
 
 设有向图指定起点 $s$，只讨论从 $s$ 可达的点。若每条 $s arrow.r v$ 路径都经过 $u$，则称 $u$ *支配* $v$（允许 $u=v$）。对 $v != s$，$op("idom")(v)$ 是满足“其余每个严格支配点都支配它”的严格支配点，称为*立即支配点*。
 
-=== 竞赛常用性质
+==== 竞赛常用性质
 
 - 每个可达的 $v != s$ 都有唯一的 $op("idom")(v)$；边 $op("idom")(v) arrow.r v$ 构成以 $s$ 为根的支配树。
 
@@ -12,6 +12,6 @@
 
 - DFS 树父亲通常不等于立即支配点；不能用 DFS 祖先关系代替支配关系。
 
-=== Lengauer-Tarjan 算法
+==== Lengauer-Tarjan 算法
 
-#raw(read("dominator_tree.hpp"), lang: "cpp")
+#raw(read("dominator_tree.hpp"), lang: "cpp", block: true)

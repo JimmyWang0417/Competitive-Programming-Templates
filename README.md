@@ -56,13 +56,13 @@ Count My Code:
  Makefile                  1            2            2            0            0
  Python                    1           24           22            1            1
  Shell                     1           61           50            1           10
- Typst                    30         2338         1828           85          425
+ Typst                    46         2548         2025           96          427
 ─────────────────────────────────────────────────────────────────────────────────
- Markdown                  9         5139            0         3718         1421
+ Markdown                  9         5155            0         3734         1421
  |- BASH                   2            6            6            0            0
- (Total)                             5145            6         3718         1421
+ (Total)                             5161            6         3734         1421
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- Total                   126        16406        10241         3861         2304
+ Total                   142        16632        10438         3888         2306
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 <!-- count the code end -->
@@ -116,6 +116,7 @@ The Directory Tree of My Codes:
     │   ├── scanline_seg.hpp
     │   ├── scapegoat.hpp
     │   ├── seg_beats.hpp
+    │   ├── seg_beats_note.typ
     │   ├── seg_divide.hpp
     │   ├── seg_tree.hpp
     │   ├── splay.hpp
@@ -143,7 +144,9 @@ The Directory Tree of My Codes:
     │   │   ├── polygon.hpp
     │   │   └── sphere.hpp
     │   ├── main.typ
-    │   └── nearest_points.cpp
+    │   ├── nearest_points.cpp
+    │   ├── pick_theorem.typ
+    │   └── randomized_incremental.typ
     ├── graph
     │   ├── block_forest.hpp
     │   ├── dilworth.typ
@@ -151,20 +154,26 @@ The Directory Tree of My Codes:
     │   ├── dominator_tree.typ
     │   ├── euler_tour.hpp
     │   ├── johnson.hpp
+    │   ├── lgv.typ
     │   ├── main.typ
+    │   ├── matrix_tree.typ
     │   ├── min_cycle.hpp
     │   ├── network_flow
     │   │   ├── main.typ
     │   │   ├── min_cost_flow.hpp
-    │   │   └── network_flow.hpp
+    │   │   ├── network_flow.hpp
+    │   │   └── theorems.typ
     │   ├── ring_count.hpp
     │   ├── steiner_tree.hpp
     │   ├── stoer_wagner.hpp
     │   ├── tarjan.hpp
+    │   ├── tree_hash.typ
     │   └── two_sat.typ
     ├── initialization_misc
     │   ├── approx.hpp
+    │   ├── approx_note.typ
     │   ├── bit.hpp
+    │   ├── bit_operations.typ
     │   ├── hash_table.hpp
     │   ├── io.hpp
     │   ├── main.md
@@ -173,6 +182,7 @@ The Directory Tree of My Codes:
     ├── main.typ
     ├── math
     │   ├── berlekamp_massey.hpp
+    │   ├── berlekamp_massey_note.typ
     │   ├── comb.hpp
     │   ├── combinatorics.typ
     │   ├── du_sieve.hpp
@@ -182,6 +192,8 @@ The Directory Tree of My Codes:
     │   ├── fwt.hpp
     │   ├── fwt.typ
     │   ├── gameTheory.typ
+    │   ├── group_theory.typ
+    │   ├── inclusion_exclusion.typ
     │   ├── jYZpd0.png
     │   ├── linear_basis.hpp
     │   ├── main.typ
@@ -189,12 +201,14 @@ The Directory Tree of My Codes:
     │   ├── min25.hpp
     │   ├── modint.hpp
     │   ├── number_theory.hpp
+    │   ├── number_theory_note.typ
     │   ├── number_theory_sieve.typ
     │   ├── polynomial
     │   │   ├── lagrange.hpp
     │   │   ├── linear_recurrence.hpp
     │   │   └── poly.hpp
     │   ├── polynomial.hpp
+    │   ├── polynomial_notes.typ
     │   ├── prime.hpp
     │   ├── prime.typ
     │   ├── schreier_sims.hpp
@@ -212,9 +226,11 @@ The Directory Tree of My Codes:
         ├── hash.hpp
         ├── kmp.hpp
         ├── lyndon.hpp
+        ├── lyndon_note.typ
         ├── main.typ
         ├── manacher.hpp
         ├── min_rep.hpp
+        ├── min_rep_note.typ
         ├── pam.hpp
         ├── sa.hpp
         ├── sam.hpp

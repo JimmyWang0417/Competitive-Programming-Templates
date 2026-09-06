@@ -36,7 +36,7 @@
 // 样式配置
 // ================================
 
-#let config = (
+#let default-config = (
   // 字号设置
   text-size: font-size.n5,
   author-size: font-size.n5,
@@ -54,12 +54,32 @@
   strong-font: (font.en_serif, font.zh_hei),
   emph-font: (font.en_serif, font.zh_kai),
   raw-font: (font.en_code, font.zh_hei),
-  // 间距设置
-  spacing: 1.5em,
-  leading: 1.0em,
+  // 行距设置（最常调整）
+  text-leading: 1.0em,
+  code-leading: 1.0em,
+  paragraph-spacing: 1.5em,
+  header-leading: 0pt,
+  footer-leading: 0pt,
+  header-line-gap: 4pt,
+  footer-line-gap: 2pt,
   indent: 2em,
   small-space: 1em,
   block-space: 0.75em,
+  // 文本框间距与留白
+  text-box-above: 0pt,
+  text-box-below: 0pt,
+  text-box-inset-x: 8pt,
+  text-box-inset-y: 8pt,
+  // 解答框间距与留白
+  solution-box-above: 0pt,
+  solution-box-below: 1.0em,
+  solution-box-inset-x: 8pt,
+  solution-box-inset-y: 8pt,
+  // 代码框间距与留白
+  code-box-above: 0pt,
+  code-box-below: 0pt,
+  code-box-inset-x: 0pt,
+  code-box-inset-y: 0pt,
   // 颜色设置
   raw-color: rgb("#f0f0f0"),
   problem-color: rgb(241, 241, 255),
@@ -71,6 +91,9 @@
   table-stroke: 0.08em,
   table-header-stroke: 0.05em,
 )
+
+// `main.typ` 可通过 layout 覆盖这些默认值；组件从状态中读取当前配置。
+#let layout-state = state("wide-layout-config", default-config)
 
 // ================================
 // 全局状态
@@ -84,9 +107,10 @@
 // ================================
 
 // 解决首段缩进问题的空白段
-#let fake-par = {
+#let fake-par = context {
+  let config = layout-state.get()
   par(box())
-  v(-config.spacing)
+  v(-config.paragraph-spacing)
 }
 
 // 偏微分符号
@@ -101,7 +125,8 @@
   title: none,
   color: rgb(245, 245, 245),
   it,
-) = {
+) = context {
+  let config = layout-state.get()
   set text(font: config.emph-font)
   let body = if title != none {
     strong(title) + h(config.block-space) + it
@@ -111,7 +136,9 @@
 
   block(
     fill: color,
-    inset: 8pt,
+    above: config.text-box-above,
+    below: config.text-box-below,
+    inset: (x: config.text-box-inset-x, y: config.text-box-inset-y),
     radius: 2pt,
     width: 100%,
     body,
@@ -126,16 +153,18 @@
     #problem-counter.step()
     题目 #context problem-counter.display().
   ],
-  color: config.problem-color,
+  color: default-config.problem-color,
 )
 
 // 解答框
-#let solution(it) = {
+#let solution(it) = context {
+  let config = layout-state.get()
   set enum(numbering: "(1)")
   let body = [*解答.*] + h(config.block-space) + it
   block(
-    inset: 8pt,
-    below: config.leading,
+    above: config.solution-box-above,
+    below: config.solution-box-below,
+    inset: (x: config.solution-box-inset-x, y: config.solution-box-inset-y),
     width: 100%,
     body,
   )
@@ -145,11 +174,12 @@
 // 总结框
 #let summary = custom-block.with(
   title: [总结.],
-  color: config.summary-color,
+  color: default-config.summary-color,
 )
 
 // 三线表格
-#let three-line-table(it) = {
+#let three-line-table(it) = context {
+  let config = layout-state.get()
   if it.children.any(c => c.func() == table.hline) {
     return it
   }
@@ -177,28 +207,33 @@
   )
 }
 
-#let header-style(heading) = {
+#let header-style(heading, config: none) = context {
+  let config = if config == none { layout-state.get() } else { config }
+  set par(leading: config.header-leading)
   set text(font: config.header-font)
   let title = title-state.get()
-  grid(
-    columns: (1fr, 1fr),
-    align(left, title), align(right, heading),
-  )
-  v(-1.2em)
-  line(stroke: 1pt + gray, length: 100%)
+  box(width: 100%)[
+    #grid(
+      columns: (1fr, 1fr),
+      align(left, title), align(right, heading),
+    )
+    #place(bottom + left, dy: config.header-line-gap, line(stroke: 1pt + gray, length: 100%))
+  ]
 }
 
-#let prev-header = context {
+#let prev-header(config: none) = context {
+  let config = if config == none { layout-state.get() } else { config }
   let headings = query(heading.where(level: 1).before(here()))
   if headings.len() == 0 {
     return
   }
   let level = counter(heading.where(level: 1)).display("一")
   let heading = level + h(config.small-space) + headings.last().body
-  header-style(heading)
+  header-style(heading, config: config)
 }
 
-#let next-header = context {
+#let next-header(config: none) = context {
+  let config = if config == none { layout-state.get() } else { config }
   let headings = query(heading.where(level: 1).after(here()))
   if headings.len() == 0 {
     return
@@ -206,7 +241,7 @@
   let count = counter(heading.where(level: 1)).get().first() + 1
   let level = numbering("一", count)
   let heading = level + h(config.small-space) + headings.first().body
-  header-style(heading)
+  header-style(heading, config: config)
 }
 
 // 标题
@@ -217,7 +252,8 @@
   abstract: none,
   keywords: (),
   outlines: false,
-) = {
+) = context {
+  let config = layout-state.get()
   // 主标题
   align(center)[
     #block(
@@ -239,13 +275,13 @@
 
   // 日期
   if date != none {
-    date = if date == auto {
+    let display-date = if date == auto {
       datetime.today().display("[year]年[month]月[day]日")
     } else {
       date
     }
     set text(config.author-size, font: config.author-font)
-    align(center, date)
+    align(center, display-date)
   }
 
   // 摘要和关键词
@@ -275,83 +311,100 @@
   members: (),
   keywords: (),
   outlines: false,
+  layout: (),
   body,
 ) = {
+  let page-config = default-config + layout
+  layout-state.update(page-config)
   title-state.update(title)
 
-  // 文档设置
-  set document(author: author, title: title, date: date, keywords: keywords)
-
-  // 页面设置
-
-  // 基础样式设置
-  set heading(numbering: "1.1")
-  set text(
-    font: config.body-font,
-    lang: "zh",
-    region: "cn",
-    size: config.text-size,
-  )
-  set par(
-    // first-line-indent: config.indent,
-    justify: true,
-    leading: config.leading,
-    spacing: config.spacing,
-  )
-  set enum(
-    indent: config.indent,
-    full: true,
-    numbering: (..n) => {
-      n = n.pos()
-      let level = n.len()
-      let number = config.enum-numbering.at(level - 1, default: "1.")
-      numbering(number, ..n.slice(level - 1))
-    },
-  )
-  set list(
-    indent: config.indent,
-    marker: config.list-marker,
-  )
-  set math.equation(numbering: "(1)")
-  set underline(evade: false)
-
-  // ================================
-  // 标题样式
-  // ================================
-
-  show heading: it => {
-    set text(font: config.heading-font)
-    let body = if it.numbering != none {
-      counter(heading).display() + h(config.small-space) + it.body
-    } else {
-      it.body
+  context {
+    let config = layout-state.get()
+    let page-header = context {
+      let headings = query(heading.where(level: 1).before(here()))
+      if headings.len() > 0 {
+        let level = counter(heading.where(level: 1)).display("一")
+        let heading = level + h(config.small-space) + headings.last().body
+        header-style(heading, config: page-config)
+      }
     }
-    box(width: 100%, body)
-  }
 
-  show heading.where(level: 1): it => {
-    set align(center)
-    set heading(numbering: "一")
-    set text(config.title1-size)
-    it
-  }
+    // 文档设置
+    set document(author: author, title: title, date: date, keywords: keywords)
 
-  show heading.where(level: 2): it => {
-    v(-0.75em)
-    set text(config.title2-size)
-    it
-    v(-0.25em)
-  }
+    // 页面设置
 
-  show heading.where(level: 3): it => {
-    v(-1em)
-    set text(config.title3-size)
-    it
-  }
+    // 基础样式设置
+    set heading(numbering: "1.1")
+    set text(
+      font: config.body-font,
+      lang: "zh",
+      region: "cn",
+      size: config.text-size,
+    )
+    set par(
+      // first-line-indent: config.indent,
+      justify: true,
+      leading: config.text-leading,
+      spacing: config.paragraph-spacing,
+    )
+    set enum(
+      indent: config.indent,
+      full: true,
+      numbering: (..n) => {
+        n = n.pos()
+        let level = n.len()
+        let number = config.enum-numbering.at(level - 1, default: "1.")
+        numbering(number, ..n.slice(level - 1))
+      },
+    )
+    set list(
+      indent: config.indent,
+      marker: config.list-marker,
+    )
+    set math.equation(numbering: "(1)")
+    set underline(evade: false)
 
-  // ================================
-  // 元素样式
-  // ================================
+    // ================================
+    // 标题样式
+    // ================================
+
+    show heading: it => {
+      // 标题间距统一由 paragraph-spacing 控制，避免为不同层级引入重复参数。
+      set text(font: config.heading-font)
+      let body = if it.numbering != none {
+        counter(heading).display() + h(config.small-space) + it.body
+      } else {
+        it.body
+      }
+      block(
+        width: 100%,
+        above: 0.6 * config.paragraph-spacing,
+        below: 0.6 * config.paragraph-spacing,
+        box(width: 100%, body),
+      )
+    }
+
+    show heading.where(level: 1): it => {
+      set align(center)
+      set heading(numbering: "一")
+      set text(config.title1-size)
+      it
+    }
+
+    show heading.where(level: 2): it => {
+      set text(config.title2-size)
+      it
+    }
+
+    show heading.where(level: 3): it => {
+      set text(config.title3-size)
+      it
+    }
+
+    // ================================
+    // 元素样式
+    // ================================
 
   // 数学公式：无标签则不编号
   show math.equation: it => {
@@ -405,32 +458,26 @@
   // 代码样式
     show raw.where(block: false): it => {
       set text(font: config.raw-font)
-      
-        // fill: config.raw-color,
-        // inset: (x: 3pt, y: 0pt),
-        // outset: (x: 0pt, y: 3pt),
-        // radius: 2pt,
-        it
+      it
     }
-    // show raw.where(block: true): it => {
-    //   set text(font: config.raw-font)
-    //   set block(
-    //     width: 100%,
-    //     fill: config.raw-color,
-    //     outset: (x: 0pt, y: 4pt),
-    //     inset: (x: 8pt, y: 4pt),
-    //     radius: 4pt,
-    //   )
-    //   it + fake-par
-    // }
+    show raw.where(block: true): it => {
+      set par(leading: config.code-leading)
+      set block(
+        above: config.code-box-above,
+        below: config.code-box-below,
+        inset: (x: config.code-box-inset-x, y: config.code-box-inset-y),
+      )
+      it
+    }
 
   // ================================
   // 文档标题部分
   // ================================
   let document-footer = context {
+    set par(leading: config.footer-leading)
     set text(font: config.caption-font, size: 8pt, fill: luma(80))
     line(length: 100%, stroke: 0.4pt + luma(180))
-    v(2pt)
+    v(config.footer-line-gap)
     grid(
       columns: (1fr, 1fr),
       align(left)[Team: #team],
@@ -457,7 +504,7 @@
     #set page(
       numbering: "I",
       number-align: center,
-      header: prev-header,
+      header: page-header,
     )
     #pagebreak()
     #outline()
@@ -466,9 +513,10 @@
   set page(
     numbering: "1/1",
     number-align: center,
-    header: prev-header,
+    header: page-header,
   )
   counter(page).update(1)
   // 正文内容
   body
+  }
 }

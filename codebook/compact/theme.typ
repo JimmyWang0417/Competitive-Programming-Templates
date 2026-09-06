@@ -2,35 +2,70 @@
 // https://github.com/chen-hongxuan/xcpc-codebook
 // 版面结构保持一致；算法正文与代码只读取本仓库的 Templates/。
 
-#let code-line(it, highlights: ()) = {
-  let number = box(
-    width: 2.2em,
-    align(right, text(size: 5pt, fill: luma(145), str(it.number))),
-  )
-  let separator = box(width: 0.35pt, height: 0.78em, fill: luma(190))
-  let body = [#number#h(0.35em)#separator#h(0.55em)#it.body]
+// ================================
+// 可调排版参数
+// ================================
 
-  if highlights.contains(it.number) {
-    box(width: 100%, fill: rgb("e9fbfb"), body)
+#let default-config = (
+  // 行距设置（最常调整）
+  text-leading: 0.16em,
+  code-leading: 0.16em,
+  paragraph-spacing: 1.2pt,
+  header-leading: 0pt,
+  header-line-gap: 1pt,
+  // 文本框间距与留白
+  text-box-above: 1pt,
+  text-box-below: 3pt,
+  text-box-inset-x: 3pt,
+  text-box-inset-y: 3pt,
+  // 代码框间距与留白
+  code-box-above: 1pt,
+  code-box-below: 3pt,
+  code-box-inset-x: 2pt,
+  code-box-inset-y: 1.4pt,
+)
+
+// `main.typ` 可通过 layout 覆盖这些默认值；组件从状态中读取当前配置。
+#let layout-state = state("compact-layout-config", default-config)
+
+#let code-line(it, leading: 0pt, highlights: ()) = {
+  // 紧凑版不显示行号；续行间距由参数显式控制。
+  let body = if highlights.contains(it.number) {
+    box(width: 100%, fill: rgb("e9fbfb"), it.body)
   } else {
-    body
+    it.body
   }
+
+  if it.number > 1 {
+    v(leading)
+  } else {
+    none
+  }
+  body
 }
 
-#let code-file(path, lang: "cpp", highlights: ()) = {
-  show raw.line: it => code-line(it, highlights: highlights)
+#let code-file(path, lang: "cpp", highlights: ()) = context {
+  let config = layout-state.get()
+  show raw.line: it => code-line(
+    it,
+    leading: config.code-leading,
+    highlights: highlights,
+  )
   raw(read(path), lang: lang, block: true)
 }
 
-#let note-box(body) = block(
-  width: 100%,
-  breakable: true,
-  stroke: 0.35pt + luma(145),
-  inset: 3pt,
-  above: 1pt,
-  below: 3pt,
-  body,
-)
+#let note-box(body) = context {
+  let config = layout-state.get()
+  block(
+    width: 100%,
+    breakable: true,
+    stroke: 0.35pt + luma(145),
+    inset: (x: config.text-box-inset-x, y: config.text-box-inset-y),
+    above: config.text-box-above,
+    below: config.text-box-below,
+    body,
+  )
+}
 
 #let codebook(
   title: "XCPC Standard Code Library",
@@ -39,8 +74,13 @@
   team: "Your Team",
   members: ("Member A", "Member B", "Member C"),
   updated: datetime.today().display("[year]-[month]-[day]"),
+  layout: (),
   body,
 ) = {
+  layout-state.update(default-config + layout)
+  context {
+    let config = layout-state.get()
+
   set document(title: title, author: members)
   set text(
     font: (
@@ -50,7 +90,11 @@
     size: 7.2pt,
     lang: "zh",
   )
-  set par(justify: false, leading: 0.16em, spacing: 1.2pt)
+  set par(
+    justify: false,
+    leading: config.text-leading,
+    spacing: config.paragraph-spacing,
+  )
   set columns(gutter: 4.5mm)
   set heading(numbering: "1.1")
   set raw(tab-size: 2)
@@ -63,19 +107,22 @@
     font: "DejaVu Sans Mono",
     size: 6.15pt,
   )
-  show raw.where(block: true): block.with(
-    width: 100%,
-    breakable: true,
-    stroke: 0.35pt + luma(145),
-    inset: (x: 2pt, y: 1.4pt),
-    above: 1pt,
-    below: 3pt,
-  )
-  show raw.line: it => code-line(it)
-
+  show raw.where(block: true): it => {
+    show raw.line: line => code-line(line, leading: config.code-leading)
+    block(
+      width: 100%,
+      breakable: true,
+      stroke: 0.35pt + luma(145),
+      inset: (x: config.code-box-inset-x, y: config.code-box-inset-y),
+      above: config.code-box-above,
+      below: config.code-box-below,
+      it,
+    )
+  }
   let running-header = context {
+    set par(leading: config.header-leading)
     stack(
-      spacing: 1pt,
+      spacing: config.header-line-gap,
       [
         #set text(size: 6.3pt, fill: luma(45))
         #school
@@ -146,4 +193,5 @@
 
   counter(page).update(2)
   body
+  }
 }
