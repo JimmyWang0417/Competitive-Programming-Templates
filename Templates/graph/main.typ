@@ -23,6 +23,7 @@
 #raw(read("stoer_wagner.hpp"), lang: "cpp", block: true)
 
 == 树上与特殊结构
+#include "prufer.typ"
 === 斯坦纳树
 #raw(read("steiner_tree.hpp"), lang: "cpp", block: true)
 #include "tree_hash.typ"

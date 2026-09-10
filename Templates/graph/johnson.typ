@@ -19,6 +19,7 @@ $ d(u,v)=d'(u,v)-h(u)+h(v). $
 下面的代码只包含重标这一步。使用前需要让 `dis[v]` 保存 $h(v)$：
 
 #raw(read("johnson.hpp"), lang: "cpp", block: true)
+#v(1.5em)
 
 使用二叉堆时，Bellman–Ford 需要 $O(n m)$ 时间；$n$ 次 Dijkstra 共需 $O(n (m+n) log n)$ 时间。不保存答案矩阵时，额外空间为 $O(n+m)$；保存所有点对距离时还需要 $O(n^2)$ 空间。
 
