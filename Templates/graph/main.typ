@@ -9,8 +9,7 @@
 #raw(read("block_forest.hpp"), lang: "cpp", block: true)
 
 == 路径、环与支配
-=== Johnson 多源最短路
-#raw(read("johnson.hpp"), lang: "cpp", block: true)
+#include "johnson.typ"
 === 最小环
 #raw(read("min_cycle.hpp"), lang: "cpp", block: true)
 === 环计数
