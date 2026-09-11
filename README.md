@@ -51,18 +51,17 @@ Count My Code:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  Language              Files        Lines         Code     Comments       Blanks
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- C++                       1           91           91            0            0
- C++ Header               83         8745         8242           56          447
+ C++ Header               97         8821         8753           54           14
  Makefile                  1            2            2            0            0
  Python                    1           24           22            1            1
  Shell                     1           61           50            1           10
- Typst                    46         2548         2025           96          427
+ Typst                    50         2650         2095           96          459
 ─────────────────────────────────────────────────────────────────────────────────
- Markdown                  9         5155            0         3734         1421
+ Markdown                  9         5181            0         3760         1421
  |- BASH                   2            6            6            0            0
- (Total)                             5161            6         3734         1421
+ (Total)                             5187            6         3760         1421
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- Total                   142        16632        10438         3888         2306
+ Total                   159        16745        10928         3912         1905
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 <!-- count the code end -->
@@ -90,7 +89,13 @@ The Directory Tree of My Codes:
 │   │   └── two-sat.md
 │   ├── math
 │   │   └── young-tableaux.md
-│   └── README.md
+│   ├── README.md
+│   └── superpowers
+│       ├── plans
+│       │   └── 2026-09-12-template-sync.md
+│       └── specs
+│           ├── 2026-09-10-johnson-prufer-notes-design.md
+│           └── 2026-09-12-template-sync-design.md
 ├── Generator.py
 ├── image
 │   └── 88D2DB2E657F7DB09DAB8A02818C9A60.jpg
@@ -119,9 +124,14 @@ The Directory Tree of My Codes:
     │   ├── seg_beats_note.typ
     │   ├── seg_divide.hpp
     │   ├── seg_tree.hpp
+    │   ├── sparse.hpp
     │   ├── splay.hpp
     │   ├── top_tree.hpp
     │   └── treap.hpp
+    ├── dynamic_programming
+    │   ├── main.typ
+    │   ├── monotone_dp.hpp
+    │   └── plug_dp.hpp
     ├── geometry
     │   ├── 2D
     │   │   ├── 2d.hpp
@@ -144,31 +154,39 @@ The Directory Tree of My Codes:
     │   │   ├── polygon.hpp
     │   │   └── sphere.hpp
     │   ├── main.typ
-    │   ├── nearest_points.cpp
+    │   ├── nearest_points.hpp
     │   ├── pick_theorem.typ
     │   └── randomized_incremental.typ
     ├── graph
     │   ├── block_forest.hpp
+    │   ├── centroid_decomposition.hpp
+    │   ├── centroid_tree.hpp
     │   ├── dilworth.typ
     │   ├── dominator_tree.hpp
     │   ├── dominator_tree.typ
     │   ├── euler_tour.hpp
     │   ├── johnson.hpp
+    │   ├── johnson.typ
+    │   ├── lca.hpp
     │   ├── lgv.typ
+    │   ├── long_chain_dp.hpp
     │   ├── main.typ
     │   ├── matrix_tree.typ
     │   ├── min_cycle.hpp
     │   ├── network_flow
+    │   │   ├── cancel_cycle.hpp
     │   │   ├── main.typ
     │   │   ├── min_cost_flow.hpp
     │   │   ├── network_flow.hpp
     │   │   └── theorems.typ
+    │   ├── prufer.typ
     │   ├── ring_count.hpp
     │   ├── steiner_tree.hpp
     │   ├── stoer_wagner.hpp
     │   ├── tarjan.hpp
     │   ├── tree_hash.typ
-    │   └── two_sat.typ
+    │   ├── two_sat.typ
+    │   └── virtual_tree.hpp
     ├── initialization_misc
     │   ├── approx.hpp
     │   ├── approx_note.typ
@@ -195,7 +213,10 @@ The Directory Tree of My Codes:
     │   ├── group_theory.typ
     │   ├── inclusion_exclusion.typ
     │   ├── jYZpd0.png
+    │   ├── kfwt.hpp
+    │   ├── lagrange.hpp
     │   ├── linear_basis.hpp
+    │   ├── linear_recurrence.hpp
     │   ├── main.typ
     │   ├── matrix.hpp
     │   ├── min25.hpp
@@ -203,10 +224,6 @@ The Directory Tree of My Codes:
     │   ├── number_theory.hpp
     │   ├── number_theory_note.typ
     │   ├── number_theory_sieve.typ
-    │   ├── polynomial
-    │   │   ├── lagrange.hpp
-    │   │   ├── linear_recurrence.hpp
-    │   │   └── poly.hpp
     │   ├── polynomial.hpp
     │   ├── polynomial_notes.typ
     │   ├── prime.hpp
@@ -215,10 +232,16 @@ The Directory Tree of My Codes:
     │   ├── set_power_series.hpp
     │   ├── set_power_series.typ
     │   ├── sieve.hpp
-    │   ├── Simpson.hpp
+    │   ├── simpson.hpp
     │   ├── stirling.hpp
     │   ├── stirling.typ
     │   └── young_tableaux.typ
+    ├── misc_algorithm
+    │   ├── cdq.hpp
+    │   ├── dancing_links.hpp
+    │   ├── main.typ
+    │   ├── odt.hpp
+    │   └── parallel_binary_search.hpp
     └── string_algorithm
         ├── acam.hpp
         ├── exkmp.hpp
