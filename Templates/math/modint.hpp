@@ -56,7 +56,7 @@ struct modint
     }
     constexpr auto operator*(const modint &rhs) const -> modint
     {
-        return (int)((ll)x * rhs.x % _mod);
+        return (int)((i64)x * rhs.x % _mod);
     }
     constexpr auto &operator+=(const modint &rhs)
     {
@@ -74,7 +74,7 @@ struct modint
     }
     constexpr auto &operator*=(const modint &rhs)
     {
-        x = (int)((ll)x * rhs.x % _mod);
+        x = (int)((i64)x * rhs.x % _mod);
         return *this;
     }
     template <typename _G>
@@ -98,7 +98,6 @@ struct modint
     constexpr auto &data() { return x; }
     constexpr auto friend &operator>>(istream &in, modint &x) { return in >> x.x; }
     constexpr auto friend &operator<<(ostream &out, const modint &x) { return out << x.x; }
-
 private:
     int x;
 };

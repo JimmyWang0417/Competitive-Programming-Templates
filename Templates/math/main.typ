@@ -28,17 +28,19 @@
 
 == 多项式与线性递推
 === 多项式模板
-#raw(read("polynomial/poly.hpp"), lang: "cpp", block: true)
+#raw(read("polynomial.hpp"), lang: "cpp", block: true)
 #include "fwt.typ"
 === FWT 代码
 #raw(read("fwt.hpp"), lang: "cpp", block: true)
+=== K-FWT 代码
+#raw(read("kfwt.hpp"), lang: "cpp", block: true)
 #include "set_power_series.typ"
 === 集合幂级数代码
 #raw(read("set_power_series.hpp"), lang: "cpp", block: true)
 === 多点求值与插值
-#raw(read("polynomial/lagrange.hpp"), lang: "cpp", block: true)
+#raw(read("lagrange.hpp"), lang: "cpp", block: true)
 === 常系数线性递推
-#raw(read("polynomial/linear_recurrence.hpp"), lang: "cpp", block: true)
+#raw(read("linear_recurrence.hpp"), lang: "cpp", block: true)
 #include "polynomial_notes.typ"
 #include "berlekamp_massey_note.typ"
 
@@ -64,4 +66,4 @@
 
 == 数值计算
 === 自适应 Simpson 积分
-#raw(read("Simpson.hpp"), lang: "cpp", block: true)
+#raw(read("simpson.hpp"), lang: "cpp", block: true)

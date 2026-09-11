@@ -6,7 +6,7 @@ struct matrix : public vector<vector<i64>>
     matrix(size_t n, size_t m) : vector(n, vector<i64>(m)) {}
     matrix(const vector<vector<i64>> &_g) : vector(_g) {}
     auto rows() const { return (int)size(); }
-    auto columns() const { return (int)front().size(); }
+    auto columns() const { return empty() ? 0 : (int)front().size(); }
     static auto I(size_t n)
     {
         matrix _(n, vector<i64>(n));
@@ -98,14 +98,12 @@ struct matrix : public vector<vector<i64>>
                 }
             if (where == -1)
                 return matrix();
-
             A[i].swap(A[where]), B[i].swap(B[where]);
             auto inv = quickpow(A[i][i], mod - 2);
             for (int j = i; j < n; ++j)
                 (A[i][j] *= inv) %= mod;
             for (int j = 0; j < n; ++j)
                 (B[i][j] *= inv) %= mod;
-
             for (int j = i + 1; j < n; ++j)
             {
                 auto t = A[j][i];
@@ -123,7 +121,6 @@ struct matrix : public vector<vector<i64>>
         }
         return B;
     }
-
     auto friend &operator>>(istream &in, matrix &p)
     {
         for (auto &i : p)

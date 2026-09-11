@@ -1,5 +1,3 @@
-#pragma once
-#include "poly.hpp"
 namespace polynomial
 {
     struct lagrange
@@ -75,19 +73,18 @@ namespace polynomial
             int n = (int)X.size();
             tree.resize(n * 4, poly{});
             buildI(1, 0, n - 1, X);
-
             vector<poly> _tree;
             swap(_tree, tree);
             auto W = eval(_tree[1].differ(), X);
             swap(_tree, tree);
-
             for (int i = 0; i < n; ++i)
                 Y[i] = (int)((i64)Y[i] * quickpow(W[i]) % mod);
-
             return calc(1, 0, n - 1, Y);
         }
         static auto eval(const vector<int> &Y, int k) // a0, a1, ... am-1
         {
+            if (Y.empty())
+                return (i64)0;
             int n = (int)Y.size() - 1;
             vector<i64> fac(n + 1), ifac(n + 1);
             vector<i64> pre(n + 1), suf(n + 1);
@@ -112,6 +109,8 @@ namespace polynomial
         }
         static auto shift(const vector<int> &Y, int c) // a0, a1, ... am-1
         {
+            if (Y.empty())
+                return vector<int>{};
             int n = (int)Y.size() - 1;
             if (c == 0)
                 return Y;
@@ -129,7 +128,6 @@ namespace polynomial
                 res.insert(res.begin(), cur.end() + c, cur.end());
                 return res;
             }
-
             vector<i64> fac(n + 1), ifac(n + 1);
             fac[0] = 1;
             for (int i = 1; i <= n; ++i)
@@ -137,7 +135,6 @@ namespace polynomial
             ifac[n] = quickpow(fac[n]);
             for (int i = n; i >= 1; --i)
                 ifac[i - 1] = ifac[i] * i % mod;
-
             poly a(2 * n + 1), b(n + 1);
             for (int i = 0; i <= 2 * n; i++)
                 a[i] = quickpow(c - n + i);

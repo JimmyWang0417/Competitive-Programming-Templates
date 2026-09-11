@@ -55,9 +55,10 @@
 
 ## 多项式模板
 
-- 多项式模板按原先整理方式保留完整 `polynomial/poly.hpp`。
+- 多项式模板以源仓库当前完整的 `math/polynomial.hpp` 为准。
 - 不拆成 `poly-basic.hpp`、`poly-ntt.hpp`、`poly-calculus.hpp` 等片段文件。
-- `math/main.typ` 中展示完整 `poly.hpp`，再展示 `lagrange.hpp` 和 `linear_recurrence.hpp`。
+- `lagrange.hpp` 和 `linear_recurrence.hpp` 与 `polynomial.hpp` 同放在 `math/` 顶层。
+- `math/main.typ` 中展示完整 `polynomial.hpp`，再展示 `lagrange.hpp` 和 `linear_recurrence.hpp`。
 
 ## 验证流程
 

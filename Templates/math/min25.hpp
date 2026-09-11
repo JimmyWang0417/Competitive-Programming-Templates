@@ -1,65 +1,93 @@
+template <typename T = i64>
 struct min25
 {
-    static auto calc(i64 n)
+    i64 n;
+    int block;
+    vector<int> prime, id1, id2;
+    vector<bool> vis;
+    vector<i64> p;
+    vector<T> coef;
+    vector<vector<T>> pre, f;
+    auto getid(i64 x) const
     {
-        int block = (int)sqrt(n);
-        vector<int> prime(1);
-        vector<i64> primef(1), primeg(1);
-        vector<i64> f, g;
-        vector<int> id1(block + 5), id2(block + 5);
-        auto sieve = [&](int m)
+        return x <= block ? id1[x] : id2[n / x];
+    }
+    template <typename F>
+    auto sieve(F value)
+    {
+        for (int i = 2; i <= block; ++i)
         {
-            vector<bool> vis(m + 5);
-            for (int i = 2; i <= m; ++i)
+            if (!vis[i])
             {
-                if (!vis[i])
-                {
-                    prime.push_back(i);
-                    primef.push_back((primef.back() + i) % mod);
-                    primeg.push_back((primeg.back() + (i64)i * i) % mod);
-                }
-                for (int j = 1; j < (int)prime.size(); ++j)
-                {
-                    if (i * prime[j] > m)
-                        break;
-                    vis[i * prime[j]] = true;
-                    if (i % prime[j] == 0)
-                        break;
-                }
+                prime.emplace_back(i);
+                for (int j = 0; j < (int)coef.size(); ++j)
+                    pre[j].emplace_back((pre[j].back() + value(j, i)) % mod);
             }
-        };
-        function<i64(i64, int)> solve = [&](i64 x, int y) -> i64
+            for (int j = 1; j < (int)prime.size(); ++j)
+            {
+                if (i * prime[j] > block)
+                    break;
+                vis[i * prime[j]] = true;
+                if (i % prime[j] == 0)
+                    break;
+            }
+        }
+    }
+    template <typename F>
+    auto solve(i64 x, int y, F calcF) -> T
+    {
+        if (x <= 1 || x <= prime[y])
+            return 0;
+        int k = getid(x);
+        T res = 0;
+        for (int i = 0; i < (int)coef.size(); ++i)
+            (res += coef[i] * (f[i][k] - pre[i][y])) %= mod;
+        for (int i = y + 1; i < (int)prime.size() && (i64)prime[i] * prime[i] <= x; ++i)
         {
-            if (x <= prime[y])
-                return 0;
-            int k = (x <= block ? id1[x] : id2[n / x]);
-            i64 ans = ((g[k] - f[k]) - (primeg[y] - primef[y])) % mod;
-            for (int i = y + 1; i < (int)prime.size() && (i64)prime[i] * prime[i] <= x; ++i)
-                for (i64 pe = prime[i]; pe <= x; pe *= prime[i])
-                    (ans += (pe % mod) * ((pe - 1) % mod) % mod * (solve(x / pe, i) + (pe != prime[i]))) %= mod;
-            return ans;
-        };
-        vector<i64> p;
-        sieve(block);
-        for (i64 i = 1, j; i <= n; i = j + 1)
+            i64 pe = prime[i];
+            for (int e = 1; pe <= x; ++e)
+            {
+                (res += calcF(prime[i], e, pe) * (solve(x / pe, i, calcF) + (e > 1))) %= mod;
+                if (pe > x / prime[i])
+                    break;
+                pe *= prime[i];
+            }
+        }
+        return res;
+    }
+    template <typename F, typename G, typename H>
+    auto calc(i64 _n, const vector<T> &_coef, F value, G prefix, H calcF)
+    {
+        if (!_n)
+            return (T)0;
+        n = _n, block = (int)sqrt(n), coef = _coef;
+        prime.resize(1);
+        id1.resize(block + 1), id2.resize(block + 1);
+        vis.resize(block + 1);
+        pre.resize(coef.size(), vector<T>(1));
+        f.resize(coef.size());
+        sieve(value);
+        for (i64 l = 1, r; l <= n; l = r + 1)
         {
-            j = n / (n / i);
-            auto x = n / i % mod;
-            p.push_back(n / i);
-            f.push_back((x * (x + 1) / 2 % mod - 1) % mod);
-            g.push_back((x * (x + 1) / 2 % mod * (2 * x + 1) % mod * inv3 % mod - 1) % mod);
-            if (n / i <= block)
-                id1[n / i] = (int)p.size() - 1;
+            i64 x = n / l;
+            r = n / x;
+            p.emplace_back(x);
+            for (int i = 0; i < (int)coef.size(); ++i)
+                f[i].emplace_back((prefix(i, x) - 1) % mod);
+            if (x <= block)
+                id1[x] = (int)p.size() - 1;
             else
-                id2[n / (n / i)] = (int)p.size() - 1;
+                id2[n / x] = (int)p.size() - 1;
         }
         for (int i = 1; i < (int)prime.size(); ++i)
             for (int j = 0; j < (int)p.size() && (i64)prime[i] * prime[i] <= p[j]; ++j)
             {
-                int k = (p[j] / prime[i] <= block ? id1[p[j] / prime[i]] : id2[n / (p[j] / prime[i])]);
-                (f[j] -= prime[i] * (f[k] - primef[i - 1])) %= mod;
-                (g[j] -= (i64)prime[i] * prime[i] % mod * (g[k] - primeg[i - 1])) %= mod;
+                int k = getid(p[j] / prime[i]);
+                for (int d = 0; d < (int)coef.size(); ++d)
+                    (f[d][j] -= (pre[d][i] - pre[d][i - 1]) *
+                                  (f[d][k] - pre[d][i - 1])) %= mod;
             }
-        return (solve(n, 0) + 1 + mod) % mod;
+        T answer = (solve(n, 0, calcF) + 1) % mod;
+        return (answer + mod) % mod;
     }
 };
