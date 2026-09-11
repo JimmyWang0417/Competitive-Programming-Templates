@@ -6,5 +6,5 @@
 == 离散几何
 #include "pick_theorem.typ"
 === 平面最近点对
-#raw(read("nearest_points.cpp"), lang: "cpp", block: true)
+#raw(read("nearest_points.hpp"), lang: "cpp", block: true)
 #include "randomized_incremental.typ"
