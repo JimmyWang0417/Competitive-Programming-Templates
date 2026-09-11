@@ -24,6 +24,16 @@
 
 == 树上与特殊结构
 #include "prufer.typ"
+=== 最近公共祖先（LCA）
+#raw(read("lca.hpp"), lang: "cpp", block: true)
+=== 虚树
+#raw(read("virtual_tree.hpp"), lang: "cpp", block: true)
+=== 长链剖分优化 DP
+#raw(read("long_chain_dp.hpp"), lang: "cpp", block: true)
+=== 点分治
+#raw(read("centroid_decomposition.hpp"), lang: "cpp", block: true)
+=== 点分树
+#raw(read("centroid_tree.hpp"), lang: "cpp", block: true)
 === 斯坦纳树
 #raw(read("steiner_tree.hpp"), lang: "cpp", block: true)
 #include "tree_hash.typ"

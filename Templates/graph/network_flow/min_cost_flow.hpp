@@ -2,7 +2,7 @@ namespace NetworkFlow
 {
     struct MinCostFlow
     {
-        vector<ll> dis;
+        vector<i64> dis;
         vector<int> head, cur;
         vector<bool> exist;
         struct edges
@@ -88,11 +88,10 @@ namespace NetworkFlow
             if (flag)
                 addEdge(to, from, 0, -cost, false);
         }
-
-        auto solve() -> pair<int, ll>
+        auto solve() -> pair<int, i64>
         {
             int flow = 0;
-            ll res = 0;
+            i64 res = 0;
             while (spfa())
             {
                 int f = dinic(S, INT_MAX);
@@ -101,7 +100,6 @@ namespace NetworkFlow
             }
             return {flow, res};
         }
-
         // 最小费用最大流
         auto normal(int _n, const vector<array<int, 4>> &e, int s, int t)
         {
@@ -111,21 +109,20 @@ namespace NetworkFlow
                 addEdge(u, v, c, w);
             return solve();
         }
-
         // 上下界最小费用可行流
-        auto special(int _n, const vector<array<int, 5>> &e, int s, int t) -> pair<int, ll>
+        auto special(int _n, const vector<array<int, 5>> &e, int s, int t) -> pair<int, i64>
         {
             S = 0, T = _n + 1;
             init(_n, _n + (int)e.size() + 1);
             vector<int> deg(n + 5);
             int sum = 0;
-            ll cost = 0;
+            i64 cost = 0;
             for (auto [u, v, l, r, w] : e)
             {
                 if (l < r)
                     addEdge(u, v, r - l, w);
                 deg[u] -= l, deg[v] += l;
-                cost += (ll)l * w;
+                cost += (i64)l * w;
             }
             auto lasHead = head;
             for (int i = 1; i <= n; ++i)
@@ -142,7 +139,6 @@ namespace NetworkFlow
             auto [f, c] = solve();
             if (f < sum)
                 return {-1, 0};
-
             return {edge[numEdge].cap, cost + c};
         }
         auto main(int _n, int _m)
@@ -159,20 +155,19 @@ namespace NetworkFlow
             }
             return p;
         }
-
         // 上下界最小费用最大流
-        auto maxFlow(int _n, const vector<array<int, 5>> &e, int s, int t) -> pair<int, ll>
+        auto maxFlow(int _n, const vector<array<int, 5>> &e, int s, int t) -> pair<int, i64>
         {
             S = 0, T = _n + 1;
             init(_n, _n + (int)e.size() + 1);
             vector<int> deg(n + 5);
             int flow = 0, sum = 0;
-            ll cost = 0;
+            i64 cost = 0;
             for (auto [u, v, l, r, w] : e)
             {
                 addEdge(u, v, r - l, w);
                 deg[u] -= l, deg[v] += l;
-                cost += (ll)l * w;
+                cost += (i64)l * w;
             }
             auto lasHead = head;
             for (int i = 1; i <= n; ++i)
@@ -191,12 +186,10 @@ namespace NetworkFlow
                 return {-1, 0};
             cost += c;
             lasHead = head;
-
             flow = edge[numEdge].cap;
             head = lasHead;
             S = s, T = t;
             tie(f, c) = solve();
-
             return {flow, cost};
         }
     };
