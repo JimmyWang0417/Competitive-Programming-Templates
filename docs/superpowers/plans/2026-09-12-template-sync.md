@@ -44,11 +44,11 @@
 - Consumes: sibling headers under `Templates/data_structure/`.
 - Produces: exact shared headers and one `Sparse Table` Typst entry.
 
-- [ ] **Step 1: Verify the expected mismatch set**
+- [x] **Step 1: Verify the expected mismatch set**
 
 Run `diff -qr ../Algorithm-Competitive-Codes/Templates/data_structure Templates/data_structure`. Expected: changed headers and source-only `sparse.hpp`; target-only `main.typ` and `seg_beats_note.typ` remain intentional.
 
-- [ ] **Step 2: Apply the complete current sibling content**
+- [x] **Step 2: Apply the complete current sibling content**
 
 Use the manifest to replace/create headers. Add after the Fenwick entry:
 
@@ -57,7 +57,7 @@ Use the manifest to replace/create headers. Add after the Fenwick entry:
 #raw(read("sparse.hpp"), lang: "cpp", block: true)
 ```
 
-- [ ] **Step 3: Verify and commit**
+- [x] **Step 3: Verify and commit**
 
 ```bash
 for file in ../Algorithm-Competitive-Codes/Templates/data_structure/*.hpp; do cmp "$file" "Templates/data_structure/${file:t}"; done
@@ -78,7 +78,7 @@ Expected: every comparison succeeds and exactly one sparse-table entry is printe
 - Consumes: sibling headers at identical paths.
 - Produces: exact shared headers without disturbing existing explanatory notes.
 
-- [ ] **Step 1: Apply sibling content, verify, and commit**
+- [x] **Step 1: Apply sibling content, verify, and commit**
 
 ```bash
 cmp ../Algorithm-Competitive-Codes/Templates/initialization_misc/io.hpp Templates/initialization_misc/io.hpp
@@ -100,7 +100,7 @@ Expected before replacement: comparisons fail for changed files. Expected after 
 - Consumes: source `2d.hpp`, `3d.hpp`, and `nearest_points.hpp`.
 - Produces: mapped exact headers and a reusable closest-pair entry.
 
-- [ ] **Step 1: Apply mapped content and closest-pair replacement**
+- [x] **Step 1: Apply mapped content and closest-pair replacement**
 
 Set the two mapped target files to the complete sibling content. Replace the old closest-pair file and use:
 
@@ -109,7 +109,7 @@ Set the two mapped target files to the complete sibling content. Replace the old
 #raw(read("nearest_points.hpp"), lang: "cpp", block: true)
 ```
 
-- [ ] **Step 2: Verify and commit**
+- [x] **Step 2: Verify and commit**
 
 ```bash
 cmp ../Algorithm-Competitive-Codes/Templates/geometry/2d.hpp Templates/geometry/2D/2d.hpp
@@ -131,11 +131,11 @@ git commit -m "sync: update geometry templates"
   commit `a1e71cb`.
 - Produces: exact shared headers and six new algorithm entries.
 
-- [ ] **Step 1: Apply all graph content**
+- [x] **Step 1: Apply all graph content**
 
 Replace/create the manifest paths without changing target-only Johnson, Prüfer, dominator-tree, matching, or counting notes.
 
-- [ ] **Step 2: Add tree entries**
+- [x] **Step 2: Add tree entries**
 
 Under `树上与特殊结构`, keep Prüfer first, then add:
 
@@ -152,7 +152,7 @@ Under `树上与特殊结构`, keep Prüfer first, then add:
 #raw(read("centroid_tree.hpp"), lang: "cpp", block: true)
 ```
 
-- [ ] **Step 3: Add the cycle-canceling entry**
+- [x] **Step 3: Add the cycle-canceling entry**
 
 After ordinary min-cost flow in `network_flow/main.typ`, add:
 
@@ -161,7 +161,7 @@ After ordinary min-cost flow in `network_flow/main.typ`, add:
 #raw(read("cancel_cycle.hpp"), lang: "cpp", block: true)
 ```
 
-- [ ] **Step 4: Verify and commit**
+- [x] **Step 4: Verify and commit**
 
 ```bash
 for file in ../Algorithm-Competitive-Codes/Templates/graph/*.hpp; do cmp "$file" "Templates/graph/${file:t}"; done
@@ -183,11 +183,11 @@ Expected: all comparisons pass and each new graph filename occurs once in reacha
 - Consumes: the sibling's flattened math layout.
 - Produces: exact current headers, no obsolete duplicate paths, and current Typst reads.
 
-- [ ] **Step 1: Apply current math content and remove old paths**
+- [x] **Step 1: Apply current math content and remove old paths**
 
 Use the complete sibling content for every current source math header; remove the four deleted paths from the manifest.
 
-- [ ] **Step 2: Update the math section**
+- [x] **Step 2: Update the math section**
 
 Read `polynomial.hpp`, `lagrange.hpp`, and `linear_recurrence.hpp` directly. Add after FWT:
 
@@ -198,7 +198,7 @@ Read `polynomial.hpp`, `lagrange.hpp`, and `linear_recurrence.hpp` directly. Add
 
 Read lowercase `simpson.hpp` in numerical computation. Update `agend.md` so its polynomial convention names these flattened source paths rather than deleted `polynomial/poly.hpp` paths.
 
-- [ ] **Step 3: Verify and commit**
+- [x] **Step 3: Verify and commit**
 
 ```bash
 for file in ../Algorithm-Competitive-Codes/Templates/math/*.hpp; do cmp "$file" "Templates/math/${file:t}"; done
@@ -222,7 +222,7 @@ git commit -m "sync: modernize math templates"
 - Consumes: both complete new sibling directories.
 - Produces: two reachable top-level sections with one entry per header.
 
-- [ ] **Step 1: Create dynamic-programming entries**
+- [x] **Step 1: Create dynamic-programming entries**
 
 ```typst
 = 动态规划
@@ -236,7 +236,7 @@ git commit -m "sync: modernize math templates"
 #raw(read("plug_dp.hpp"), lang: "cpp", block: true)
 ```
 
-- [ ] **Step 2: Create miscellaneous entries**
+- [x] **Step 2: Create miscellaneous entries**
 
 ```typst
 = 杂项算法
@@ -254,7 +254,7 @@ git commit -m "sync: modernize math templates"
 #raw(read("odt.hpp"), lang: "cpp", block: true)
 ```
 
-- [ ] **Step 3: Include both sections and verify**
+- [x] **Step 3: Include both sections and verify**
 
 Place `#include "dynamic_programming/main.typ"` after data structures and `#include "misc_algorithm/main.typ"` after math in `Templates/main.typ`.
 
@@ -278,7 +278,7 @@ Expected: all six headers match, two top-level includes appear, and six raw-read
 - Consumes: final synchronized tree and all Typst entries.
 - Produces: source-equality evidence, C++ syntax evidence, two valid PDFs, and current README metadata.
 
-- [ ] **Step 1: Revalidate source state**
+- [x] **Step 1: Revalidate source state**
 
 ```bash
 git -C ../Algorithm-Competitive-Codes status --short
@@ -289,7 +289,7 @@ Expected: clean source worktree at HEAD
 `a1e71cb2633cb5726053d9d17d6fed46940ff59f`. Incorporate any later template
 change before continuing.
 
-- [ ] **Step 2: Audit every source header and every new entry**
+- [x] **Step 2: Audit every source header and every new entry**
 
 Compare all sibling `Templates/**/*.hpp` to same-path targets, applying only the two geometry mappings. Then run:
 
@@ -299,11 +299,11 @@ rg -n 'read\("(sparse|lca|virtual_tree|long_chain_dp|centroid_decomposition|cent
 
 Expected: no missing/differing logical counterpart and all fifteen new/import-replacement filenames appear once in reachable entry files.
 
-- [ ] **Step 3: Run C++23 syntax checks**
+- [x] **Step 3: Run C++23 syntax checks**
 
 Create temporary translation units in `/tmp` with `<bits/stdc++.h>`, `using namespace std;`, `using i64 = long long;`, and `using u64 = unsigned long long;`. Compile every changed header independently using `g++ -std=c++23 -fsyntax-only`; include required template dependencies before dependent math headers. Expected: all changed headers parse. Preserve exact synchronization and report any genuine upstream defect rather than silently editing one repository.
 
-- [ ] **Step 4: Build both layouts**
+- [x] **Step 4: Build both layouts**
 
 ```bash
 typst compile --root . codebook/wide/main.typ /tmp/cp-wide.pdf
@@ -312,7 +312,7 @@ typst compile --root . codebook/compact/main.typ /tmp/cp-compact.pdf
 
 Expected: both exit zero; font fallback warnings are acceptable.
 
-- [ ] **Step 5: Regenerate README and repeat final builds**
+- [x] **Step 5: Regenerate README and repeat final builds**
 
 ```bash
 ./Generator.py
@@ -322,7 +322,7 @@ typst compile --root . codebook/compact/main.typ /tmp/cp-compact.pdf
 
 Expected: README counts/tree match the final filesystem and both final builds exit zero.
 
-- [ ] **Step 6: Final diff audit and commit**
+- [x] **Step 6: Final diff audit and commit**
 
 ```bash
 git diff --check
