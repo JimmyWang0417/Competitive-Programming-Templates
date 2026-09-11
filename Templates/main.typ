@@ -3,4 +3,6 @@
 #include "graph/main.typ"
 #include "string_algorithm/main.typ"
 #include "data_structure/main.typ"
+#include "dynamic_programming/main.typ"
 #include "math/main.typ"
+#include "misc_algorithm/main.typ"
