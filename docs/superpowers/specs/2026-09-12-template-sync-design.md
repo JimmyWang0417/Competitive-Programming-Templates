@@ -11,10 +11,10 @@ has a deliberate table-of-contents entry.
 
 - Source worktree: `../Algorithm-Competitive-Codes`
 - Last shared template snapshot: source commit `039ad99`
-- Committed source range: `039ad99..6feb0b2`
-- Additional source worktree file: `Templates/graph/virtual_tree.hpp`
-- The source worktree itself is authoritative, so synchronization includes the
-  uncommitted virtual-tree file in addition to committed changes.
+- Committed source range: `039ad99..a1e71cb`
+- The source worktree itself is authoritative. During implementation its
+  previously uncommitted `Templates/graph/virtual_tree.hpp` was committed as
+  `a1e71cb`; the synchronized content was rechecked against that commit.
 
 The baseline was verified against the target before this design was written.
 Every changed pre-existing source template matches the corresponding target
@@ -106,4 +106,3 @@ disk.
 - If the source worktree changes during implementation, recompute the source
   manifest and incorporate the new template change before declaring the sync
   complete.
-

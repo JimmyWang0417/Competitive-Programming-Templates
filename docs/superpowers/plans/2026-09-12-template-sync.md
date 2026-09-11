@@ -127,7 +127,8 @@ git commit -m "sync: update geometry templates"
 - Modify: `Templates/graph/main.typ`, `Templates/graph/network_flow/main.typ`.
 
 **Interfaces:**
-- Consumes: sibling graph headers, including uncommitted `virtual_tree.hpp`.
+- Consumes: sibling graph headers, including `virtual_tree.hpp` from source
+  commit `a1e71cb`.
 - Produces: exact shared headers and six new algorithm entries.
 
 - [ ] **Step 1: Apply all graph content**
@@ -284,7 +285,9 @@ git -C ../Algorithm-Competitive-Codes status --short
 git -C ../Algorithm-Competitive-Codes rev-parse HEAD
 ```
 
-Expected: HEAD `6feb0b2f085ef252a20a33a838205f7b52b43afa`; only the known README modification and `Templates/graph/virtual_tree.hpp` addition. Incorporate any later template change before continuing.
+Expected: clean source worktree at HEAD
+`a1e71cb2633cb5726053d9d17d6fed46940ff59f`. Incorporate any later template
+change before continuing.
 
 - [ ] **Step 2: Audit every source header and every new entry**
 
@@ -329,4 +332,3 @@ git commit -m "docs: refresh template index"
 ```
 
 Expected: no whitespace errors, no generated PDF tracked, and only planned files in the synchronization commits.
-
