@@ -11,6 +11,8 @@
 == 树状数组与线段树
 === 树状数组
 #raw(read("fenwick.hpp"), lang: "cpp", block: true)
+=== Sparse Table
+#raw(read("sparse.hpp"), lang: "cpp", block: true)
 === 普通线段树
 #raw(read("seg_tree.hpp"), lang: "cpp", block: true)
 #include "seg_beats_note.typ"
