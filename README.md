@@ -52,16 +52,16 @@ Count My Code:
  Language              Files        Lines         Code     Comments       Blanks
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  C++ Header               97         8821         8753           54           14
- Makefile                  1            2            2            0            0
+ Makefile                  1           11           10            0            1
  Python                    1           24           22            1            1
  Shell                     1           61           50            1           10
  Typst                    50         2650         2095           96          459
 ─────────────────────────────────────────────────────────────────────────────────
- Markdown                  9         5181            0         3760         1421
+ Markdown                  9         5179            0         3758         1421
  |- BASH                   2            6            6            0            0
- (Total)                             5187            6         3760         1421
+ (Total)                             5185            6         3758         1421
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- Total                   159        16745        10928         3912         1905
+ Total                   159        16752        10936         3910         1906
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 <!-- count the code end -->
@@ -92,9 +92,11 @@ The Directory Tree of My Codes:
 │   ├── README.md
 │   └── superpowers
 │       ├── plans
+│       │   ├── 2026-09-12-makefile-sync.md
 │       │   └── 2026-09-12-template-sync.md
 │       └── specs
 │           ├── 2026-09-10-johnson-prufer-notes-design.md
+│           ├── 2026-09-12-makefile-sync-design.md
 │           └── 2026-09-12-template-sync-design.md
 ├── Generator.py
 ├── image
