@@ -12,6 +12,7 @@
 === 质数与因数分解
 #raw(read("prime.hpp"), lang: "cpp", block: true)
 #include "prime.typ"
+#include "order_primitive_root.typ"
 #include "number_theory_note.typ"
 === 数论算法模板
 #raw(read("number_theory.hpp"), lang: "cpp", block: true)
@@ -29,6 +30,8 @@
 == 多项式与线性递推
 === 多项式模板
 #raw(read("polynomial.hpp"), lang: "cpp", block: true)
+=== FFT 代码
+#raw(read("fft.hpp"), lang: "cpp", block: true)
 #include "fwt.typ"
 === FWT 代码
 #raw(read("fwt.hpp"), lang: "cpp", block: true)
@@ -63,6 +66,9 @@
 
 == 博弈论
 #include "gameTheory.typ"
+
+== 线性规划
+#include "linear_programming.typ"
 
 == 数值计算
 === 自适应 Simpson 积分
