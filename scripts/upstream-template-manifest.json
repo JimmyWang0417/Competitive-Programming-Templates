@@ -1,0 +1,339 @@
+{
+  "repository": "https://github.com/JimmyWang0417/Algorithm-Competitive-Codes.git",
+  "ref": "master",
+  "commit": "83bb30e44e3cfc7cea24b0ffd4e3ea9c8eb7c010",
+  "files": [
+    {
+      "source": "data_structure/cartesian_tree.hpp",
+      "target": "data_structure/cartesian_tree.hpp"
+    },
+    {
+      "source": "data_structure/decomp_tree.hpp",
+      "target": "data_structure/decomp_tree.hpp"
+    },
+    {
+      "source": "data_structure/decomposition.hpp",
+      "target": "data_structure/decomposition.hpp"
+    },
+    {
+      "source": "data_structure/dynamic_seg.hpp",
+      "target": "data_structure/dynamic_seg.hpp"
+    },
+    {
+      "source": "data_structure/fenwick.hpp",
+      "target": "data_structure/fenwick.hpp"
+    },
+    {
+      "source": "data_structure/fhq_treap.hpp",
+      "target": "data_structure/fhq_treap.hpp"
+    },
+    {
+      "source": "data_structure/implicit_treap.hpp",
+      "target": "data_structure/implicit_treap.hpp"
+    },
+    {
+      "source": "data_structure/lichao.hpp",
+      "target": "data_structure/lichao.hpp"
+    },
+    {
+      "source": "data_structure/link_cut_tree.hpp",
+      "target": "data_structure/link_cut_tree.hpp"
+    },
+    {
+      "source": "data_structure/persist_implicit_treap.hpp",
+      "target": "data_structure/persist_implicit_treap.hpp"
+    },
+    {
+      "source": "data_structure/persist_seg.hpp",
+      "target": "data_structure/persist_seg.hpp"
+    },
+    {
+      "source": "data_structure/persist_treap.hpp",
+      "target": "data_structure/persist_treap.hpp"
+    },
+    {
+      "source": "data_structure/scanline_seg.hpp",
+      "target": "data_structure/scanline_seg.hpp"
+    },
+    {
+      "source": "data_structure/scapegoat.hpp",
+      "target": "data_structure/scapegoat.hpp"
+    },
+    {
+      "source": "data_structure/seg_beats.hpp",
+      "target": "data_structure/seg_beats.hpp"
+    },
+    {
+      "source": "data_structure/seg_divide.hpp",
+      "target": "data_structure/seg_divide.hpp"
+    },
+    {
+      "source": "data_structure/seg_tree.hpp",
+      "target": "data_structure/seg_tree.hpp"
+    },
+    {
+      "source": "data_structure/sparse.hpp",
+      "target": "data_structure/sparse.hpp"
+    },
+    {
+      "source": "data_structure/splay.hpp",
+      "target": "data_structure/splay.hpp"
+    },
+    {
+      "source": "data_structure/top_tree.hpp",
+      "target": "data_structure/top_tree.hpp"
+    },
+    {
+      "source": "data_structure/treap.hpp",
+      "target": "data_structure/treap.hpp"
+    },
+    {
+      "source": "dynamic_programming/monotone_dp.hpp",
+      "target": "dynamic_programming/monotone_dp.hpp"
+    },
+    {
+      "source": "dynamic_programming/plug_dp.hpp",
+      "target": "dynamic_programming/plug_dp.hpp"
+    },
+    {
+      "source": "geometry/2d.hpp",
+      "target": "geometry/2D/2d.hpp"
+    },
+    {
+      "source": "geometry/3d.hpp",
+      "target": "geometry/3D/3d.hpp"
+    },
+    {
+      "source": "geometry/nearest_points.hpp",
+      "target": "geometry/nearest_points.hpp"
+    },
+    {
+      "source": "graph/block_forest.hpp",
+      "target": "graph/block_forest.hpp"
+    },
+    {
+      "source": "graph/centroid_decomposition.hpp",
+      "target": "graph/centroid_decomposition.hpp"
+    },
+    {
+      "source": "graph/centroid_tree.hpp",
+      "target": "graph/centroid_tree.hpp"
+    },
+    {
+      "source": "graph/euler_tour.hpp",
+      "target": "graph/euler_tour.hpp"
+    },
+    {
+      "source": "graph/johnson.hpp",
+      "target": "graph/johnson.hpp"
+    },
+    {
+      "source": "graph/lca.hpp",
+      "target": "graph/lca.hpp"
+    },
+    {
+      "source": "graph/long_chain_dp.hpp",
+      "target": "graph/long_chain_dp.hpp"
+    },
+    {
+      "source": "graph/min_cycle.hpp",
+      "target": "graph/min_cycle.hpp"
+    },
+    {
+      "source": "graph/network_flow/cancel_cycle.hpp",
+      "target": "graph/network_flow/cancel_cycle.hpp"
+    },
+    {
+      "source": "graph/network_flow/min_cost_flow.hpp",
+      "target": "graph/network_flow/min_cost_flow.hpp"
+    },
+    {
+      "source": "graph/network_flow/network_flow.hpp",
+      "target": "graph/network_flow/network_flow.hpp"
+    },
+    {
+      "source": "graph/ring_count.hpp",
+      "target": "graph/ring_count.hpp"
+    },
+    {
+      "source": "graph/steiner_tree.hpp",
+      "target": "graph/steiner_tree.hpp"
+    },
+    {
+      "source": "graph/stoer_wagner.hpp",
+      "target": "graph/stoer_wagner.hpp"
+    },
+    {
+      "source": "graph/tarjan.hpp",
+      "target": "graph/tarjan.hpp"
+    },
+    {
+      "source": "graph/virtual_tree.hpp",
+      "target": "graph/virtual_tree.hpp"
+    },
+    {
+      "source": "initialization_misc/approx.hpp",
+      "target": "initialization_misc/approx.hpp"
+    },
+    {
+      "source": "initialization_misc/bit.hpp",
+      "target": "initialization_misc/bit.hpp"
+    },
+    {
+      "source": "initialization_misc/hash_table.hpp",
+      "target": "initialization_misc/hash_table.hpp"
+    },
+    {
+      "source": "initialization_misc/io.hpp",
+      "target": "initialization_misc/io.hpp"
+    },
+    {
+      "source": "initialization_misc/makefile",
+      "target": "initialization_misc/makefile"
+    },
+    {
+      "source": "math/berlekamp_massey.hpp",
+      "target": "math/berlekamp_massey.hpp"
+    },
+    {
+      "source": "math/comb.hpp",
+      "target": "math/comb.hpp"
+    },
+    {
+      "source": "math/du_sieve.hpp",
+      "target": "math/du_sieve.hpp"
+    },
+    {
+      "source": "math/euclidean.hpp",
+      "target": "math/euclidean.hpp"
+    },
+    {
+      "source": "math/fwt.hpp",
+      "target": "math/fwt.hpp"
+    },
+    {
+      "source": "math/kfwt.hpp",
+      "target": "math/kfwt.hpp"
+    },
+    {
+      "source": "math/lagrange.hpp",
+      "target": "math/lagrange.hpp"
+    },
+    {
+      "source": "math/linear_basis.hpp",
+      "target": "math/linear_basis.hpp"
+    },
+    {
+      "source": "math/linear_recurrence.hpp",
+      "target": "math/linear_recurrence.hpp"
+    },
+    {
+      "source": "math/matrix.hpp",
+      "target": "math/matrix.hpp"
+    },
+    {
+      "source": "math/min25.hpp",
+      "target": "math/min25.hpp"
+    },
+    {
+      "source": "math/modint.hpp",
+      "target": "math/modint.hpp"
+    },
+    {
+      "source": "math/number_theory.hpp",
+      "target": "math/number_theory.hpp"
+    },
+    {
+      "source": "math/polynomial.hpp",
+      "target": "math/polynomial.hpp"
+    },
+    {
+      "source": "math/prime.hpp",
+      "target": "math/prime.hpp"
+    },
+    {
+      "source": "math/schreier_sims.hpp",
+      "target": "math/schreier_sims.hpp"
+    },
+    {
+      "source": "math/set_power_series.hpp",
+      "target": "math/set_power_series.hpp"
+    },
+    {
+      "source": "math/sieve.hpp",
+      "target": "math/sieve.hpp"
+    },
+    {
+      "source": "math/simpson.hpp",
+      "target": "math/simpson.hpp"
+    },
+    {
+      "source": "math/stirling.hpp",
+      "target": "math/stirling.hpp"
+    },
+    {
+      "source": "misc_algorithm/cdq.hpp",
+      "target": "misc_algorithm/cdq.hpp"
+    },
+    {
+      "source": "misc_algorithm/dancing_links.hpp",
+      "target": "misc_algorithm/dancing_links.hpp"
+    },
+    {
+      "source": "misc_algorithm/odt.hpp",
+      "target": "misc_algorithm/odt.hpp"
+    },
+    {
+      "source": "misc_algorithm/parallel_binary_search.hpp",
+      "target": "misc_algorithm/parallel_binary_search.hpp"
+    },
+    {
+      "source": "string_algorithm/acam.hpp",
+      "target": "string_algorithm/acam.hpp"
+    },
+    {
+      "source": "string_algorithm/exkmp.hpp",
+      "target": "string_algorithm/exkmp.hpp"
+    },
+    {
+      "source": "string_algorithm/exsam.hpp",
+      "target": "string_algorithm/exsam.hpp"
+    },
+    {
+      "source": "string_algorithm/hash.hpp",
+      "target": "string_algorithm/hash.hpp"
+    },
+    {
+      "source": "string_algorithm/kmp.hpp",
+      "target": "string_algorithm/kmp.hpp"
+    },
+    {
+      "source": "string_algorithm/lyndon.hpp",
+      "target": "string_algorithm/lyndon.hpp"
+    },
+    {
+      "source": "string_algorithm/manacher.hpp",
+      "target": "string_algorithm/manacher.hpp"
+    },
+    {
+      "source": "string_algorithm/min_rep.hpp",
+      "target": "string_algorithm/min_rep.hpp"
+    },
+    {
+      "source": "string_algorithm/pam.hpp",
+      "target": "string_algorithm/pam.hpp"
+    },
+    {
+      "source": "string_algorithm/sa.hpp",
+      "target": "string_algorithm/sa.hpp"
+    },
+    {
+      "source": "string_algorithm/sam.hpp",
+      "target": "string_algorithm/sam.hpp"
+    },
+    {
+      "source": "string_algorithm/trie.hpp",
+      "target": "string_algorithm/trie.hpp"
+    }
+  ]
+}

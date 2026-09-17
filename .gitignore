@@ -36,6 +36,7 @@ credentials.*
 Program*
 spoj-submitter.dat
 __pycache__/*
+**/__pycache__/
 *.ttf
 *.otf
 Environment/Contest

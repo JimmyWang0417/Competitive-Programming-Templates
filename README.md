@@ -13,7 +13,8 @@ codebook/content.typ    两种版式的共享内容入口
 codebook/wide/          原版宽版主题与入口
 codebook/compact/       A4 双栏紧凑主题与入口
 dist/                   本地构建产物（不提交）
-.github/workflows/      CI 构建与 GitHub Release 发布
+.github/workflows/      CI 构建、上游同步 PR 与 GitHub Release 发布
+scripts/                GitHub 上游模板同步脚本与受管清单
 auto.sh                 本地构建、提交、推送及可选发布入口
 ```
 
@@ -40,6 +41,20 @@ typst compile --root . codebook/compact/main.typ dist/competitive-programming-te
 直接回车默认不发布。输入 `y` 后，Release 标签默认取“最新稳定版本 + 0.0.1”（例如最新为 `v1.1.1`，默认发布 `v1.1.2`），也可以手动修改；脚本会推送提交和标签。GitHub Actions 收到 `v*` 标签后自动创建 Release，并附上宽版、紧凑版两个 PDF。普通 push 和 pull request 也会构建两份 PDF 作为 Actions Artifact。
 
 也可以在 GitHub Actions 页面点击 **Run workflow**：勾选发布 Release，标签留空时同样自动使用“最新稳定版本 + 0.0.1”。不勾选则只构建并上传 PDF Artifact。
+
+## 上游模板同步
+
+算法源码以 GitHub 上的
+[`JimmyWang0417/Algorithm-Competitive-Codes`](https://github.com/JimmyWang0417/Algorithm-Competitive-Codes)
+`master` 分支为权威来源，不直接读取隔壁工作区中的未提交或未推送内容。
+
+```bash
+python3 scripts/sync_upstream_templates.py --check
+python3 scripts/sync_upstream_templates.py --apply
+python3 scripts/sync_upstream_templates.py --check-entries
+```
+
+`--check` 只报告差异；`--apply` 在受管文件没有本地改动时同步源码并更新清单；`--check-entries` 检查每个上游头文件是否已经出现在可达的 Typst 章节中。本仓库独有的说明文字和拆分模板不会被删除。每周定时任务与手动工作流会维护一个固定同步 PR；它只提出变更，不发布 Release。新增模板仍需在 PR 中补充准确的章节标题和必要说明。完整流程见[上游模板同步维护指南](docs/template-sync.md)。
 
 ## Documentation
 

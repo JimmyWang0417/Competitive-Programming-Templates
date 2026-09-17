@@ -2,6 +2,10 @@
 
 本目录保存适合连续阅读的详细教程；`Templates/` 下的 Typst 内容则面向算法竞赛纸质模板，优先提供可以在赛场快速检索的结论、公式和算法步骤。
 
+## 维护
+
+- [上游模板同步维护指南](./template-sync.md)：说明 GitHub 权威来源、受管路径、检查/应用命令、自动 PR 和新增模板的文字入口要求。
+
 ## 组合数学
 
 - [杨表（Young Tableaux）详细教程](./math/young-tableaux.md)：从整数分拆、杨图和钩长公式讲到 RSK、Schensted 与 Greene 定理，包含证明、例题和练习。

@@ -7,6 +7,9 @@
 - 两个仓库中的代码模板要同步：
   - `Competitive-Programming-Templates`
   - `Algorithm-Competitive-Codes`
+- 同步内容以 GitHub 上游
+  `https://github.com/JimmyWang0417/Algorithm-Competitive-Codes.git` 的
+  `master` 分支为准。隔壁 `../Algorithm-Competitive-Codes` 工作区只用于读取维护约定和预览尚未上游的改动，不能把其中未提交或未推送的内容直接同步进来。
 - 同步后需要逐文件比较，保证对应 `.hpp` 内容一致。
 
 ## C++ 书写风格
@@ -16,6 +19,9 @@
 - 命名尽量短，使用驼峰命名法。
 - 不为了“工程化”引入过长名字或额外抽象。
 - 能贴近原题解代码习惯的地方，优先保留原习惯。
+- 保留现有模板中的方法顺序；新增方法放在对应功能组末尾，没有对应分组时放在类型末尾。
+- 模运算沿用周围代码的余数约定，不额外引入通用 `norm`、临时 `+mod`/`-mod` 或条件归一化；只在既有结果边界做归一化。
+- 通用数学算法不得绑定某一种数据表示。例如 Hensel 提升接口应由调用方传入 $f$ 与 $f'$，不能从特定系数容器中自行推导导数。
 
 ## 构造与初始化
 
@@ -62,10 +68,18 @@
 
 ## 验证流程
 
+- 检查或应用 GitHub 上游模板同步：
+  ```bash
+  python3 scripts/sync_upstream_templates.py --check
+  python3 scripts/sync_upstream_templates.py --apply
+  python3 scripts/sync_upstream_templates.py --check-entries
+  ```
+- `--apply` 只在受管目标文件和同步清单没有本地改动时执行；本仓库独有的 Typst、Markdown、图片和拆分几何模板不属于同步删除范围。
+- 新增上游头文件同步后，必须为它选择准确的 Typst 章节、中文标题和必要说明；`--check-entries` 无输出缺口后才能认为文本入口完整。
 - 新增或改动代码模板后，至少做：
   - C++ 语法检查。
   - 已有随机/小样例测试。
-  - 两边仓库文件一致性比较。
+  - 与 GitHub 上游仓库逐文件比较。
 - 改动 Typst 文档后，运行：
   ```bash
   typst compile Templates/math/main.typ /tmp/cp-math.pdf

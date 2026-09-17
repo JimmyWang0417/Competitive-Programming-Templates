@@ -1,0 +1,120 @@
+name: Sync templates from upstream
+
+"on":
+  schedule:
+    - cron: "17 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-upstream-templates
+  cancel-in-progress: true
+
+env:
+  SYNC_BRANCH: automation/sync-algorithm-templates
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Configure automation identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Apply GitHub upstream changes
+        id: sync
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin "${SYNC_BRANCH}:refs/remotes/origin/${SYNC_BRANCH}" || true
+          git checkout -B "${SYNC_BRANCH}" origin/master
+
+          sync_output=$(python3 scripts/sync_upstream_templates.py --apply)
+          printf '%s\n' "$sync_output"
+          upstream_commit=$(printf '%s\n' "$sync_output" | sed -n 's/^UPSTREAM_COMMIT=//p' | head -n 1)
+          echo "upstream_commit=${upstream_commit}" >> "$GITHUB_OUTPUT"
+
+          set +e
+          entry_output=$(python3 scripts/sync_upstream_templates.py --check-entries 2>&1)
+          entry_status=$?
+          set -e
+          printf '%s\n' "$entry_output"
+          {
+            echo "entry_status=${entry_status}"
+            echo "entry_output<<SYNC_ENTRY_OUTPUT"
+            printf '%s\n' "$entry_output"
+            echo "SYNC_ENTRY_OUTPUT"
+          } >> "$GITHUB_OUTPUT"
+
+          if [[ -z "$(git status --porcelain)" ]]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push synchronization branch
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          git add Templates scripts/upstream-template-manifest.json
+          git commit -m "sync: update templates from upstream"
+          git push --force-with-lease origin "HEAD:refs/heads/${SYNC_BRANCH}"
+
+      - name: Create or refresh pull request
+        if: steps.sync.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          UPSTREAM_COMMIT: ${{ steps.sync.outputs.upstream_commit }}
+          ENTRY_STATUS: ${{ steps.sync.outputs.entry_status }}
+          ENTRY_OUTPUT: ${{ steps.sync.outputs.entry_output }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          body_file="$RUNNER_TEMP/upstream-template-sync-pr.md"
+          {
+            echo "This PR synchronizes managed templates from the GitHub upstream repository."
+            echo
+            echo "- Upstream commit: \`${UPSTREAM_COMMIT}\`"
+            echo "- Source: \`JimmyWang0417/Algorithm-Competitive-Codes@master\`"
+            echo
+            if [[ "$ENTRY_STATUS" == "0" ]]; then
+              echo "All managed headers already have reachable Typst entries."
+            else
+              echo "The following entry audit still needs maintainer review:"
+              echo
+              echo '```text'
+              printf '%s\n' "$ENTRY_OUTPUT"
+              echo '```'
+              echo
+              echo "Add accurate section titles and any necessary explanation before merging."
+            fi
+            echo
+            echo "The ordinary pull-request checks remain responsible for codebook builds."
+          } > "$body_file"
+
+          pr_number=$(gh pr list \
+            --head "$SYNC_BRANCH" \
+            --base master \
+            --state open \
+            --json number \
+            --jq '.[0].number // empty')
+          if [[ -z "$pr_number" ]]; then
+            gh pr create \
+              --base master \
+              --head "$SYNC_BRANCH" \
+              --title "sync: update templates from upstream" \
+              --body-file "$body_file"
+          else
+            gh pr edit "$pr_number" \
+              --title "sync: update templates from upstream" \
+              --body-file "$body_file"
+          fi
