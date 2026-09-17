@@ -2,6 +2,7 @@
 
 == DP 优化
 === 决策单调性优化 DP
+#include "monotone_dp.typ"
 #raw(read("monotone_dp.hpp"), lang: "cpp", block: true)
 
 == 状态压缩
