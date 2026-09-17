@@ -3,6 +3,7 @@ import subprocess
 import tempfile
 import unittest
 from pathlib import Path, PurePosixPath
+from unittest.mock import patch
 
 
 try:
@@ -259,6 +260,38 @@ class DirtyWorktreeTests(RepositoryFixture):
         )
 
         self.assertEqual(dirty, ("Templates/math/managed.hpp",))
+
+
+class CliTests(RepositoryFixture):
+    def test_network_source_clones_requested_repository_and_ref(self) -> None:
+        commands = []
+
+        def fake_run(command, **kwargs):
+            commands.append(command)
+            destination = Path(command[-1])
+            (destination / "Templates").mkdir(parents=True)
+            return subprocess.CompletedProcess(command, 0)
+
+        with patch.object(sync.subprocess, "run", side_effect=fake_run):
+            with sync.acquire_source(
+                "https://github.com/example/upstream.git", "topic", None
+            ) as source:
+                self.assertTrue((source / "Templates").is_dir())
+
+        self.assertEqual(len(commands), 1)
+        self.assertEqual(
+            commands[0][:-1],
+            [
+                "git",
+                "clone",
+                "--depth",
+                "1",
+                "--branch",
+                "topic",
+                "--single-branch",
+                "https://github.com/example/upstream.git",
+            ],
+        )
 
 
 class WorkflowTests(unittest.TestCase):
