@@ -7,9 +7,9 @@
 - 两个仓库中的代码模板要同步：
   - `Competitive-Programming-Templates`
   - `Algorithm-Competitive-Codes`
-- 同步内容以 GitHub 上游
+- 自动同步以 GitHub 上游
   `https://github.com/JimmyWang0417/Algorithm-Competitive-Codes.git` 的
-  `master` 分支为准。隔壁 `../Algorithm-Competitive-Codes` 工作区只用于读取维护约定和预览尚未上游的改动，不能把其中未提交或未推送的内容直接同步进来。
+  `master` 分支为准，不会自动导入隔壁工作区中未提交或未推送的内容。若用户明确要求以 `../Algorithm-Competitive-Codes` 为准完成一次手动迁移，可以同步其指定差异，但必须逐文件比较并保留清单中的上游基线指纹，防止定时任务在改动上游前将本地领先内容回滚。
 - 同步后需要逐文件比较，保证对应 `.hpp` 内容一致。
 
 ## C++ 书写风格
@@ -75,6 +75,7 @@
   python3 scripts/sync_upstream_templates.py --check-entries
   ```
 - `--apply` 只在受管目标文件和同步清单没有本地改动时执行；本仓库独有的 Typst、Markdown、图片和拆分几何模板不属于同步删除范围。
+- 清单记录每个上游文件的 SHA-256 基线。目标相对基线有本地领先改动时，自动化报告冲突而不覆盖；上游随后出现相同内容时，新文件可被安全接管，已有文件也只更新清单基线。
 - 新增上游头文件同步后，必须为它选择准确的 Typst 章节、中文标题和必要说明；`--check-entries` 无输出缺口后才能认为文本入口完整。
 - 新增或改动代码模板后，至少做：
   - C++ 语法检查。

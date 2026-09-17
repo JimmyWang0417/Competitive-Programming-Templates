@@ -12,8 +12,12 @@ Typst and Markdown content.
 - Repository: `https://github.com/JimmyWang0417/Algorithm-Competitive-Codes.git`
 - Default ref: `master`
 - Each run records the resolved upstream commit in a versioned manifest.
+- The manifest records a SHA-256 baseline for every managed upstream file so
+  committed target-ahead changes cannot be silently reverted.
 - `../Algorithm-Competitive-Codes` may be inspected for maintenance guidance
-  and upcoming changes, but uncommitted or unpushed files are never imported.
+  and upcoming changes, but the automation never imports it. A separately
+  authorized one-time manual migration may copy its changes while retaining
+  the GitHub fingerprints as the three-way baseline.
 
 The baseline for this design is upstream commit
 `83bb30e44e3cfc7cea24b0ffd4e3ea9c8eb7c010`. At that commit all managed target
@@ -43,12 +47,17 @@ unpublished template experiments.
 - `geometry/3d.hpp` maps to `geometry/3D/3d.hpp`.
 - Target-only `.typ`, Markdown, images, split geometry headers, and graph
   templates remain untouched.
-- A newly discovered upstream path is added to the manifest and copied unless
-  its target collides with an unowned target file; collisions fail visibly.
+- A newly discovered upstream path is added to the manifest. An identical
+  unowned target is safely adopted; a different unowned target is a conflict.
 - A path removed upstream is deleted only when the old manifest proves that
-  it was managed by the synchronizer.
+  it was managed by the synchronizer and its target still matches the recorded
+  baseline.
 - Apply mode refuses to start when a managed target or the manifest has local
   changes, so it cannot overwrite in-progress work.
+- For committed content, the script performs a three-way comparison among the
+  recorded baseline, current GitHub content, and current target. Target-ahead
+  and both-sides-changed cases stop as conflicts instead of copying upstream
+  over the target.
 
 ## Commands and Interfaces
 
@@ -98,4 +107,3 @@ artifacts. Validation is limited to:
 3. Python syntax validation and workflow YAML inspection.
 4. A final Git diff audit proving that the pre-existing Makefile edit was not
    overwritten or staged.
-

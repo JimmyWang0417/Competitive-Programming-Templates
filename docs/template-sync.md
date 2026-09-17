@@ -6,9 +6,9 @@
 [`JimmyWang0417/Algorithm-Competitive-Codes`](https://github.com/JimmyWang0417/Algorithm-Competitive-Codes)
 的 `master` 分支为准。每次同步都会解析并记录具体提交 SHA，避免“同步了最新内容”却无法复现。
 
-隔壁 `../Algorithm-Competitive-Codes` 目录可以提供代码风格、维护约定和即将上游的改动线索，但它不是同步内容源。未提交或未推送的文件必须先进入 GitHub，之后才能由本仓库同步。
+隔壁 `../Algorithm-Competitive-Codes` 目录可以提供代码风格、维护约定和即将上游的改动线索，但自动任务不会从中取内容。用户明确指定以该目录为标准的一次性手动迁移可以先于上游完成；这类迁移必须逐文件比较，并保留原 GitHub 基线指纹，直到相同内容进入上游。
 
-2026-09-12 的设计与实施文档记录了当时从本地工作区完成的一次历史迁移；从本指南生效起，后续同步均采用 GitHub 来源。
+2026-09-12 的设计与实施文档记录了当时从本地工作区完成的一次历史迁移；从本指南生效起，自动同步均采用 GitHub 来源。
 
 ## 受管范围
 
@@ -19,7 +19,7 @@
 | `geometry/2d.hpp` | `geometry/2D/2d.hpp` |
 | `geometry/3d.hpp` | `geometry/3D/3d.hpp` |
 
-受管文件列表与上游提交记录在 `scripts/upstream-template-manifest.json`。本仓库独有的 Typst、Markdown、图片、拆分几何头文件和图论补充模板不在删除范围内。
+受管文件列表、上游提交和每个源文件的 SHA-256 基线记录在 `scripts/upstream-template-manifest.json`。本仓库独有的 Typst、Markdown、图片、拆分几何头文件和图论补充模板不在删除范围内。
 
 ## 本地命令
 
@@ -47,7 +47,13 @@ python3 scripts/sync_upstream_templates.py --check-entries
 
 应用模式只检查受管目标和清单自身的 Git 状态，不会因为无关文档正在编辑而拒绝运行。如果任一受管文件存在本地修改，脚本会列出路径并退出，不覆盖工作。
 
-新增上游路径若与未受管的本地文件重名，脚本将其视为冲突，不猜测哪一边应该保留。上游删除只会作用于旧清单已经证明属于同步范围的目标文件。
+脚本会把当前上游、目标文件和清单基线做三方比较：
+
+- 只有上游改变时，安全更新目标。
+- 目标相对基线领先而上游未变时，报告冲突，不反向覆盖。
+- 上游与目标都改变且内容不同时，报告冲突，由维护者判断。
+- 新上游文件与未受管目标内容完全相同时，安全接管；内容不同时拒绝覆盖。
+- 上游删除只作用于旧清单已证明属于同步范围、且目标内容未偏离基线的文件。
 
 ## 新模板的文本入口
 
@@ -65,3 +71,5 @@ python3 scripts/sync_upstream_templates.py --check-entries
 `.github/workflows/sync-upstream-templates.yml` 每周运行一次，也支持在 Actions 页面手动触发。工作流从干净的 `master` 开始，运行应用模式，把结果推送到固定分支 `automation/sync-algorithm-templates`，并创建或刷新一个 PR。
 
 PR 正文记录上游提交，并列出缺少 Typst 入口的头文件。没有上游变化时不会创建空提交或新 PR。同步工作流不创建标签、不发布 Release，也不替代现有 PR 中的代码册构建检查。
+
+若检测到本地领先或双方同时修改，应用步骤会失败并在 Actions 日志列出冲突路径，不会推送回滚分支。将对应改动推送到上游后，下一次运行会在内容一致时更新清单并恢复正常同步。

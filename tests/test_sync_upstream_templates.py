@@ -1,3 +1,4 @@
+import hashlib
 import json
 import subprocess
 import tempfile
@@ -15,6 +16,10 @@ except ImportError:
 def write(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
+
+
+def sha256(content: str) -> str:
+    return hashlib.sha256(content.encode()).hexdigest()
 
 
 class RepositoryFixture(unittest.TestCase):
@@ -65,6 +70,10 @@ class DiscoveryTests(RepositoryFixture):
                     PurePosixPath("math/a.hpp"), PurePosixPath("math/a.hpp")
                 ),
             ),
+            fingerprints=(
+                (PurePosixPath("math/a.hpp"), sha256("a\n")),
+                (PurePosixPath("math/b.hpp"), sha256("b\n")),
+            ),
         )
 
         sync.write_manifest(manifest_path, manifest)
@@ -75,7 +84,32 @@ class DiscoveryTests(RepositoryFixture):
             [entry["source"] for entry in parsed["files"]],
             ["math/a.hpp", "math/b.hpp"],
         )
+        self.assertEqual(parsed["files"][0]["sha256"], sha256("a\n"))
         self.assertTrue(manifest_path.read_bytes().endswith(b"\n"))
+
+    def test_unrelated_upstream_commit_does_not_churn_manifest(self) -> None:
+        file = sync.ManagedFile(
+            PurePosixPath("math/a.hpp"), PurePosixPath("math/a.hpp")
+        )
+        baseline = ((file.source, sha256("same\n")),)
+        previous = sync.Manifest(
+            repository="https://example.invalid/source.git",
+            ref="master",
+            commit="old-commit",
+            files=(file,),
+            fingerprints=baseline,
+        )
+        candidate = sync.Manifest(
+            repository=previous.repository,
+            ref=previous.ref,
+            commit="new-unrelated-commit",
+            files=(file,),
+            fingerprints=baseline,
+        )
+
+        retained = sync.retain_commit_for_unchanged_baseline(candidate, previous)
+
+        self.assertEqual(retained, previous)
 
 
 class ApplyTests(RepositoryFixture):
@@ -117,7 +151,7 @@ class ApplyTests(RepositoryFixture):
             "keep\n",
         )
 
-    def test_new_upstream_path_cannot_overwrite_unowned_target(self) -> None:
+    def test_new_upstream_path_cannot_overwrite_different_unowned_target(self) -> None:
         write(self.source / "Templates/math/new.hpp", "upstream\n")
         write(self.target / "Templates/math/new.hpp", "target-only\n")
         empty_manifest = sync.Manifest(
@@ -127,8 +161,96 @@ class ApplyTests(RepositoryFixture):
             files=(),
         )
 
-        with self.assertRaisesRegex(sync.SyncError, "unowned target"):
-            sync.build_plan(self.source, self.target, empty_manifest)
+        plan = sync.build_plan(self.source, self.target, empty_manifest)
+
+        self.assertEqual(plan.copies, ())
+        self.assertEqual(len(plan.conflicts), 1)
+        self.assertIn("unowned target", plan.conflicts[0].reason)
+
+    def test_new_upstream_path_adopts_identical_unowned_target(self) -> None:
+        write(self.source / "Templates/math/new.hpp", "same\n")
+        write(self.target / "Templates/math/new.hpp", "same\n")
+        empty_manifest = sync.Manifest(
+            repository="https://example.invalid/source.git",
+            ref="master",
+            commit="old",
+            files=(),
+        )
+
+        plan = sync.build_plan(self.source, self.target, empty_manifest)
+
+        self.assertEqual(plan.conflicts, ())
+        self.assertEqual(
+            plan.unchanged,
+            (
+                sync.ManagedFile(
+                    PurePosixPath("math/new.hpp"), PurePosixPath("math/new.hpp")
+                ),
+            ),
+        )
+
+    def test_local_ahead_change_is_conflict_not_upstream_copy(self) -> None:
+        write(self.source / "Templates/math/value.hpp", "base\n")
+        write(self.target / "Templates/math/value.hpp", "local\n")
+        previous = sync.Manifest(
+            repository="https://example.invalid/source.git",
+            ref="master",
+            commit="old",
+            files=(
+                sync.ManagedFile(
+                    PurePosixPath("math/value.hpp"), PurePosixPath("math/value.hpp")
+                ),
+            ),
+            fingerprints=((PurePosixPath("math/value.hpp"), sha256("base\n")),),
+        )
+
+        plan = sync.build_plan(self.source, self.target, previous)
+
+        self.assertEqual(plan.copies, ())
+        self.assertEqual(
+            plan.conflicts[0].reason, "target changed while upstream is unchanged"
+        )
+
+    def test_upstream_change_replaces_unchanged_baseline_target(self) -> None:
+        write(self.source / "Templates/math/value.hpp", "upstream\n")
+        write(self.target / "Templates/math/value.hpp", "base\n")
+        file = sync.ManagedFile(
+            PurePosixPath("math/value.hpp"), PurePosixPath("math/value.hpp")
+        )
+        previous = sync.Manifest(
+            repository="https://example.invalid/source.git",
+            ref="master",
+            commit="old",
+            files=(file,),
+            fingerprints=((file.source, sha256("base\n")),),
+        )
+
+        plan = sync.build_plan(self.source, self.target, previous)
+
+        self.assertEqual(plan.copies, (file,))
+        self.assertEqual(plan.conflicts, ())
+
+    def test_divergent_upstream_and_target_changes_conflict(self) -> None:
+        write(self.source / "Templates/math/value.hpp", "upstream\n")
+        write(self.target / "Templates/math/value.hpp", "local\n")
+        file = sync.ManagedFile(
+            PurePosixPath("math/value.hpp"), PurePosixPath("math/value.hpp")
+        )
+        previous = sync.Manifest(
+            repository="https://example.invalid/source.git",
+            ref="master",
+            commit="old",
+            files=(file,),
+            fingerprints=((file.source, sha256("base\n")),),
+        )
+
+        plan = sync.build_plan(self.source, self.target, previous)
+
+        self.assertEqual(plan.copies, ())
+        self.assertEqual(
+            plan.conflicts[0].reason,
+            "upstream and target both changed from baseline",
+        )
 
     def test_unchanged_owned_file_is_not_copied(self) -> None:
         write(self.source / "Templates/math/same.hpp", "same\n")

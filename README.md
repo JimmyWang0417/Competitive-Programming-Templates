@@ -44,9 +44,9 @@ typst compile --root . codebook/compact/main.typ dist/competitive-programming-te
 
 ## 上游模板同步
 
-算法源码以 GitHub 上的
+自动同步以 GitHub 上的
 [`JimmyWang0417/Algorithm-Competitive-Codes`](https://github.com/JimmyWang0417/Algorithm-Competitive-Codes)
-`master` 分支为权威来源，不直接读取隔壁工作区中的未提交或未推送内容。
+`master` 分支为权威来源，不会自行读取隔壁工作区中的未提交或未推送内容。明确要求的一次性本地迁移可以先于上游进行；清单中的内容指纹会把这类文件识别为“本地领先”，避免自动任务反向覆盖。
 
 ```bash
 python3 scripts/sync_upstream_templates.py --check
@@ -54,7 +54,7 @@ python3 scripts/sync_upstream_templates.py --apply
 python3 scripts/sync_upstream_templates.py --check-entries
 ```
 
-`--check` 只报告差异；`--apply` 在受管文件没有本地改动时同步源码并更新清单；`--check-entries` 检查每个上游头文件是否已经出现在可达的 Typst 章节中。本仓库独有的说明文字和拆分模板不会被删除。每周定时任务与手动工作流会维护一个固定同步 PR；它只提出变更，不发布 Release。新增模板仍需在 PR 中补充准确的章节标题和必要说明。完整流程见[上游模板同步维护指南](docs/template-sync.md)。
+`--check` 只报告差异；`--apply` 在受管文件没有未提交修改且不存在基线冲突时同步源码并更新清单；`--check-entries` 检查每个上游头文件是否已经出现在可达的 Typst 章节中。本仓库独有的说明文字和拆分模板不会被删除。每周定时任务与手动工作流会维护一个固定同步 PR；本地领先或双方同时修改时任务会停止并要求人工判断，而不会回滚目标文件。同步工作流不发布 Release。新增模板仍需在 PR 中补充准确的章节标题和必要说明。完整流程见[上游模板同步维护指南](docs/template-sync.md)。
 
 ## Documentation
 
