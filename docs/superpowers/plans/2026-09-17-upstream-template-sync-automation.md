@@ -34,7 +34,7 @@
 - Produces: `ManagedFile(source: PurePosixPath, target: PurePosixPath)` values, a deterministic manifest, and check/apply results.
 - Public functions used by tests: `map_target_path()`, `discover_managed_files()`, `load_manifest()`, `build_plan()`, `apply_plan()`, and `resolve_upstream_commit()`.
 
-- [ ] **Step 1: Write failing discovery and mapping tests**
+- [x] **Step 1: Write failing discovery and mapping tests**
 
 Add tests that create an upstream fixture containing ordinary headers, the two geometry headers, the Makefile, and ignored `.typ`/`.cpp` files:
 
@@ -60,7 +60,7 @@ def test_discovery_maps_only_managed_files(self):
     )
 ```
 
-- [ ] **Step 2: Run the focused test and verify failure**
+- [x] **Step 2: Run the focused test and verify failure**
 
 Run:
 
@@ -70,7 +70,7 @@ python3 -m unittest tests.test_sync_upstream_templates.DiscoveryTests -v
 
 Expected: import or missing-function failure because the synchronizer does not exist.
 
-- [ ] **Step 3: Implement deterministic discovery and manifest I/O**
+- [x] **Step 3: Implement deterministic discovery and manifest I/O**
 
 Implement the exact model and mapping boundary:
 
@@ -93,7 +93,7 @@ Discover sorted `*.hpp` paths plus the exact Makefile. Serialize repository,
 ref, commit, and sorted `{source, target}` objects with UTF-8, two-space
 indentation, and a trailing newline.
 
-- [ ] **Step 4: Add failing plan/apply safety tests**
+- [x] **Step 4: Add failing plan/apply safety tests**
 
 Cover all transaction cases:
 
@@ -117,7 +117,7 @@ def test_new_upstream_path_cannot_overwrite_unowned_target(self):
 Also assert that check mode reports changed content and that manifest-owned
 removals are included in the plan.
 
-- [ ] **Step 5: Implement check/apply planning**
+- [x] **Step 5: Implement check/apply planning**
 
 Represent a plan as immutable `copies`, `deletes`, and `unchanged` tuples.
 Reject duplicate target mappings and unowned collisions. Apply copies with
@@ -125,13 +125,13 @@ Reject duplicate target mappings and unowned collisions. Apply copies with
 targets, prune no directories, and atomically replace the manifest after file
 operations succeed.
 
-- [ ] **Step 6: Seed the real baseline manifest from the fresh GitHub clone**
+- [x] **Step 6: Seed the real baseline manifest from the fresh GitHub clone**
 
 Use the already verified checkout at commit
 `83bb30e44e3cfc7cea24b0ffd4e3ea9c8eb7c010`. The manifest must list every
 upstream header and Makefile exactly once, including both geometry mappings.
 
-- [ ] **Step 7: Run core tests**
+- [x] **Step 7: Run core tests**
 
 Run:
 
@@ -151,7 +151,7 @@ Expected: all discovery, mapping, collision, copy, and removal tests pass.
 - Consumes: `--check`, `--apply`, or `--check-entries`; optional `--repository`, `--ref`, and `--source-dir`.
 - Produces: exit code `0` for a satisfied check/apply, `1` for detected drift or missing entries, and `2` for invalid input, collision, clone failure, or unsafe dirty state.
 
-- [ ] **Step 1: Write failing CLI and entry-audit tests**
+- [x] **Step 1: Write failing CLI and entry-audit tests**
 
 Test reachable Typst traversal, including nested includes resolved relative to
 the including file:
@@ -182,7 +182,7 @@ git clone --depth 1 --branch <ref> --single-branch <repository> <temporary-path>
 Test that apply mode rejects porcelain output for a managed target or the
 manifest but ignores an unrelated dirty Markdown file.
 
-- [ ] **Step 2: Run the new tests and verify failure**
+- [x] **Step 2: Run the new tests and verify failure**
 
 Run:
 
@@ -192,7 +192,7 @@ python3 -m unittest tests.test_sync_upstream_templates.CliTests tests.test_sync_
 
 Expected: failures for missing CLI helpers and entry traversal.
 
-- [ ] **Step 3: Implement source acquisition and exact CLI modes**
+- [x] **Step 3: Implement source acquisition and exact CLI modes**
 
 Use `argparse`, `tempfile.TemporaryDirectory`, and `subprocess.run(...,
 check=True)`. `--source-dir` bypasses cloning. Resolve the commit with
@@ -208,14 +208,14 @@ git status --porcelain --untracked-files=all -- <managed targets> scripts/upstre
 
 Abort on nonempty output. Do not use broad worktree cleanliness as a gate.
 
-- [ ] **Step 4: Implement reachable Typst entry traversal**
+- [x] **Step 4: Implement reachable Typst entry traversal**
 
 Start at `Templates/main.typ`, recursively resolve `#include "..."`, and
 collect target paths from `#raw(read("..."), ...)` relative to each including
 file. Report only managed `.hpp` targets; the Makefile already has a deliberate
 entry but is not part of the header report.
 
-- [ ] **Step 5: Run the full unit suite and syntax check**
+- [x] **Step 5: Run the full unit suite and syntax check**
 
 Run:
 
@@ -239,7 +239,7 @@ Typst build.
 - Consumes: the sibling repository's template-style memory and the new CLI.
 - Produces: one unambiguous authority rule, local commands, automation behavior, and manual review requirements.
 
-- [ ] **Step 1: Extend template maintenance memory**
+- [x] **Step 1: Extend template maintenance memory**
 
 State in `agend.md` that GitHub `master` is authoritative and the sibling
 worktree is preview-only. Add the sibling-derived rules to preserve method
@@ -247,7 +247,7 @@ order, follow surrounding modular-residue conventions without introducing
 generic normalization, and keep generic algorithms representation-independent
 (including caller-provided `f` and `f'` for Hensel lifting).
 
-- [ ] **Step 2: Document operator commands and review flow**
+- [x] **Step 2: Document operator commands and review flow**
 
 Add this command set to README and the detailed guide:
 
@@ -261,13 +261,13 @@ Explain that apply requires clean managed paths, target-only notes are
 preserved, new headers need deliberate Typst headings, and the automatic PR
 does not publish a release.
 
-- [ ] **Step 3: Link the guide and audit wording**
+- [x] **Step 3: Link the guide and audit wording**
 
 Add `docs/template-sync.md` to `docs/README.md`. Search for statements that
 still call `../Algorithm-Competitive-Codes` authoritative and mark the 2026-09-12
 documents as historical rather than rewriting their recorded implementation.
 
-- [ ] **Step 4: Run documentation checks**
+- [x] **Step 4: Run documentation checks**
 
 Run:
 
@@ -288,7 +288,7 @@ Expected: authority and commands are present, and no whitespace errors exist.
 - Consumes: the synchronizer's apply and entry-check modes.
 - Produces: branch `automation/sync-algorithm-templates` and at most one open pull request into `master`.
 
-- [ ] **Step 1: Write a failing workflow contract test**
+- [x] **Step 1: Write a failing workflow contract test**
 
 Load the workflow as text and assert it contains the schedule,
 `workflow_dispatch`, `contents: write`, `pull-requests: write`, fixed branch,
@@ -296,7 +296,7 @@ apply invocation, entry audit, `git push --force-with-lease`, and `gh pr`
 create/edit logic. Assert it does not contain release publication or Typst
 build commands.
 
-- [ ] **Step 2: Run the workflow test and verify failure**
+- [x] **Step 2: Run the workflow test and verify failure**
 
 Run:
 
@@ -306,7 +306,7 @@ python3 -m unittest tests.test_sync_upstream_templates.WorkflowTests -v
 
 Expected: failure because the workflow file does not exist.
 
-- [ ] **Step 3: Implement the workflow**
+- [x] **Step 3: Implement the workflow**
 
 Use `actions/checkout@v6`, weekly cron plus manual dispatch, one concurrency
 group, and GitHub-provided `GH_TOKEN`. Start from `origin/master`, run apply,
@@ -315,7 +315,7 @@ status --porcelain` is nonempty, push the fixed branch with
 `--force-with-lease`, and create or edit the matching open PR with the upstream
 commit and missing-entry checklist.
 
-- [ ] **Step 4: Run workflow and regression checks**
+- [x] **Step 4: Run workflow and regression checks**
 
 Run:
 
@@ -338,7 +338,7 @@ the codebooks in this turn.
 - Consumes: the fresh upstream checkout at `/tmp/algorithm-competitive-codes-upstream.bvhv17/source`.
 - Produces: evidence that the manifest matches commit `83bb30e...`, a precise report of the known local Makefile divergence, and a clean implementation diff.
 
-- [ ] **Step 1: Check the real upstream without network access**
+- [x] **Step 1: Check the real upstream without network access**
 
 Run:
 
@@ -354,13 +354,13 @@ python3 scripts/sync_upstream_templates.py \
 Expected: entry coverage passes; content check reports only the pre-existing
 local Makefile divergence and makes no changes.
 
-- [ ] **Step 2: Prove apply protection on the current dirty worktree**
+- [x] **Step 2: Prove apply protection on the current dirty worktree**
 
 Run apply mode against the same checkout. Expected: exit code `2` with a
 message naming `Templates/initialization_misc/makefile`; its bytes and Git diff
 remain unchanged.
 
-- [ ] **Step 3: Audit scope and staging**
+- [x] **Step 3: Audit scope and staging**
 
 Run:
 
@@ -375,7 +375,7 @@ Expected: the existing Makefile edit is still present and unstaged; only the
 script, manifest, tests, workflow, and documentation belong to this
 implementation.
 
-- [ ] **Step 4: Commit implementation files without the Makefile**
+- [x] **Step 4: Commit implementation files without the Makefile**
 
 ```bash
 git add scripts tests .github/workflows/sync-upstream-templates.yml agend.md README.md docs/README.md docs/template-sync.md
@@ -384,4 +384,3 @@ git commit -m "feat: automate upstream template synchronization"
 
 Expected: the commit excludes `Templates/initialization_misc/makefile` and the
 final worktree status shows only that pre-existing modification.
-
