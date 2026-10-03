@@ -66,17 +66,18 @@ Count My Code:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  Language              Files        Lines         Code     Comments       Blanks
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- C++ Header               97         8821         8753           54           14
- Makefile                  1           11           10            0            1
- Python                    1           24           22            1            1
+ C++ Header               98         8919         8847           58           14
+ JSON                      1          422          422            0            0
+ Makefile                  1           10           10            0            0
+ Python                    3         1129          964            2          163
  Shell                     1           61           50            1           10
- Typst                    50         2650         2095           96          459
+ Typst                    53         2827         2237           96          494
 ─────────────────────────────────────────────────────────────────────────────────
- Markdown                  9         5182            0         3761         1421
- |- BASH                   2            6            6            0            0
- (Total)                             5188            6         3761         1421
+ Markdown                 10         5305            0         3850         1455
+ |- BASH                   3           15           15            0            0
+ (Total)                             5320           15         3850         1455
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- Total                   159        16755        10936         3913         1906
+ Total                   167        18688        12545         4007         2136
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 <!-- count the code end -->
@@ -85,9 +86,30 @@ The Directory Tree of My Codes:
 <!-- directory tree begin -->
 ```plain
 .
+├── .clang-format
+├── .directory
+├── .github
+│   └── workflows
+│       ├── codebook-release.yml
+│       └── sync-upstream-templates.yml
+├── .gitignore
+├── .vscode
+│   ├── c_cpp_properties.json
+│   ├── checker.code-snippets
+│   ├── file.code-snippets
+│   ├── generator.code-snippets
+│   ├── interator.code-snippets
+│   ├── IO.code-snippets
+│   ├── latex.code-snippets
+│   ├── launch.json
+│   ├── main-latex.code-snippets
+│   ├── settings.json
+│   ├── slideshow.code-snippets
+│   ├── sub-latex.code-snippets
+│   ├── tasks.json
+│   └── validator.code-snippets
 ├── agend.md
 ├── agent.md
-├── assets
 ├── auto.sh
 ├── codebook
 │   ├── compact
@@ -105,15 +127,7 @@ The Directory Tree of My Codes:
 │   ├── math
 │   │   └── young-tableaux.md
 │   ├── README.md
-│   └── superpowers
-│       ├── plans
-│       │   ├── 2026-09-10-johnson-prufer-notes.md
-│       │   ├── 2026-09-12-makefile-sync.md
-│       │   └── 2026-09-12-template-sync.md
-│       └── specs
-│           ├── 2026-09-10-johnson-prufer-notes-design.md
-│           ├── 2026-09-12-makefile-sync-design.md
-│           └── 2026-09-12-template-sync-design.md
+│   └── template-sync.md
 ├── Generator.py
 ├── image
 │   └── 88D2DB2E657F7DB09DAB8A02818C9A60.jpg
@@ -121,160 +135,169 @@ The Directory Tree of My Codes:
 ├── LICENSE
 ├── main.typ
 ├── README.md
-└── Templates
-    ├── data_structure
-    │   ├── cartesian_tree.hpp
-    │   ├── decomp_tree.hpp
-    │   ├── decomposition.hpp
-    │   ├── dynamic_seg.hpp
-    │   ├── fenwick.hpp
-    │   ├── fhq_treap.hpp
-    │   ├── implicit_treap.hpp
-    │   ├── lichao.hpp
-    │   ├── link_cut_tree.hpp
-    │   ├── main.typ
-    │   ├── persist_implicit_treap.hpp
-    │   ├── persist_seg.hpp
-    │   ├── persist_treap.hpp
-    │   ├── scanline_seg.hpp
-    │   ├── scapegoat.hpp
-    │   ├── seg_beats.hpp
-    │   ├── seg_beats_note.typ
-    │   ├── seg_divide.hpp
-    │   ├── seg_tree.hpp
-    │   ├── sparse.hpp
-    │   ├── splay.hpp
-    │   ├── top_tree.hpp
-    │   └── treap.hpp
-    ├── dynamic_programming
-    │   ├── main.typ
-    │   ├── monotone_dp.hpp
-    │   └── plug_dp.hpp
-    ├── geometry
-    │   ├── 2D
-    │   │   ├── 2d.hpp
-    │   │   ├── circle.hpp
-    │   │   ├── convex-hull.hpp
-    │   │   ├── half-convex-hull.hpp
-    │   │   ├── line.hpp
-    │   │   ├── main.typ
-    │   │   ├── point.hpp
-    │   │   ├── polygon.hpp
-    │   │   └── segment.hpp
-    │   ├── 3D
-    │   │   ├── 3d.hpp
-    │   │   ├── convex-hull.hpp
-    │   │   ├── Coordinate-System.hpp
-    │   │   ├── line.hpp
-    │   │   ├── main.typ
-    │   │   ├── plane.hpp
-    │   │   ├── point.hpp
-    │   │   ├── polygon.hpp
-    │   │   └── sphere.hpp
-    │   ├── main.typ
-    │   ├── nearest_points.hpp
-    │   ├── pick_theorem.typ
-    │   └── randomized_incremental.typ
-    ├── graph
-    │   ├── block_forest.hpp
-    │   ├── centroid_decomposition.hpp
-    │   ├── centroid_tree.hpp
-    │   ├── dilworth.typ
-    │   ├── dominator_tree.hpp
-    │   ├── dominator_tree.typ
-    │   ├── euler_tour.hpp
-    │   ├── johnson.hpp
-    │   ├── johnson.typ
-    │   ├── lca.hpp
-    │   ├── lgv.typ
-    │   ├── long_chain_dp.hpp
-    │   ├── main.typ
-    │   ├── matrix_tree.typ
-    │   ├── min_cycle.hpp
-    │   ├── network_flow
-    │   │   ├── cancel_cycle.hpp
-    │   │   ├── main.typ
-    │   │   ├── min_cost_flow.hpp
-    │   │   ├── network_flow.hpp
-    │   │   └── theorems.typ
-    │   ├── prufer.typ
-    │   ├── ring_count.hpp
-    │   ├── steiner_tree.hpp
-    │   ├── stoer_wagner.hpp
-    │   ├── tarjan.hpp
-    │   ├── tree_hash.typ
-    │   ├── two_sat.typ
-    │   └── virtual_tree.hpp
-    ├── initialization_misc
-    │   ├── approx.hpp
-    │   ├── approx_note.typ
-    │   ├── bit.hpp
-    │   ├── bit_operations.typ
-    │   ├── hash_table.hpp
-    │   ├── io.hpp
-    │   ├── main.md
-    │   ├── main.typ
-    │   └── makefile
-    ├── main.typ
-    ├── math
-    │   ├── berlekamp_massey.hpp
-    │   ├── berlekamp_massey_note.typ
-    │   ├── comb.hpp
-    │   ├── combinatorics.typ
-    │   ├── du_sieve.hpp
-    │   ├── euclidean.hpp
-    │   ├── euclidean.typ
-    │   ├── fib.typ
-    │   ├── fwt.hpp
-    │   ├── fwt.typ
-    │   ├── gameTheory.typ
-    │   ├── group_theory.typ
-    │   ├── inclusion_exclusion.typ
-    │   ├── jYZpd0.png
-    │   ├── kfwt.hpp
-    │   ├── lagrange.hpp
-    │   ├── linear_basis.hpp
-    │   ├── linear_recurrence.hpp
-    │   ├── main.typ
-    │   ├── matrix.hpp
-    │   ├── min25.hpp
-    │   ├── modint.hpp
-    │   ├── number_theory.hpp
-    │   ├── number_theory_note.typ
-    │   ├── number_theory_sieve.typ
-    │   ├── polynomial.hpp
-    │   ├── polynomial_notes.typ
-    │   ├── prime.hpp
-    │   ├── prime.typ
-    │   ├── schreier_sims.hpp
-    │   ├── set_power_series.hpp
-    │   ├── set_power_series.typ
-    │   ├── sieve.hpp
-    │   ├── simpson.hpp
-    │   ├── stirling.hpp
-    │   ├── stirling.typ
-    │   └── young_tableaux.typ
-    ├── misc_algorithm
-    │   ├── cdq.hpp
-    │   ├── dancing_links.hpp
-    │   ├── main.typ
-    │   ├── odt.hpp
-    │   └── parallel_binary_search.hpp
-    └── string_algorithm
-        ├── acam.hpp
-        ├── exkmp.hpp
-        ├── exsam.hpp
-        ├── hash.hpp
-        ├── kmp.hpp
-        ├── lyndon.hpp
-        ├── lyndon_note.typ
-        ├── main.typ
-        ├── manacher.hpp
-        ├── min_rep.hpp
-        ├── min_rep_note.typ
-        ├── pam.hpp
-        ├── sa.hpp
-        ├── sam.hpp
-        └── trie.hpp
+├── scripts
+│   ├── sync_upstream_templates.py
+│   └── upstream-template-manifest.json
+├── Templates
+│   ├── data_structure
+│   │   ├── cartesian_tree.hpp
+│   │   ├── decomp_tree.hpp
+│   │   ├── decomposition.hpp
+│   │   ├── dynamic_seg.hpp
+│   │   ├── fenwick.hpp
+│   │   ├── fhq_treap.hpp
+│   │   ├── implicit_treap.hpp
+│   │   ├── lichao.hpp
+│   │   ├── link_cut_tree.hpp
+│   │   ├── main.typ
+│   │   ├── persist_implicit_treap.hpp
+│   │   ├── persist_seg.hpp
+│   │   ├── persist_treap.hpp
+│   │   ├── scanline_seg.hpp
+│   │   ├── scapegoat.hpp
+│   │   ├── seg_beats.hpp
+│   │   ├── seg_beats_note.typ
+│   │   ├── seg_divide.hpp
+│   │   ├── seg_tree.hpp
+│   │   ├── sparse.hpp
+│   │   ├── splay.hpp
+│   │   ├── top_tree.hpp
+│   │   └── treap.hpp
+│   ├── dynamic_programming
+│   │   ├── main.typ
+│   │   ├── monotone_dp.hpp
+│   │   ├── monotone_dp.typ
+│   │   └── plug_dp.hpp
+│   ├── geometry
+│   │   ├── 2D
+│   │   │   ├── 2d.hpp
+│   │   │   ├── circle.hpp
+│   │   │   ├── convex-hull.hpp
+│   │   │   ├── half-convex-hull.hpp
+│   │   │   ├── line.hpp
+│   │   │   ├── main.typ
+│   │   │   ├── point.hpp
+│   │   │   ├── polygon.hpp
+│   │   │   └── segment.hpp
+│   │   ├── 3D
+│   │   │   ├── 3d.hpp
+│   │   │   ├── convex-hull.hpp
+│   │   │   ├── Coordinate-System.hpp
+│   │   │   ├── line.hpp
+│   │   │   ├── main.typ
+│   │   │   ├── plane.hpp
+│   │   │   ├── point.hpp
+│   │   │   ├── polygon.hpp
+│   │   │   └── sphere.hpp
+│   │   ├── main.typ
+│   │   ├── nearest_points.hpp
+│   │   ├── pick_theorem.typ
+│   │   └── randomized_incremental.typ
+│   ├── graph
+│   │   ├── block_forest.hpp
+│   │   ├── centroid_decomposition.hpp
+│   │   ├── centroid_tree.hpp
+│   │   ├── dilworth.typ
+│   │   ├── dominator_tree.hpp
+│   │   ├── dominator_tree.typ
+│   │   ├── euler_tour.hpp
+│   │   ├── johnson.hpp
+│   │   ├── johnson.typ
+│   │   ├── lca.hpp
+│   │   ├── lgv.typ
+│   │   ├── long_chain_dp.hpp
+│   │   ├── main.typ
+│   │   ├── matrix_tree.typ
+│   │   ├── min_cycle.hpp
+│   │   ├── network_flow
+│   │   │   ├── cancel_cycle.hpp
+│   │   │   ├── main.typ
+│   │   │   ├── min_cost_flow.hpp
+│   │   │   ├── network_flow.hpp
+│   │   │   └── theorems.typ
+│   │   ├── prufer.typ
+│   │   ├── ring_count.hpp
+│   │   ├── steiner_tree.hpp
+│   │   ├── stoer_wagner.hpp
+│   │   ├── tarjan.hpp
+│   │   ├── tree_hash.typ
+│   │   ├── two_sat.typ
+│   │   └── virtual_tree.hpp
+│   ├── initialization_misc
+│   │   ├── approx.hpp
+│   │   ├── approx_note.typ
+│   │   ├── bit.hpp
+│   │   ├── bit_operations.typ
+│   │   ├── hash_table.hpp
+│   │   ├── io.hpp
+│   │   ├── main.md
+│   │   ├── main.typ
+│   │   └── makefile
+│   ├── main.typ
+│   ├── math
+│   │   ├── berlekamp_massey.hpp
+│   │   ├── berlekamp_massey_note.typ
+│   │   ├── comb.hpp
+│   │   ├── combinatorics.typ
+│   │   ├── du_sieve.hpp
+│   │   ├── euclidean.hpp
+│   │   ├── euclidean.typ
+│   │   ├── fft.hpp
+│   │   ├── fib.typ
+│   │   ├── fwt.hpp
+│   │   ├── fwt.typ
+│   │   ├── gameTheory.typ
+│   │   ├── group_theory.typ
+│   │   ├── inclusion_exclusion.typ
+│   │   ├── jYZpd0.png
+│   │   ├── kfwt.hpp
+│   │   ├── lagrange.hpp
+│   │   ├── linear_basis.hpp
+│   │   ├── linear_programming.typ
+│   │   ├── linear_recurrence.hpp
+│   │   ├── main.typ
+│   │   ├── matrix.hpp
+│   │   ├── min25.hpp
+│   │   ├── modint.hpp
+│   │   ├── number_theory.hpp
+│   │   ├── number_theory_note.typ
+│   │   ├── number_theory_sieve.typ
+│   │   ├── order_primitive_root.typ
+│   │   ├── polynomial.hpp
+│   │   ├── polynomial_notes.typ
+│   │   ├── prime.hpp
+│   │   ├── prime.typ
+│   │   ├── schreier_sims.hpp
+│   │   ├── set_power_series.hpp
+│   │   ├── set_power_series.typ
+│   │   ├── sieve.hpp
+│   │   ├── simpson.hpp
+│   │   ├── stirling.hpp
+│   │   ├── stirling.typ
+│   │   └── young_tableaux.typ
+│   ├── misc_algorithm
+│   │   ├── cdq.hpp
+│   │   ├── dancing_links.hpp
+│   │   ├── main.typ
+│   │   ├── odt.hpp
+│   │   └── parallel_binary_search.hpp
+│   └── string_algorithm
+│       ├── acam.hpp
+│       ├── exkmp.hpp
+│       ├── exsam.hpp
+│       ├── hash.hpp
+│       ├── kmp.hpp
+│       ├── lyndon.hpp
+│       ├── lyndon_note.typ
+│       ├── main.typ
+│       ├── manacher.hpp
+│       ├── min_rep.hpp
+│       ├── min_rep_note.typ
+│       ├── pam.hpp
+│       ├── sa.hpp
+│       ├── sam.hpp
+│       └── trie.hpp
+└── tests
+    └── test_sync_upstream_templates.py
 ```
 <!-- directory tree end -->
