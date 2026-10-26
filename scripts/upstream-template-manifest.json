@@ -1,7 +1,7 @@
 {
   "repository": "https://github.com/JimmyWang0417/Algorithm-Competitive-Codes.git",
   "ref": "master",
-  "commit": "83bb30e44e3cfc7cea24b0ffd4e3ea9c8eb7c010",
+  "commit": "1d42019d46924420d22fbc64654e31211cc5052a",
   "files": [
     {
       "source": "data_structure/cartesian_tree.hpp",
@@ -236,7 +236,7 @@
     {
       "source": "initialization_misc/makefile",
       "target": "initialization_misc/makefile",
-      "sha256": "7b0867960ca21186e4aa22422a10b2a5536c9a43c7f9e19071b94941192f55af"
+      "sha256": "a565f6d615f66fe9d517c0172d389931ffa55a3a931dd879f9d46a3ce117e7a7"
     },
     {
       "source": "math/berlekamp_massey.hpp",
@@ -256,7 +256,12 @@
     {
       "source": "math/euclidean.hpp",
       "target": "math/euclidean.hpp",
-      "sha256": "8787d3398071fdaf22246c960e818a46acdea585bb4b53071d657eff21702cbc"
+      "sha256": "364ccb5db9cc70f369f218d0fe42e5188c230fe6eb08c19056306b0fb4f1ad00"
+    },
+    {
+      "source": "math/fft.hpp",
+      "target": "math/fft.hpp",
+      "sha256": "131ded4213efa5365051476f1ee628173b55a57ccc52cfa9279a113e8f107597"
     },
     {
       "source": "math/fwt.hpp",
@@ -276,7 +281,7 @@
     {
       "source": "math/linear_basis.hpp",
       "target": "math/linear_basis.hpp",
-      "sha256": "c9b3e0f58cfc0ff61b4111ef580e72d4347e70f06352d659bfdf817f544e2093"
+      "sha256": "d1179df2c01394063cf42f33b3d4b42214c33f85f9976d6f245ddaa6fd3864bb"
     },
     {
       "source": "math/linear_recurrence.hpp",
@@ -301,7 +306,7 @@
     {
       "source": "math/number_theory.hpp",
       "target": "math/number_theory.hpp",
-      "sha256": "e8106c7bc352d7000daec8b153d28f25a2574d2da9801564791ddc5f98598e09"
+      "sha256": "368399ff8b93e9ef437ed20a6c10597d56548ac85586010c38a8916b59b696ee"
     },
     {
       "source": "math/polynomial.hpp",
