@@ -5,7 +5,8 @@ namespace threeDimension
     {
         p3 n;
         double d;
-        plane(p3 _n = p3(), double _d = 0) : n(_n), d(_d) {}
+        plane() = default;
+        plane(p3 _n, double _d) : n(_n), d(_d) {}
         plane(p3 _n, p3 _p) : n(_n), d(dot(_n, _p)) {}
         plane(p3 p, p3 q, p3 r) : plane(cross(q - p, r - p), p) {}
 
@@ -15,7 +16,7 @@ namespace threeDimension
         }
         auto dist(p3 p) const
         {
-            return dot(n, p) / abs(n);
+            return abs(side(p)) / abs(n);
         }
 
         auto translate(p3 t) const

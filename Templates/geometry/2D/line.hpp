@@ -5,10 +5,18 @@ namespace twoDimension
     {
         p2 v;
         double c;
-        line(p2 _v = p2(), double _c = 0) : v(_v), c(_c) {}
+        line() = default;
+        line(p2 _v, double _c) : v(_v), c(_c) {}
         line(p2 p, p2 q) : v(q - p), c(cross(v, p)) {}
         line(double p, double q, double r) : v({q, -p}), c(r) {}
-
+        auto friend operator<(const line &p, const line &q)
+        {
+            auto ar = arg(p.v) - arg(q.v);
+            if (sgn(ar) == 0)
+                return dot(p.c * q.v - p.v * q.c, p.v) > 0;
+            else
+                return ar < 0;
+        }
         auto side(p2 p) const
         {
             return cross(v, p) - c;
@@ -16,11 +24,11 @@ namespace twoDimension
         // >0 说明是向量左边，<0说明是向量右边
         auto dist(p2 p) const
         {
-            return abs(side(p)) / abs(p);
+            return abs(side(p)) / abs(v);
         }
         auto sqDist(p2 p) const
         {
-            return side(p) * side(p) / norm(p);
+            return side(p) * side(p) / norm(v);
         }
         auto perpThrough(p2 p) const
         {

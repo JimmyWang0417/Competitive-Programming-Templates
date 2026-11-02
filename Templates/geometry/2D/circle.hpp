@@ -59,7 +59,7 @@ namespace twoDimension
             return {};
         if (sgn(h2) == 0)
         {
-            p2 v = d * dr / h2;
+            p2 v = d * dr / d2;
             return {{o1 + v * r1, o2 + v * r2}};
         }
         else if (sgn(h2) == 1)

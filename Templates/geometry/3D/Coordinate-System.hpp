@@ -4,10 +4,12 @@ namespace threeDimension
     struct coords
     {
         p3 o, dx, dy, dz;
+        coords() = default;
         coords(p3 p, p3 q, p3 r) : o(p)
         {
             dx = (q - p) / abs(q - p);
             dz = cross(dx, (r - p) / abs(r - p));
+            dz = dz / abs(dz);
             dy = cross(dz, dx);
         }
 

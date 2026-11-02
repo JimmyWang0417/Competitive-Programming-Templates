@@ -26,20 +26,21 @@ namespace threeDimension
             for (int i = 0; i < (int)p[u].size(); ++i)
             {
                 auto a = p[u][i], b = p[u][(i + 1) % p[u].size()];
-                if (mp[{a, b}])
+                auto same = mp.find({a, b}), rev = mp.find({b, a});
+                if (same != mp.end())
                 {
-                    int v = mp[{a, b}];
+                    int v = same->second;
                     g[u].emplace_back(v, true);
                     g[v].emplace_back(u, true);
                 }
-                else if (mp[{b, a}])
+                else if (rev != mp.end())
                 {
-                    int v = mp[{b, a}];
+                    int v = rev->second;
                     g[u].emplace_back(v, false);
                     g[v].emplace_back(u, false);
                 }
                 else
-                    mp[{a, b}] = i;
+                    mp[{a, b}] = u;
             }
         }
         vector<bool> flip(n), vis(n);

@@ -1,9 +1,9 @@
 namespace std
 {
     template <typename T>
-    bool operator<(const complex<T> &lhs, const complex<T> &rhs)
+    auto operator<=>(const complex<T> &lhs, const complex<T> &rhs)
     {
-        return tie(lhs.real(), lhs.imag()) < tie(rhs.real(), rhs.imag());
+        return pair{lhs.real(), lhs.imag()} <=> pair{rhs.real(), rhs.imag()};
     }
 }
 namespace twoDimension

@@ -25,7 +25,7 @@ namespace threeDimension
     auto onSphSegment(p3 a, p3 b, p3 p)
     {
         p3 n = cross(a, b);
-        if (sgn(norm(n)))
+        if (!sgn(norm(n)))
             return sgn(norm(cross(a, p))) == 0 && dot(a, p) > 0;
         return sgn(dot(n, p)) == 0 && mixed(n, a, p) >= 0 && mixed(n, p, b) >= 0;
     }
@@ -36,7 +36,7 @@ namespace threeDimension
         int ob = sgn(dot(cd, b));
         int oc = sgn(dot(ab, c));
         int od = sgn(dot(ab, d));
-        return {oa != ob && oc != od && oa != oc, cross(ab, cd) * od};
+        return {oa * ob < 0 && oc * od < 0 && oa != oc, cross(ab, cd) * od};
     }
     auto intersSph(p3 a, p3 b, p3 c, p3 d) -> vector<p3>
     {

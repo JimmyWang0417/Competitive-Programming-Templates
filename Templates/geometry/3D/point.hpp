@@ -10,7 +10,8 @@ namespace threeDimension
     struct p3
     {
         double x, y, z;
-        p3(double _x = 0, double _y = 0, double _z = 0) : x(_x), y(_y), z(_z) {}
+        p3() = default;
+        p3(double _x, double _y, double _z) : x(_x), y(_y), z(_z) {}
         auto operator<(const p3 &rhs) const
         {
             return tie(x, y, z) < tie(rhs.x, rhs.y, rhs.z);

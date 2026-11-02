@@ -9,7 +9,7 @@ namespace twoDimension
         {
             int d = sgn(orient(p.front(), x, y));
             if (d == 0)
-                return norm(x) < norm(y);
+                return norm(x - p.front()) < norm(y - p.front());
             else
                 return d > 0;
         };
@@ -31,7 +31,7 @@ namespace twoDimension
         if (n == 2)
             return norm(p.front() - p.back());
         double res = 0;
-        for (int i = 0, j = 3; i < n; ++i)
+        for (int i = 0, j = 1; i < n; ++i)
         {
             while (i != (j + 1) % n &&
                 abs(orient(p[i], p[(i + 1) % n], p[j])) <= abs(orient(p[i], p[(i + 1) % n], p[(j + 1) % n])))

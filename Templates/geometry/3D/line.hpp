@@ -4,11 +4,12 @@ namespace threeDimension
     struct line
     {
         p3 d, o;
-        line(p3 p = p3(), p3 q = p3()) : d(q - p), o(p) {}
+        line() = default;
+        line(p3 p, p3 q) : d(q - p), o(p) {}
         line(plane p, plane q)
         {
             d = cross(p.n, q.n);
-            o = cross((cross(q.n, p.d) - cross(p.n, q.d)), d) / norm(d);
+            o = cross((q.n * p.d - p.n * q.d), d) / norm(d);
         }
         auto sqDist(p3 p) const
         {
