@@ -19,3 +19,10 @@ for (int i = 1; i <= tot; ++i)
     for (int j = 1; prime[i] * j <= n; ++j)
         a[prime[i] * j] += a[j];
 ```
+==== 单位根反演
+设 $omega_n$ 是 $n$ 次本原单位根．对整数 $k, r$，
++ $ \[n divides k\] = 1/n sum_(j=0)^(n-1) omega_n^(j k) $
++ $ \[k equiv r med (mod n)\] = 1/n sum_(j=0)^(n-1) omega_n^(j(k - r)) $
++ 若 $F(x)=sum_k a_k x^k$，则 $sum_(k equiv r med (mod n)) a_k = 1/n sum_(j=0)^(n-1) omega_n^(-j r) F(omega_n^j)$
++ $ sum_i binom(N, n i + r) = 1/n sum_(j=0)^(n-1) omega_n^(-j r) (1 + omega_n^j)^N $
+在模 $p$ 下使用时，$n$ 需要在模 $p$ 下可逆，并且 $n divides (p - 1)$，这样才存在 $n$ 次本原单位根．
