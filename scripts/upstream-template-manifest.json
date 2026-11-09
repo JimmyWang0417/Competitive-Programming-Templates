@@ -1,7 +1,7 @@
 {
   "repository": "https://github.com/JimmyWang0417/Algorithm-Competitive-Codes.git",
   "ref": "master",
-  "commit": "83bb30e44e3cfc7cea24b0ffd4e3ea9c8eb7c010",
+  "commit": "09f02d4fe01b084dba89b9e55186d10297c62b9b",
   "files": [
     {
       "source": "data_structure/cartesian_tree.hpp",
@@ -26,7 +26,7 @@
     {
       "source": "data_structure/fenwick.hpp",
       "target": "data_structure/fenwick.hpp",
-      "sha256": "a00286a621e0d27ec094806f80283b4ce45632211042bf5114b10e12e2063f73"
+      "sha256": "6d496a5bf049a6aa7f49c5c0dd6ca098127665d95cf1da48de2c2ad5d2d4de58"
     },
     {
       "source": "data_structure/fhq_treap.hpp",
@@ -171,7 +171,7 @@
     {
       "source": "graph/min_cycle.hpp",
       "target": "graph/min_cycle.hpp",
-      "sha256": "9f16b7c39920d95c1b9d2f049c8155f4dc0483ac4bfa0f5f50ac0b867b7fbc38"
+      "sha256": "029a8b729708661fdfaecd9bea87b34e1504da91ada13f718b63be291a76b0ea"
     },
     {
       "source": "graph/network_flow/cancel_cycle.hpp",
@@ -181,32 +181,32 @@
     {
       "source": "graph/network_flow/min_cost_flow.hpp",
       "target": "graph/network_flow/min_cost_flow.hpp",
-      "sha256": "556fe60adf8b315f6cc0ee0ec4762426853c3d34bca4079fdd77aa553a410147"
+      "sha256": "1d436118bfe9c4ca4d9dc526d0c10995d1cdc4e3fe6b274b5ab48fecbed0cda5"
     },
     {
       "source": "graph/network_flow/network_flow.hpp",
       "target": "graph/network_flow/network_flow.hpp",
-      "sha256": "0723a03e9173de7576bf89ccf9fbd0b6770a325afa61471b9b47cc9f279d5925"
+      "sha256": "69a2939f9516eac7c5abe06b25dea98f0bb24cc4556f61a528b21c1b7f17eb98"
     },
     {
       "source": "graph/ring_count.hpp",
       "target": "graph/ring_count.hpp",
-      "sha256": "79d2adbb32d5f084ddc14f9b89f2d46a8996ad017e1f5cb2538897e6b02c7b78"
+      "sha256": "5b362fd4db60084fb03d74416713de80d23c56f457afd6de5b3a3a6639421c64"
     },
     {
       "source": "graph/steiner_tree.hpp",
       "target": "graph/steiner_tree.hpp",
-      "sha256": "17f80828c211da1ec5127971f45038891a5e97d6a3d4d9629ea1beffdfd2d71d"
+      "sha256": "9f64a02c002e392afc616adcfabd7071acfcfc9d968cbddc1b5f35c5154754c1"
     },
     {
       "source": "graph/stoer_wagner.hpp",
       "target": "graph/stoer_wagner.hpp",
-      "sha256": "7c0113113f7a4378c3ce3a73154758b339ae6e399bc7fb782f44df97b24bd9cf"
+      "sha256": "2f2c9d243650c1c81ae7048f7bf443d1624016622833457f173015278adab1e8"
     },
     {
       "source": "graph/tarjan.hpp",
       "target": "graph/tarjan.hpp",
-      "sha256": "89a102e8d6a0408f39b3fe3daf6e220d596bfa94dbe33224b18fadc01e82d6a3"
+      "sha256": "1218743b550c450fa146405410540eba5d753b05f5831becac7f809592ea7e9a"
     },
     {
       "source": "graph/virtual_tree.hpp",
@@ -221,7 +221,7 @@
     {
       "source": "initialization_misc/bit.hpp",
       "target": "initialization_misc/bit.hpp",
-      "sha256": "6a527b4198b2b15c253a192cd4bcf7d6a647ea374a2b8bb049e2e8396d21b215"
+      "sha256": "1f3c4532b4969582faecb3601191804d061ecb594d201044545e9fb4821970cb"
     },
     {
       "source": "initialization_misc/hash_table.hpp",
@@ -231,12 +231,12 @@
     {
       "source": "initialization_misc/io.hpp",
       "target": "initialization_misc/io.hpp",
-      "sha256": "817a41660fdaa88ea9e644c83d5569560462f505297d01c5e0a9c6b531d38446"
+      "sha256": "e0412d794ff527c7a861b5a8345a3a587bf014941197f383b1594c456339ec87"
     },
     {
       "source": "initialization_misc/makefile",
       "target": "initialization_misc/makefile",
-      "sha256": "7b0867960ca21186e4aa22422a10b2a5536c9a43c7f9e19071b94941192f55af"
+      "sha256": "a565f6d615f66fe9d517c0172d389931ffa55a3a931dd879f9d46a3ce117e7a7"
     },
     {
       "source": "math/berlekamp_massey.hpp",
@@ -256,7 +256,12 @@
     {
       "source": "math/euclidean.hpp",
       "target": "math/euclidean.hpp",
-      "sha256": "8787d3398071fdaf22246c960e818a46acdea585bb4b53071d657eff21702cbc"
+      "sha256": "364ccb5db9cc70f369f218d0fe42e5188c230fe6eb08c19056306b0fb4f1ad00"
+    },
+    {
+      "source": "math/fft.hpp",
+      "target": "math/fft.hpp",
+      "sha256": "131ded4213efa5365051476f1ee628173b55a57ccc52cfa9279a113e8f107597"
     },
     {
       "source": "math/fwt.hpp",
@@ -276,7 +281,7 @@
     {
       "source": "math/linear_basis.hpp",
       "target": "math/linear_basis.hpp",
-      "sha256": "c9b3e0f58cfc0ff61b4111ef580e72d4347e70f06352d659bfdf817f544e2093"
+      "sha256": "d1179df2c01394063cf42f33b3d4b42214c33f85f9976d6f245ddaa6fd3864bb"
     },
     {
       "source": "math/linear_recurrence.hpp",
@@ -296,12 +301,12 @@
     {
       "source": "math/modint.hpp",
       "target": "math/modint.hpp",
-      "sha256": "16d98a5d2089e17efc06eb456cae3bdb0cde11a0dd617e5247f91af2b2271d53"
+      "sha256": "2bfdc0635f194a6811169a81c33b453e24437a08188b0ef852331e7e886e6fbe"
     },
     {
       "source": "math/number_theory.hpp",
       "target": "math/number_theory.hpp",
-      "sha256": "e8106c7bc352d7000daec8b153d28f25a2574d2da9801564791ddc5f98598e09"
+      "sha256": "cdf39cc07530b39f95bbdd4c0d308d172499efa027af1e5b97cf6fe03c091e83"
     },
     {
       "source": "math/polynomial.hpp",
@@ -311,7 +316,7 @@
     {
       "source": "math/prime.hpp",
       "target": "math/prime.hpp",
-      "sha256": "251abd9956dc6ebc1aa0f4efbd8a62542e9e6489233692bb30388b420c0cb8af"
+      "sha256": "007891cc692491c3455c28530a3b2e4bb55140de0842add17f530a5546b6dc3d"
     },
     {
       "source": "math/schreier_sims.hpp",
